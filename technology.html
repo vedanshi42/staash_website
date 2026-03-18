@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology — Staash</title>
+<meta name="description" content="Staash is built on proprietary AI infrastructure designed specifically for Indian retail — three integrated layers that no existing product has combined before.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal:#0A9488; --teal-h:#0BB5A7; --teal-pale:#EAF6F5; --teal-mid:#A8DDD9;
+  --orange:#E05C0A; --orange-h:#F06820; --orange-pale:#FEF1E8;
+  --yellow:#ECA817; --yellow-pale:#FEF8E7;
+  --white:#FFFFFF; --off:#F8F9FB; --off2:#F1F4F7;
+  --ink:#0E1B29; --ink2:#253547; --ink3:#576B80; --ink4:#90A3B4;
+  --border:#E0E8EF; --border2:#C4D2DE;
+  --shadow-sm:0 1px 3px rgba(14,27,41,0.06),0 1px 2px rgba(14,27,41,0.04);
+  --shadow-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
+  --shadow-lg:0 16px 48px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
+}
+html { scroll-behavior: smooth; }
+body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+
+/* NAV */
+nav { position:sticky; top:0; z-index:200; height:62px; background:rgba(255,255,255,0.97); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 4.5rem; gap:2rem; }
+.nav-logo { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.3rem; font-weight:800; color:var(--ink); text-decoration:none; letter-spacing:-0.02em; display:flex; align-items:center; gap:0.55rem; flex-shrink:0; }
+.logo-sq { width:30px; height:30px; border-radius:8px; background:var(--teal); display:flex; align-items:center; justify-content:center; }
+.logo-sq svg { width:16px; height:16px; }
+.nav-links { display:flex; list-style:none; margin-left:1rem; }
+.nav-links a { display:block; padding:0 1rem; font-size:0.83rem; font-weight:500; color:var(--ink3); text-decoration:none; line-height:62px; transition:color 0.15s; white-space:nowrap; }
+.nav-links a:hover { color:var(--teal); }
+.nav-links a.active { color:var(--teal); font-weight:600; }
+.nav-spacer { flex:1; }
+.nav-ghost { font-size:0.83rem; font-weight:500; color:var(--ink2); text-decoration:none; padding:0.42rem 0.9rem; border-radius:6px; transition:background 0.15s; white-space:nowrap; }
+.nav-ghost:hover { background:var(--off); }
+.nav-cta { background:var(--teal); color:var(--white); padding:0.46rem 1.15rem; font-size:0.83rem; font-weight:600; border:none; border-radius:7px; text-decoration:none; white-space:nowrap; transition:background 0.15s,box-shadow 0.15s,transform 0.15s; }
+.nav-cta:hover { background:var(--teal-h); box-shadow:0 4px 14px rgba(10,148,136,0.3); transform:translateY(-1px); }
+
+/* PAGE HEADER */
+.page-header { background:linear-gradient(165deg,var(--ink) 0%,var(--ink2) 100%); padding:5.5rem 4.5rem 5rem; text-align:center; }
+.ph-inner { max-width:640px; margin:0 auto; }
+.pg-lbl { display:inline-flex; align-items:center; gap:0.45rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:100px; padding:0.28rem 0.85rem; font-size:0.7rem; font-weight:600; color:var(--teal-h); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:1.6rem; animation:up 0.5s ease both; }
+.pg-lbl-dot { width:5px; height:5px; border-radius:50%; background:var(--teal-h); animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.ph-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(2.2rem,4vw,3.2rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; color:var(--white); animation:up 0.55s 0.05s ease both; }
+.ph-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; color:var(--teal-h); }
+.ph-sub { margin-top:1.2rem; font-size:1rem; color:rgba(255,255,255,0.6); line-height:1.75; margin-inline:auto; max-width:520px; animation:up 0.55s 0.1s ease both; }
+
+/* SECTION COMMONS */
+.sec-lbl { font-size:0.68rem; font-weight:700; color:var(--teal); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem; }
+.sec-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.6rem,2.8vw,2.3rem); font-weight:800; letter-spacing:-0.025em; line-height:1.15; color:var(--ink); }
+.sec-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; color:var(--teal); }
+.sec-body { margin-top:1.1rem; font-size:0.94rem; color:var(--ink3); line-height:1.78; }
+
+/* PHILOSOPHY */
+.philosophy { padding:6rem 4.5rem; max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.phil-principles { margin-top:2.5rem; display:flex; flex-direction:column; gap:1.1rem; }
+.principle { padding:1.3rem 1.5rem; background:var(--off); border:1px solid var(--border); border-radius:12px; transition:border-color 0.2s,transform 0.2s; }
+.principle:hover { border-color:var(--teal-mid); transform:translateX(4px); }
+.pr-title { font-size:0.9rem; font-weight:700; color:var(--ink); margin-bottom:0.3rem; display:flex; align-items:center; gap:0.6rem; }
+.pr-marker { width:8px; height:8px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+.pr-body { font-size:0.81rem; color:var(--ink3); line-height:1.62; padding-left:1.4rem; }
+
+/* Platform overview visual — abstract, no implementation detail */
+.platform-visual { background:var(--off); border:1px solid var(--border); border-radius:20px; padding:2rem; box-shadow:var(--shadow-lg); }
+.pv-title { font-size:0.7rem; font-weight:700; color:var(--ink4); letter-spacing:0.08em; text-transform:uppercase; text-align:center; margin-bottom:2rem; }
+.pv-layers { display:flex; flex-direction:column; gap:1rem; }
+.pv-layer { border-radius:12px; padding:1.4rem 1.6rem; position:relative; overflow:hidden; transition:transform 0.2s; cursor:default; }
+.pv-layer:hover { transform:scale(1.02); }
+.pvl-1 { background:linear-gradient(135deg,var(--teal-pale),#d8f2ef); border:1px solid var(--teal-mid); }
+.pvl-2 { background:linear-gradient(135deg,var(--orange-pale),#fde6d4); border:1px solid rgba(224,92,10,0.22); }
+.pvl-3 { background:linear-gradient(135deg,var(--ink2),var(--ink)); border:1px solid rgba(255,255,255,0.07); }
+.pvl-tag { font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem; }
+.pvl-1 .pvl-tag { color:var(--teal); }
+.pvl-2 .pvl-tag { color:var(--orange); }
+.pvl-3 .pvl-tag { color:rgba(255,255,255,0.38); }
+.pvl-name { font-size:0.95rem; font-weight:700; }
+.pvl-1 .pvl-name, .pvl-2 .pvl-name { color:var(--ink); }
+.pvl-3 .pvl-name { color:var(--white); }
+.pvl-outcome { font-size:0.76rem; margin-top:0.28rem; }
+.pvl-1 .pvl-outcome { color:var(--ink3); }
+.pvl-2 .pvl-outcome { color:var(--ink3); }
+.pvl-3 .pvl-outcome { color:rgba(255,255,255,0.45); }
+.pvl-arrow { text-align:center; color:var(--border2); font-size:0.8rem; margin:-0.3rem 0; }
+
+/* WHAT MAKES US DIFFERENT */
+.diff-section { background:var(--off); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:6rem 4.5rem; }
+.diff-inner { max-width:1160px; margin:0 auto; }
+.diff-header { max-width:560px; margin-bottom:3.5rem; }
+.diff-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+.diff-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:2rem 1.8rem; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; transition:transform 0.26s,box-shadow 0.26s; }
+.diff-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; border-radius:16px 16px 0 0; }
+.dc-1::before { background:var(--teal); }
+.dc-2::before { background:var(--orange); }
+.dc-3::before { background:var(--yellow); }
+.diff-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.dc-num { font-family:'Fraunces',serif; font-size:2.4rem; font-weight:700; line-height:1; margin-bottom:1rem; }
+.dc-1 .dc-num { color:var(--teal-mid); }
+.dc-2 .dc-num { color:rgba(224,92,10,0.18); }
+.dc-3 .dc-num { color:rgba(236,168,23,0.28); }
+.dc-title { font-size:1.05rem; font-weight:700; color:var(--ink); margin-bottom:0.7rem; }
+.dc-body { font-size:0.84rem; color:var(--ink3); line-height:1.7; }
+
+/* INDIA ADVANTAGE */
+.india-section { padding:6rem 4.5rem; max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.india-points { margin-top:2rem; display:flex; flex-direction:column; gap:0.9rem; }
+.india-point { background:var(--off); border:1px solid var(--border); border-radius:12px; padding:1.3rem 1.5rem; transition:border-color 0.2s,transform 0.2s; }
+.india-point:hover { border-color:var(--teal-mid); transform:translateX(4px); }
+.ip-title { font-size:0.9rem; font-weight:700; color:var(--ink); margin-bottom:0.28rem; display:flex; align-items:center; gap:0.6rem; }
+.ip-marker { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.ip-m-t { background:var(--teal); }
+.ip-m-o { background:var(--orange); }
+.ip-m-y { background:var(--yellow); }
+.ip-body { font-size:0.81rem; color:var(--ink3); line-height:1.62; padding-left:1.3rem; }
+
+/* India context panel */
+.india-panel { background:var(--white); border:1px solid var(--border); border-radius:18px; box-shadow:var(--shadow-lg); overflow:hidden; }
+.ip-head { background:var(--teal); padding:1.5rem 1.6rem; }
+.ip-head-label { font-size:0.72rem; font-weight:600; color:rgba(255,255,255,0.65); margin-bottom:0.3rem; letter-spacing:0.04em; text-transform:uppercase; }
+.ip-head-val { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.5rem; font-weight:800; color:var(--white); line-height:1.2; }
+.ip-body-wrap { padding:1.4rem; }
+.ip-stats { display:flex; flex-direction:column; gap:0.8rem; margin-bottom:1.3rem; }
+.ip-stat-row { display:flex; align-items:center; gap:1rem; }
+.ip-stat-lbl { font-size:0.77rem; color:var(--ink3); flex:1.2; }
+.ip-stat-track { flex:2; height:6px; background:var(--off2); border-radius:100px; overflow:hidden; }
+.ip-stat-bar { height:100%; border-radius:100px; width:0; transition:width 1.2s cubic-bezier(0.22,1,0.36,1); }
+.isb-t { background:var(--teal); }
+.isb-o { background:var(--orange); }
+.isb-y { background:var(--yellow); }
+.ip-stat-val { font-size:0.77rem; font-weight:700; color:var(--ink2); min-width:38px; text-align:right; }
+.ip-divider { height:1px; background:var(--border); margin-bottom:1.1rem; }
+.ip-facts { display:flex; flex-direction:column; gap:0; }
+.ip-fact { display:flex; align-items:flex-start; gap:0.7rem; padding:0.62rem 0; border-bottom:1px solid var(--border); font-size:0.78rem; color:var(--ink3); line-height:1.5; }
+.ip-fact:last-child { border-bottom:none; }
+.ip-fact-dot { width:5px; height:5px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:0.42rem; }
+
+/* MOAT SECTION */
+.moat-section { background:var(--off); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:6rem 4.5rem; }
+.moat-inner { max-width:1100px; margin:0 auto; text-align:center; }
+.moat-header { max-width:560px; margin:0 auto 3.5rem; }
+.moat-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+.moat-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:2rem 1.6rem; text-align:left; box-shadow:var(--shadow-sm); transition:transform 0.24s,box-shadow 0.24s; }
+.moat-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+.mc-icon { width:40px; height:40px; border-radius:10px; margin-bottom:1.1rem; display:flex; align-items:center; justify-content:center; }
+.mci-t { background:var(--teal-pale); }
+.mci-o { background:var(--orange-pale); }
+.mci-y { background:var(--yellow-pale); }
+.mc-icon svg { width:19px; height:19px; }
+.mc-title { font-size:0.95rem; font-weight:700; color:var(--ink); margin-bottom:0.6rem; }
+.mc-body { font-size:0.82rem; color:var(--ink3); line-height:1.65; }
+
+/* MS STRIP */
+.ms-strip { padding:3.5rem 4.5rem; border-top:1px solid var(--border); }
+.ms-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:2.5rem; flex-wrap:wrap; }
+.ms-badge { display:flex; align-items:center; gap:0.9rem; background:var(--off); border:1px solid var(--border); border-radius:12px; padding:1rem 1.4rem; flex-shrink:0; }
+.ms-text strong { display:block; font-size:0.85rem; font-weight:700; color:var(--ink); }
+.ms-text span { font-size:0.74rem; color:var(--ink4); }
+.ms-body { flex:1; font-size:0.88rem; color:var(--ink3); line-height:1.7; }
+.ms-body strong { color:var(--ink2); font-weight:600; }
+.ms-cta-link { flex-shrink:0; background:var(--teal); color:var(--white); padding:0.68rem 1.4rem; font-size:0.84rem; font-weight:600; border-radius:8px; text-decoration:none; transition:all 0.18s; white-space:nowrap; }
+.ms-cta-link:hover { background:var(--teal-h); box-shadow:0 6px 18px rgba(10,148,136,0.28); }
+
+/* CTA */
+.cta-section { background:linear-gradient(165deg,var(--teal-pale) 0%,var(--white) 55%); border-top:1px solid var(--teal-mid); padding:6rem 4.5rem; text-align:center; }
+.cta-inner { max-width:560px; margin:0 auto; }
+.cta-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.8rem,3.2vw,2.5rem); font-weight:800; letter-spacing:-0.025em; color:var(--ink); margin-bottom:1rem; }
+.cta-title span { color:var(--teal); }
+.cta-body { color:var(--ink3); font-size:0.94rem; line-height:1.78; margin-bottom:2.2rem; }
+.cta-btns { display:flex; gap:0.7rem; justify-content:center; flex-wrap:wrap; }
+.btn-fill { background:var(--teal); color:var(--white); padding:0.72rem 1.7rem; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.87rem; font-weight:600; border:none; border-radius:8px; text-decoration:none; transition:all 0.18s; }
+.btn-fill:hover { background:var(--teal-h); transform:translateY(-2px); box-shadow:0 8px 22px rgba(10,148,136,0.3); }
+.btn-line { background:transparent; color:var(--ink2); padding:0.72rem 1.7rem; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.87rem; font-weight:500; border:1.5px solid var(--border2); border-radius:8px; text-decoration:none; transition:all 0.18s; }
+.btn-line:hover { border-color:var(--teal); color:var(--teal); transform:translateY(-2px); }
+.cta-note { margin-top:1.5rem; font-size:0.78rem; color:var(--ink4); }
+.cta-note a { color:var(--teal); text-decoration:none; font-weight:500; }
+
+/* FOOTER */
+footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+.ft-logo { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.05rem; font-weight:800; color:var(--white); text-decoration:none; }
+.ft-logo span { color:var(--teal-h); }
+.ft-links { display:flex; gap:1.8rem; list-style:none; }
+.ft-links a { font-size:0.77rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.15s; }
+.ft-links a:hover { color:var(--teal-h); }
+.ft-copy { font-size:0.72rem; color:rgba(255,255,255,0.28); }
+
+/* ANIMATIONS */
+@keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.reveal { opacity:0; transform:translateY(22px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+.rd1 { transition-delay:0.08s; } .rd2 { transition-delay:0.16s; }
+
+/* RESPONSIVE */
+@media (max-width:960px) {
+  nav { padding:0 1.5rem; } .nav-links { display:none; }
+  .page-header { padding:3.5rem 1.5rem 3rem; }
+  .philosophy { grid-template-columns:1fr; gap:2.5rem; padding:4rem 1.5rem; }
+  .diff-section { padding:4rem 1.5rem; } .diff-grid { grid-template-columns:1fr; }
+  .india-section { grid-template-columns:1fr; gap:2.5rem; padding:4rem 1.5rem; }
+  .moat-section { padding:4rem 1.5rem; } .moat-cards { grid-template-columns:1fr; }
+  .ms-strip { padding:2.5rem 1.5rem; } .ms-inner { flex-direction:column; align-items:flex-start; }
+  .cta-section { padding:4rem 1.5rem; }
+  footer { padding:2rem 1.5rem; flex-direction:column; align-items:flex-start; gap:1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-sq">
+      <svg viewBox="0 0 16 16" fill="none">
+        <rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white"/>
+        <rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/>
+        <rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/>
+        <rect x="9" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.35"/>
+      </svg>
+    </div>
+    Staash
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="product.html">Product</a></li>
+    <li><a href="technology.html" class="active">Technology</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-spacer"></div>
+  <a href="about.html" class="nav-ghost">About Us</a>
+  <a href="contact.html" class="nav-cta">Request Demo</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="ph-inner">
+    <div class="pg-lbl"><span class="pg-lbl-dot"></span>Technology</div>
+    <h1 class="ph-title">Built from first principles <em>for India.</em></h1>
+    <p class="ph-sub">We did not adapt an existing product. Staash was designed ground-up around the specific constraints, behaviours, and opportunities of the Indian retail market &mdash; and that is exactly why it works where others have not.</p>
+  </div>
+</div>
+
+<!-- SECTION 1: PHILOSOPHY -->
+<section class="philosophy reveal" id="philosophy">
+  <div>
+    <div class="sec-lbl">Our Philosophy</div>
+    <div class="sec-title">Technology in service of <em>outcomes.</em></div>
+    <p class="sec-body">The most important thing we built is not any individual component of Staash &mdash; it is the decision to integrate three previously disconnected problems into one coherent platform. Customer experience, store operations, and loss prevention have always been treated as separate categories. We treat them as one.</p>
+    <p class="sec-body" style="margin-top:0.8rem">Every technical decision we make starts with a business outcome for the store owner, not with what the technology makes possible.</p>
+    <div class="phil-principles">
+      <div class="principle">
+        <div class="pr-title"><span class="pr-marker"></span>No new hardware dependency</div>
+        <p class="pr-body">Store owners should not need to buy new infrastructure to access intelligence. We built around what is already present in every organised store in India.</p>
+      </div>
+      <div class="principle">
+        <div class="pr-title"><span class="pr-marker"></span>Works within Indian infrastructure realities</div>
+        <p class="pr-body">Connectivity, power consistency, and device availability vary significantly across Indian retail locations. Our platform is designed to be resilient to all of these.</p>
+      </div>
+      <div class="principle">
+        <div class="pr-title"><span class="pr-marker"></span>Accuracy improves with scale</div>
+        <p class="pr-body">Unlike software that degrades or becomes generic at scale, Staash becomes more precise and more valuable as our network of store deployments grows.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Abstract platform visual — shows what, not how -->
+  <div class="platform-visual reveal rd1">
+    <div class="pv-title">The Staash Platform &mdash; Three Integrated Layers</div>
+    <div class="pv-layers">
+      <div class="pv-layer pvl-1">
+        <div class="pvl-tag">Layer 1</div>
+        <div class="pvl-name">Customer Experience</div>
+        <div class="pvl-outcome">Frictionless shopping and payment from entry to exit</div>
+      </div>
+      <div class="pvl-arrow">&darr;</div>
+      <div class="pv-layer pvl-2">
+        <div class="pvl-tag">Layer 2</div>
+        <div class="pvl-name">Store Operations</div>
+        <div class="pvl-outcome">Real-time visibility and management for store staff</div>
+      </div>
+      <div class="pvl-arrow">&darr;</div>
+      <div class="pv-layer pvl-3">
+        <div class="pvl-tag">Layer 3</div>
+        <div class="pvl-name">AI Loss Prevention</div>
+        <div class="pvl-outcome">Intelligent monitoring that protects store margins continuously</div>
+      </div>
+    </div>
+    <div style="margin-top:1.4rem;padding:1rem 1.2rem;background:var(--white);border:1px solid var(--border);border-radius:10px;text-align:center;">
+      <div style="font-size:0.7rem;font-weight:700;color:var(--ink4);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.35rem">What makes this unique</div>
+      <div style="font-size:0.82rem;color:var(--ink3);line-height:1.55">All three layers share a common data layer, so every customer action informs store operations, and every store event informs loss prevention &mdash; simultaneously.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: DIFFERENTIATION -->
+<div class="diff-section">
+  <div class="diff-inner">
+    <div class="diff-header reveal">
+      <div class="sec-lbl">What Makes Us Different</div>
+      <div class="sec-title">Three decisions that no competitor has made together.</div>
+      <p class="sec-body" style="margin-top:0.9rem">Each of these was a deliberate trade-off. We chose the path that was harder to build but impossible to replicate from outside the Indian market.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card dc-1 reveal">
+        <div class="dc-num">01</div>
+        <div class="dc-title">Intelligence at the store, not the cloud</div>
+        <p class="dc-body">We made a deliberate architectural decision to keep our AI processing close to where the events happen &mdash; not dependent on a remote data centre. This means our platform responds to in-store situations in real time, continues functioning when internet connectivity is poor, and keeps all sensitive store footage within the store's own premises. It also means our cost structure scales with store count, not with data volume.</p>
+      </div>
+      <div class="diff-card dc-2 reveal rd1">
+        <div class="dc-num">02</div>
+        <div class="dc-title">Models trained on Indian retail, not Western assumptions</div>
+        <p class="dc-body">AI systems perform in the environment they were trained on. Indian stores have different layouts, lighting conditions, product packaging densities, and customer movement patterns compared to the stores that most existing retail AI has seen. We do not fine-tune someone else&rsquo;s model. Our AI is developed using data from the exact market it operates in &mdash; and every store we deploy in makes our models more accurate across the entire network.</p>
+      </div>
+      <div class="diff-card dc-3 reveal rd2">
+        <div class="dc-num">03</div>
+        <div class="dc-title">UPI as the foundation, not an afterthought</div>
+        <p class="dc-body">Every Western retail checkout system treats UPI as an add-on. We built our payment architecture around UPI as the primary rail from day one &mdash; because that is how India pays. This means our checkout flow is faster, more natural, and has lower failure rates for Indian customers than any adapted international solution. It also means we are aligned with the direction Indian retail is already moving, rather than asking customers to change their behaviour.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: INDIA CONTEXT -->
+<div class="india-section">
+  <div class="reveal">
+    <div class="sec-lbl">Why India Is the Right Market</div>
+    <div class="sec-title">The conditions that make <em>now</em> the right moment.</div>
+    <p class="sec-body">Several infrastructure and behavioural shifts have converged in India over the last five years that make Staash possible today in a way it was not before. We did not invent these conditions &mdash; we built a product that is precisely positioned to take advantage of them.</p>
+    <div class="india-points">
+      <div class="india-point">
+        <div class="ip-title"><span class="ip-marker ip-m-t"></span>Digital payment behaviour is already habitual</div>
+        <p class="ip-body">UPI has fundamentally changed how India pays. The behaviour change has already happened &mdash; we benefit from it rather than needing to drive it.</p>
+      </div>
+      <div class="india-point">
+        <div class="ip-title"><span class="ip-marker ip-m-o"></span>Stores already have the physical infrastructure we need</div>
+        <p class="ip-body">The cameras, internet connections, and staff devices we work with are already in place. Our zero-new-hardware position is not a compromise &mdash; it is an architectural advantage.</p>
+      </div>
+      <div class="india-point">
+        <div class="ip-title"><span class="ip-marker ip-m-y"></span>Organised retail is growing fastest outside metros</div>
+        <p class="ip-body">The highest-growth segment is also the most underserved by existing technology. That is where we are starting &mdash; in Jaipur, not in Mumbai.</p>
+      </div>
+      <div class="india-point">
+        <div class="ip-title"><span class="ip-marker ip-m-t"></span>AI hardware costs have made on-premise feasible</div>
+        <p class="ip-body">The economics of deploying AI at individual store locations have changed dramatically in the last four years. What would have been cost-prohibitive is now accessible at Indian retail price points.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="india-panel reveal rd1">
+    <div class="ip-head">
+      <div class="ip-head-label">India&rsquo;s Digital Retail Moment</div>
+      <div class="ip-head-val">The infrastructure is ready.<br>The software is not.</div>
+    </div>
+    <div class="ip-body-wrap">
+      <div class="ip-stats">
+        <div class="ip-stat-row">
+          <span class="ip-stat-lbl">UPI monthly transactions</span>
+          <div class="ip-stat-track"><div class="ip-stat-bar isb-t" data-w="92"></div></div>
+          <span class="ip-stat-val">15B+</span>
+        </div>
+        <div class="ip-stat-row">
+          <span class="ip-stat-lbl">Stores with CCTV</span>
+          <div class="ip-stat-track"><div class="ip-stat-bar isb-o" data-w="88"></div></div>
+          <span class="ip-stat-val">90%+</span>
+        </div>
+        <div class="ip-stat-row">
+          <span class="ip-stat-lbl">Smartphone penetration</span>
+          <div class="ip-stat-track"><div class="ip-stat-bar isb-y" data-w="74"></div></div>
+          <span class="ip-stat-val">700M+</span>
+        </div>
+        <div class="ip-stat-row">
+          <span class="ip-stat-lbl">Organised retail CAGR</span>
+          <div class="ip-stat-track"><div class="ip-stat-bar isb-t" data-w="56"></div></div>
+          <span class="ip-stat-val">12%</span>
+        </div>
+      </div>
+      <div class="ip-divider"></div>
+      <div class="ip-facts">
+        <div class="ip-fact"><span class="ip-fact-dot"></span><span>India&rsquo;s retail shrinkage rate of 3.2% is among the highest globally &mdash; yet loss prevention technology remains largely inaccessible to mid-size store owners.</span></div>
+        <div class="ip-fact"><span class="ip-fact-dot"></span><span>Post-2020 digital payment adoption has removed the last behavioural barrier to contactless retail that held back earlier attempts at checkout automation.</span></div>
+        <div class="ip-fact"><span class="ip-fact-dot"></span><span>The gap between what Indian retail needs and what existing software offers has not narrowed &mdash; it has widened as organised retail grows faster outside metros.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: THE MOAT -->
+<div class="moat-section">
+  <div class="moat-inner">
+    <div class="moat-header reveal">
+      <div class="sec-lbl">Our Competitive Moat</div>
+      <div class="sec-title">Why Staash becomes harder to replicate over time.</div>
+      <p class="sec-body" style="margin-top:0.9rem">Our defensibility is not from any single technology decision. It is from the compounding advantage of operating specifically in the Indian market, at scale, over time.</p>
+    </div>
+    <div class="moat-cards">
+      <div class="moat-card reveal">
+        <div class="mc-icon mci-t">
+          <svg viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="var(--teal)" stroke-width="1.5"/>
+            <path d="M6 9l2 2 4-4" stroke="var(--teal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="mc-title">India-specific data advantage</div>
+        <p class="mc-body">Every store we operate in generates labelled, contextual data about Indian retail environments. This data is proprietary, accumulates with each deployment, and cannot be replicated by a competitor starting from scratch &mdash; regardless of their resources.</p>
+      </div>
+      <div class="moat-card reveal rd1">
+        <div class="mc-icon mci-o">
+          <svg viewBox="0 0 18 18" fill="none">
+            <path d="M9 2l2 4h5l-4 3 1.5 5L9 11l-4.5 3L6 9 2 6h5L9 2z" stroke="var(--orange)" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="mc-title">Store network effects</div>
+        <p class="mc-body">As more stores join the Staash network, the platform improves for all of them. Better accuracy, broader pattern recognition, stronger benchmarking &mdash; each new store makes the platform more valuable for every existing store. This dynamic does not exist for point solutions.</p>
+      </div>
+      <div class="moat-card reveal rd2">
+        <div class="mc-icon mci-y">
+          <svg viewBox="0 0 18 18" fill="none">
+            <path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7z" stroke="var(--yellow)" stroke-width="1.5"/>
+            <path d="M9 6v4l2.5 2.5" stroke="var(--yellow)" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="mc-title">First-mover in the right segment</div>
+        <p class="mc-body">We are not competing with enterprise retail giants. We are establishing the standard for mid-size organised retail in India &mdash; a segment that is large, growing fast, and has no credible incumbent. Store owner relationships, earned trust, and word-of-mouth in this segment compound in ways that technology alone cannot accelerate.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MS STRIP -->
+<div class="ms-strip reveal">
+  <div class="ms-inner">
+    <div class="ms-badge">
+      <svg width="28" height="28" viewBox="0 0 18 18">
+        <rect x="0" y="0" width="8" height="8" fill="#F25022"/>
+        <rect x="10" y="0" width="8" height="8" fill="#7FBA00"/>
+        <rect x="0" y="10" width="8" height="8" fill="#00A4EF"/>
+        <rect x="10" y="10" width="8" height="8" fill="#FFB900"/>
+      </svg>
+      <div class="ms-text">
+        <strong>Microsoft for Startups</strong>
+        <span>Founders Hub Member</span>
+      </div>
+    </div>
+    <p class="ms-body">As a <strong>Microsoft for Startups</strong> member, Staash is backed by enterprise-grade cloud infrastructure and technical support from day one &mdash; giving us the foundation to scale without rebuilding.</p>
+    <a href="contact.html" class="ms-cta-link">Work with us &rarr;</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+  <div class="cta-inner">
+    <div class="sec-lbl" style="text-align:center">Go Deeper</div>
+    <div class="cta-title">Want to understand the <span>full picture?</span></div>
+    <p class="cta-body">We walk qualified investors, partners, and pilot store candidates through our technical approach in depth under NDA. If you are serious about understanding what we have built, reach out and we will set up a conversation.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-fill">Request a Conversation &rarr;</a>
+      <a href="about.html" class="btn-line">Meet the Team</a>
+    </div>
+    <p class="cta-note">Or write to <a href="mailto:staash.kart@gmail.com">staash.kart@gmail.com</a></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="ft-logo">Staa<span>sh</span></a>
+  <ul class="ft-links">
+    <li><a href="product.html">Product</a></li>
+    <li><a href="technology.html">Technology</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="ft-copy">&copy; 2025 Staashkart Ariscates LLP &middot; Jaipur, India</span>
+</footer>
+
+<script>
+// Animate stat bars on scroll into view
+const panelObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.ip-stat-bar[data-w]').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-w') + '%';
+      });
+      panelObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const panel = document.querySelector('.india-panel');
+if (panel) panelObs.observe(panel);
+
+// Scroll reveal
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
