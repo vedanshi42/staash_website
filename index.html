@@ -3,655 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Staash — Autonomous Retail Intelligence for India</title>
-<meta name="description" content="Staash helps Indian retail stores eliminate checkout queues and reduce shrinkage losses through AI-powered store intelligence.">
+<title>Staash, Autonomous Retail Intelligence</title>
+<meta name="description" content="Staash helps Indian stores eliminate checkout queues and reduce shrinkage losses through AI-powered retail intelligence.">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0A9488;--teal-h:#0BB5A7;--teal-pale:#EAF6F5;--teal-mid:#A8DDD9;
+  --orange:#E05C0A;--orange-pale:#FEF1E8;
+  --yellow:#ECA817;--yellow-pale:#FEF8E7;
+  --white:#FFFFFF;--off:#F8F9FB;
+  --ink:#0E1B29;--ink2:#253547;--ink3:#576B80;--ink4:#90A3B4;
+  --border:#E0E8EF;--border2:#C4D2DE;
+  --sh-sm:0 1px 3px rgba(14,27,41,0.06),0 1px 2px rgba(14,27,41,0.04);
+  --sh-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
+  --sh-lg:0 20px 60px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-:root {
-  --teal:       #0A9488;
-  --teal-h:     #0BB5A7;
-  --teal-pale:  #EAF6F5;
-  --teal-mid:   #A8DDD9;
-  --orange:     #E05C0A;
-  --orange-h:   #F06820;
-  --orange-pale:#FEF1E8;
-  --yellow:     #ECA817;
-  --yellow-pale:#FEF8E7;
-  --white:      #FFFFFF;
-  --off:        #F8F9FB;
-  --off2:       #F1F4F7;
-  --ink:        #0E1B29;
-  --ink2:       #253547;
-  --ink3:       #576B80;
-  --ink4:       #90A3B4;
-  --border:     #E0E8EF;
-  --border2:    #C4D2DE;
-  --shadow-sm:  0 1px 3px rgba(14,27,41,0.06), 0 1px 2px rgba(14,27,41,0.04);
-  --shadow-md:  0 4px 16px rgba(14,27,41,0.08), 0 2px 6px rgba(14,27,41,0.04);
-  --shadow-lg:  0 16px 48px rgba(14,27,41,0.1), 0 4px 16px rgba(14,27,41,0.06);
-}
+/* NAV */
+nav{position:sticky;top:0;z-index:200;height:62px;background:rgba(255,255,255,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 4.5rem;gap:2rem}
+.nav-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.55rem;flex-shrink:0}
+.logo-sq{width:30px;height:30px;border-radius:8px;background:var(--teal);display:flex;align-items:center;justify-content:center}
+.logo-sq svg{width:16px;height:16px}
+.nav-links{display:flex;list-style:none;margin-left:1rem}
+.nav-links a{display:block;padding:0 1rem;font-size:0.83rem;font-weight:500;color:var(--ink3);text-decoration:none;line-height:62px;transition:color 0.15s;white-space:nowrap}
+.nav-links a:hover{color:var(--teal)}
+.nav-links a.active{color:var(--teal);font-weight:600}
+.nav-spacer{flex:1}
+.nav-ghost{font-size:0.83rem;font-weight:500;color:var(--ink2);text-decoration:none;padding:0.42rem 0.9rem;border-radius:6px;transition:background 0.15s;white-space:nowrap}
+.nav-ghost:hover{background:var(--off)}
+.nav-cta{background:var(--teal);color:var(--white);padding:0.46rem 1.15rem;font-size:0.83rem;font-weight:600;border:none;border-radius:7px;text-decoration:none;white-space:nowrap;transition:background 0.15s,box-shadow 0.15s,transform 0.15s}
+.nav-cta:hover{background:var(--teal-h);box-shadow:0 4px 14px rgba(10,148,136,0.3);transform:translateY(-1px)}
+.nav-mobile-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-mobile-btn span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.2s}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:1rem 1.5rem 1.5rem;z-index:199;flex-direction:column;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu a{display:block;padding:0.75rem 0;font-size:0.95rem;font-weight:500;color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--border);transition:color 0.15s}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--teal)}
 
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background: var(--white);
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+/* HERO */
+.hero{max-width:1160px;margin:0 auto;padding:5.5rem 4.5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;min-height:calc(100vh - 62px)}
+.hero-tag{display:inline-flex;align-items:center;gap:0.45rem;background:var(--teal-pale);border:1px solid var(--teal-mid);border-radius:100px;padding:0.28rem 0.85rem;font-size:0.7rem;font-weight:600;color:var(--teal);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.8rem}
+.tag-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:800;letter-spacing:-0.03em;line-height:1.08;color:var(--ink)}
+.hero h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:300;color:var(--teal);display:block}
+.hero h1 .orange{color:var(--orange)}
+.hero-sub{margin-top:1.4rem;font-size:0.98rem;color:var(--ink3);line-height:1.78;max-width:460px}
+.hero-actions{display:flex;gap:0.7rem;margin-top:2.2rem;flex-wrap:wrap}
+.btn-fill{background:var(--teal);color:var(--white);padding:0.72rem 1.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.87rem;font-weight:600;border:none;border-radius:8px;text-decoration:none;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.35rem}
+.btn-fill:hover{background:var(--teal-h);transform:translateY(-2px);box-shadow:0 8px 22px rgba(10,148,136,0.28)}
+.btn-line{background:transparent;color:var(--ink2);padding:0.72rem 1.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.87rem;font-weight:500;border:1.5px solid var(--border2);border-radius:8px;text-decoration:none;transition:all 0.18s}
+.btn-line:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.hero-trust{display:flex;align-items:center;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+.trust-sep{width:1px;height:18px;background:var(--border)}
+.trust-item{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--ink4);font-weight:500}
 
-/* ─── NAV ─────────────────────────────── */
-nav {
-  position: sticky; top: 0; z-index: 200;
-  height: 62px;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center;
-  padding: 0 4.5rem;
-  gap: 2rem;
-}
-.nav-logo {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.3rem; font-weight: 800;
-  color: var(--ink); text-decoration: none;
-  letter-spacing: -0.02em;
-  display: flex; align-items: center; gap: 0.55rem;
-  flex-shrink: 0;
-}
-.logo-sq {
-  width: 30px; height: 30px; border-radius: 8px;
-  background: var(--teal);
-  display: flex; align-items: center; justify-content: center;
-}
-.logo-sq svg { width: 16px; height: 16px; }
-.nav-links {
-  display: flex; list-style: none; margin-left: 1rem;
-}
-.nav-links a {
-  display: block; padding: 0 1rem;
-  font-size: 0.83rem; font-weight: 500;
-  color: var(--ink3); text-decoration: none;
-  line-height: 62px; transition: color 0.15s;
-  white-space: nowrap;
-}
-.nav-links a:hover { color: var(--teal); }
-.nav-links a.active { color: var(--teal); font-weight: 600; }
-.nav-spacer { flex: 1; }
-.nav-ghost {
-  font-size: 0.83rem; font-weight: 500;
-  color: var(--ink2); text-decoration: none;
-  padding: 0.42rem 0.9rem; border-radius: 6px;
-  transition: background 0.15s; white-space: nowrap;
-}
-.nav-ghost:hover { background: var(--off); }
-.nav-cta {
-  background: var(--teal); color: var(--white);
-  padding: 0.46rem 1.15rem;
-  font-size: 0.83rem; font-weight: 600;
-  border: none; border-radius: 7px;
-  text-decoration: none; white-space: nowrap;
-  transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
-}
-.nav-cta:hover {
-  background: var(--teal-h);
-  box-shadow: 0 4px 14px rgba(10,148,136,0.3);
-  transform: translateY(-1px);
-}
+/* HERO VISUAL - dashboard mockup */
+.hero-visual{background:var(--white);border:1px solid var(--border);border-radius:20px;box-shadow:var(--sh-lg);overflow:hidden}
+.hv-bar{background:var(--off);border-bottom:1px solid var(--border);padding:0.85rem 1.2rem;display:flex;align-items:center;gap:0.7rem}
+.hv-dots{display:flex;gap:5px}
+.hv-dot{width:10px;height:10px;border-radius:50%}
+.hv-dot-r{background:#FC5F57}.hv-dot-y{background:#FEBC2E}.hv-dot-g{background:#28C840}
+.hv-title{font-size:0.74rem;font-weight:600;color:var(--ink4);flex:1;text-align:center}
+.hv-live{display:flex;align-items:center;gap:0.35rem;font-size:0.67rem;font-weight:600;color:var(--teal)}
+.hv-live-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 1.4s ease-in-out infinite}
+.hv-body{padding:1.2rem;display:flex;flex-direction:column;gap:0.9rem}
+.hv-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:0.7rem}
+.kpi{background:var(--off);border:1px solid var(--border);border-radius:9px;padding:0.9rem}
+.kpi-n{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.4rem;font-weight:800;line-height:1}
+.kpi-l{font-size:0.63rem;color:var(--ink4);font-weight:500;margin-top:0.25rem}
+.kpi-t{display:inline-block;margin-top:0.4rem;font-size:0.6rem;font-weight:600;padding:0.12rem 0.42rem;border-radius:100px}
+.kt-t{background:var(--teal-pale);color:var(--teal)}
+.kt-o{background:var(--orange-pale);color:var(--orange)}
+.kt-y{background:var(--yellow-pale);color:#8A6200}
+.hv-table{background:var(--white);border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.ht-head{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;padding:0.55rem 1rem;background:var(--off);border-bottom:1px solid var(--border);font-size:0.63rem;font-weight:700;color:var(--ink4);letter-spacing:0.04em;text-transform:uppercase}
+.ht-row{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;padding:0.55rem 1rem;border-bottom:1px solid var(--border);font-size:0.73rem;color:var(--ink2);align-items:center}
+.ht-row:last-child{border-bottom:none}
+.ht-name{font-weight:600;color:var(--ink)}
+.ht-st{font-size:0.62rem;font-weight:600;padding:0.16rem 0.46rem;border-radius:100px;display:inline-block}
+.st-a{background:var(--teal-pale);color:var(--teal)}
+.st-w{background:var(--orange-pale);color:var(--orange)}
+.st-d{background:#EDF7ED;color:#1A7A1A}
+.hv-alert{background:var(--orange-pale);border:1px solid rgba(224,92,10,0.18);border-radius:9px;padding:0.75rem 1rem;display:flex;align-items:flex-start;gap:0.7rem}
+.ha-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:0.28rem;animation:blink 1s ease-in-out infinite}
+.ha-text{font-size:0.73rem;color:var(--ink2);line-height:1.45}
+.ha-text strong{color:var(--orange);font-weight:600}
 
-/* ─── HERO ────────────────────────────── */
-.hero-wrap {
-  max-width: 1160px; margin: 0 auto;
-  padding: 5.5rem 4.5rem 4.5rem;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; align-items: center;
-  min-height: calc(100vh - 62px);
-}
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--teal-pale);
-  border: 1px solid var(--teal-mid);
-  border-radius: 100px;
-  padding: 0.28rem 0.85rem;
-  font-size: 0.7rem; font-weight: 600;
-  color: var(--teal); letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 1.8rem;
-  animation: up 0.55s ease both;
-}
-.ey-dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--teal);
-  animation: blink 2s ease-in-out infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+/* STATS BAR */
+.stats-bar{background:var(--teal);padding:2.8rem 4.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sb-item{text-align:center}
+.sb-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.2rem;font-weight:800;color:var(--white);line-height:1}
+.sb-val span{color:var(--yellow)}
+.sb-lbl{font-size:0.72rem;font-weight:500;color:rgba(255,255,255,0.65);margin-top:0.35rem;letter-spacing:0.02em}
 
-.hero-h1 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(2.4rem, 3.8vw, 3.5rem);
-  font-weight: 800; letter-spacing: -0.03em;
-  line-height: 1.1; color: var(--ink);
-  animation: up 0.6s 0.05s ease both;
-}
-.h1-teal   { color: var(--teal); }
-.h1-orange { color: var(--orange); }
-.h1-serif  {
-  font-family: 'Fraunces', serif;
-  font-style: italic; font-weight: 300;
-  color: var(--ink3);
-}
+/* THREE OUTCOMES */
+.outcomes{padding:6rem 4.5rem;max-width:1160px;margin:0 auto}
+.sec-lbl{font-size:0.68rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.8rem}
+.sec-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.6rem,2.8vw,2.3rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;color:var(--ink)}
+.sec-title em{font-family:'Fraunces',serif;font-style:italic;font-weight:300;color:var(--teal)}
+.outcomes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+.outcome{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem 1.8rem;position:relative;overflow:hidden;transition:transform 0.26s,box-shadow 0.26s;box-shadow:var(--sh-sm)}
+.outcome::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.oc-1::before{background:var(--teal)}.oc-2::before{background:var(--orange)}.oc-3::before{background:var(--yellow)}
+.outcome:hover{transform:translateY(-6px);box-shadow:var(--sh-lg)}
+/* Icon illustration */
+.oc-icon{width:52px;height:52px;border-radius:14px;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.oi-t{background:var(--teal-pale)}.oi-o{background:var(--orange-pale)}.oi-y{background:var(--yellow-pale)}
+.oc-icon svg{width:26px;height:26px}
+.oc-title{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:0.6rem}
+.oc-body{font-size:0.85rem;color:var(--ink3);line-height:1.68}
+.oc-link{display:inline-flex;align-items:center;gap:0.3rem;margin-top:1.2rem;font-size:0.8rem;font-weight:600;text-decoration:none;transition:gap 0.18s}
+.oc-1 .oc-link{color:var(--teal)}.oc-2 .oc-link{color:var(--orange)}.oc-3 .oc-link{color:#8A6200}
+.oc-link:hover{gap:0.5rem}
 
-.hero-body {
-  margin-top: 1.5rem;
-  font-size: 1rem; line-height: 1.78;
-  color: var(--ink3); max-width: 460px;
-  animation: up 0.6s 0.1s ease both;
-}
+/* HOW IT WORKS - visual steps */
+.how{background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6rem 4.5rem}
+.how-inner{max-width:1060px;margin:0 auto}
+.how-hd{text-align:center;max-width:480px;margin:0 auto 3.5rem}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative;gap:1rem}
+.steps-line{position:absolute;top:26px;left:10%;right:10%;height:2px;background:linear-gradient(to right,var(--teal-mid),var(--teal),var(--yellow));z-index:0}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;padding:0 0.4rem}
+.step-c{width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--teal-mid);display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;color:var(--teal);margin-bottom:1rem;box-shadow:var(--sh-sm);transition:all 0.22s}
+.step:hover .step-c{background:var(--teal);color:var(--white);border-color:var(--teal);box-shadow:0 6px 20px rgba(10,148,136,0.3);transform:scale(1.1)}
+.step-t{font-size:0.85rem;font-weight:700;color:var(--ink);margin-bottom:0.38rem}
+.step-d{font-size:0.74rem;color:var(--ink3);line-height:1.55}
 
-.hero-actions {
-  display: flex; gap: 0.7rem; margin-top: 2.2rem; flex-wrap: wrap;
-  animation: up 0.6s 0.15s ease both;
-}
-.btn-fill {
-  background: var(--teal); color: var(--white);
-  padding: 0.7rem 1.7rem;
-  font-size: 0.87rem; font-weight: 600;
-  border: none; border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.18s;
-  display: inline-flex; align-items: center; gap: 0.35rem;
-}
-.btn-fill:hover {
-  background: var(--teal-h);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(10,148,136,0.3);
-}
-.btn-line {
-  background: transparent; color: var(--ink2);
-  padding: 0.7rem 1.7rem;
-  font-size: 0.87rem; font-weight: 500;
-  border: 1.5px solid var(--border2); border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.18s;
-}
-.btn-line:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+/* MARKET - visual */
+.market{padding:6rem 4.5rem;max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.mkt-bars{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem}
+.mkt-bar-row{display:flex;flex-direction:column;gap:0.5rem}
+.mkt-bar-top{display:flex;justify-content:space-between;align-items:center}
+.mbt-label{font-size:0.8rem;color:var(--ink3);font-weight:500}
+.mbt-val{font-size:0.85rem;font-weight:700}
+.mbt-t{color:var(--teal)}.mbt-o{color:var(--orange)}.mbt-y{color:#8A6200}
+.mkt-track{height:8px;background:var(--off2,#F1F4F7);border-radius:100px;overflow:hidden}
+.mkt-fill{height:100%;border-radius:100px;width:0;transition:width 1.4s cubic-bezier(0.22,1,0.36,1)}
+.mf-t{background:var(--teal)}.mf-o{background:var(--orange)}.mf-y{background:var(--yellow)}
+.mkt-right{display:flex;flex-direction:column;gap:0.8rem}
+.mkt-fact{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;display:flex;align-items:center;gap:0.75rem;font-size:0.83rem;color:var(--ink3);box-shadow:var(--sh-sm);transition:border-color 0.18s,transform 0.18s}
+.mkt-fact:hover{border-color:var(--teal-mid);transform:translateX(4px)}
+.mf-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
 
-.hero-meta {
-  display: flex; align-items: center; gap: 1rem;
-  margin-top: 2.5rem; flex-wrap: wrap;
-  animation: up 0.6s 0.2s ease both;
-}
-.meta-sep { width: 1px; height: 20px; background: var(--border); }
-.meta-item {
-  display: flex; align-items: center; gap: 0.45rem;
-  font-size: 0.75rem; color: var(--ink4); font-weight: 500;
-}
+/* MS STRIP */
+.ms-strip{padding:3rem 4.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ms-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.ms-badge{display:flex;align-items:center;gap:0.9rem;background:var(--off);border:1px solid var(--border);border-radius:12px;padding:1rem 1.4rem;flex-shrink:0}
+.ms-text strong{display:block;font-size:0.85rem;font-weight:700;color:var(--ink)}
+.ms-text span{font-size:0.74rem;color:var(--ink4)}
+.ms-body{flex:1;font-size:0.88rem;color:var(--ink3);line-height:1.7}
+.ms-body strong{color:var(--ink2);font-weight:600}
+.ms-btn{flex-shrink:0;background:var(--teal);color:var(--white);padding:0.68rem 1.4rem;font-size:0.84rem;font-weight:600;border-radius:8px;text-decoration:none;transition:all 0.18s;white-space:nowrap}
+.ms-btn:hover{background:var(--teal-h);box-shadow:0 6px 18px rgba(10,148,136,0.28)}
 
-/* Hero right — product window */
-.hero-window {
-  background: var(--off);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  animation: up 0.7s 0.08s ease both;
-}
-.win-bar {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 0.9rem 1.2rem;
-  display: flex; align-items: center; gap: 0.8rem;
-}
-.win-dots { display: flex; gap: 5px; }
-.wd { width: 10px; height: 10px; border-radius: 50%; }
-.wd-r { background: #FC5F57; }
-.wd-y { background: #FEBC2E; }
-.wd-g { background: #28C840; }
-.win-title {
-  font-size: 0.74rem; font-weight: 600;
-  color: var(--ink4); flex: 1; text-align: center;
-}
-.win-live {
-  display: flex; align-items: center; gap: 0.35rem;
-  font-size: 0.68rem; font-weight: 600; color: var(--teal);
-}
-.live-dot {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
-  animation: blink 1.4s ease-in-out infinite;
-}
-.win-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 1rem; }
+/* CTA */
+.cta{background:linear-gradient(165deg,var(--teal-pale) 0%,var(--white) 55%);border-top:1px solid var(--teal-mid);padding:6rem 4.5rem;text-align:center}
+.cta-inner{max-width:540px;margin:0 auto}
+.cta-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:800;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1rem}
+.cta-title span{color:var(--teal)}
+.cta-body{color:var(--ink3);font-size:0.95rem;line-height:1.78;margin-bottom:2.2rem}
+.cta-btns{display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap}
+.cta-note{margin-top:1.8rem;font-size:0.78rem;color:var(--ink4)}
+.cta-note a{color:var(--teal);text-decoration:none;font-weight:500}
 
-/* KPI row */
-.kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; }
-.kpi {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 10px; padding: 1rem 1rem 0.85rem;
-}
-.kpi-n {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.45rem; font-weight: 800; line-height: 1;
-}
-.kpi-l { font-size: 0.66rem; color: var(--ink4); font-weight: 500; margin-top: 0.28rem; }
-.kpi-tag {
-  display: inline-block; margin-top: 0.5rem;
-  font-size: 0.6rem; font-weight: 600;
-  padding: 0.14rem 0.42rem; border-radius: 100px;
-}
-.tag-t { background: var(--teal-pale); color: var(--teal); }
-.tag-o { background: var(--orange-pale); color: var(--orange); }
-.tag-y { background: var(--yellow-pale); color: #8A6200; }
+/* FOOTER */
+footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.ft-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:800;color:var(--white);text-decoration:none}
+.ft-logo span{color:var(--teal-h)}
+.ft-links{display:flex;gap:1.8rem;list-style:none}
+.ft-links a{font-size:0.77rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s}
+.ft-links a:hover{color:var(--teal-h)}
+.ft-copy{font-size:0.72rem;color:rgba(255,255,255,0.28)}
 
-/* Cart table */
-.cart-table {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 10px; overflow: hidden;
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .nav-mobile-btn{display:flex}
+  .hero{grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 1.5rem 3rem;min-height:auto}
+  .stats-bar{grid-template-columns:repeat(2,1fr);padding:2.5rem 1.5rem}
+  .outcomes{padding:4rem 1.5rem}.outcomes-grid{grid-template-columns:1fr}
+  .how{padding:4rem 1.5rem}
+  .steps{grid-template-columns:1fr 1fr;gap:2rem}.steps-line{display:none}
+  .market{grid-template-columns:1fr;gap:2.5rem;padding:4rem 1.5rem}
+  .ms-strip{padding:2.5rem 1.5rem}.ms-inner{flex-direction:column;align-items:flex-start}
+  .cta{padding:4rem 1.5rem}
+  footer{padding:2rem 1.5rem;flex-direction:column;align-items:flex-start;gap:1rem}
 }
-.ct-head {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
-  padding: 0.58rem 1rem;
-  background: var(--off);
-  border-bottom: 1px solid var(--border);
-  font-size: 0.63rem; font-weight: 700;
-  color: var(--ink4); letter-spacing: 0.06em; text-transform: uppercase;
+@media(max-width:480px){
+  .hero h1{font-size:2.2rem}
+  .stats-bar{grid-template-columns:1fr 1fr;padding:2rem 1.2rem}
+  .sb-val{font-size:1.7rem}
+  .outcomes-grid,.how-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .hv-kpis{grid-template-columns:repeat(3,1fr)}
+  footer{padding:1.8rem 1.2rem}
 }
-.ct-row {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
-  padding: 0.58rem 1rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.73rem; color: var(--ink2);
-  align-items: center;
-  transition: background 0.12s;
-}
-.ct-row:last-child { border-bottom: none; }
-.ct-row:hover { background: var(--off); }
-.ct-name { font-weight: 600; color: var(--ink); }
-.ct-status {
-  font-size: 0.62rem; font-weight: 600;
-  padding: 0.16rem 0.48rem; border-radius: 100px;
-  display: inline-block;
-}
-.cs-a { background: var(--teal-pale); color: var(--teal); }
-.cs-w { background: var(--orange-pale); color: var(--orange); }
-.cs-d { background: #EDF7ED; color: #1A7A1A; }
-
-/* Alert bar */
-.win-alert {
-  background: var(--orange-pale);
-  border: 1px solid rgba(224,92,10,0.18);
-  border-radius: 10px; padding: 0.8rem 1rem;
-  display: flex; align-items: flex-start; gap: 0.75rem;
-}
-.alert-ic {
-  width: 26px; height: 26px; border-radius: 6px;
-  background: var(--orange); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-}
-.alert-txt { font-size: 0.73rem; color: var(--ink2); line-height: 1.45; }
-.alert-txt strong { color: var(--orange); font-weight: 600; }
-
-/* ─── STATS ───────────────────────────── */
-.stats {
-  background: var(--teal);
-  padding: 2.8rem 4.5rem;
-  display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 1rem;
-}
-.stat-item { text-align: center; }
-.stat-n {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 2.1rem; font-weight: 800;
-  color: var(--white); line-height: 1;
-}
-.stat-n span { color: var(--yellow); }
-.stat-l {
-  font-size: 0.72rem; font-weight: 500;
-  color: rgba(255,255,255,0.65); margin-top: 0.35rem;
-  letter-spacing: 0.02em;
-}
-
-/* ─── SECTION SHARED ──────────────────── */
-.sec-lbl {
-  font-size: 0.68rem; font-weight: 700;
-  color: var(--teal); letter-spacing: 0.14em;
-  text-transform: uppercase; margin-bottom: 0.8rem;
-}
-.sec-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
-  font-weight: 800; letter-spacing: -0.025em;
-  line-height: 1.15; color: var(--ink);
-}
-.sec-title em {
-  font-family: 'Fraunces', serif;
-  font-style: italic; font-weight: 300;
-  color: var(--orange);
-}
-.sec-body {
-  margin-top: 1.1rem; font-size: 0.94rem;
-  color: var(--ink3); line-height: 1.78;
-}
-
-/* ─── PROBLEM ─────────────────────────── */
-.problem-wrap {
-  max-width: 1160px; margin: 0 auto;
-  padding: 6rem 4.5rem;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; align-items: center;
-}
-.p-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.p-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.4rem;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.22s, transform 0.22s;
-}
-.p-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.p-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.85rem; font-weight: 800;
-  color: var(--orange); line-height: 1;
-}
-.p-text { font-size: 0.77rem; color: var(--ink3); margin-top: 0.4rem; line-height: 1.45; }
-
-/* ─── HOW ─────────────────────────────── */
-.how-wrap {
-  background: var(--off);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 6rem 4.5rem;
-}
-.how-inner { max-width: 1060px; margin: 0 auto; }
-.how-hd { text-align: center; max-width: 520px; margin: 0 auto 3.5rem; }
-.steps-row {
-  display: grid; grid-template-columns: repeat(5,1fr);
-  position: relative; gap: 1rem;
-}
-.steps-line {
-  position: absolute; top: 27px; left: 10%; right: 10%;
-  height: 1.5px;
-  background: linear-gradient(to right, var(--teal-mid), var(--teal), var(--yellow));
-  z-index: 0;
-}
-.step {
-  display: flex; flex-direction: column;
-  align-items: center; text-align: center;
-  position: relative; z-index: 1; padding: 0 0.4rem;
-}
-.step-c {
-  width: 54px; height: 54px; border-radius: 50%;
-  background: var(--white); border: 2px solid var(--teal-mid);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.82rem; font-weight: 700; color: var(--teal);
-  margin-bottom: 1rem; box-shadow: var(--shadow-sm);
-  transition: all 0.22s;
-}
-.step:hover .step-c {
-  background: var(--teal); color: var(--white);
-  border-color: var(--teal);
-  box-shadow: 0 6px 20px rgba(10,148,136,0.3);
-  transform: scale(1.1);
-}
-.step-t { font-size: 0.85rem; font-weight: 700; color: var(--ink); margin-bottom: 0.38rem; }
-.step-d { font-size: 0.74rem; color: var(--ink3); line-height: 1.55; }
-
-/* ─── THREE PILLARS ───────────────────── */
-.pillars-wrap {
-  max-width: 1160px; margin: 0 auto;
-  padding: 6rem 4.5rem;
-}
-.pillars-hd {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 3rem; align-items: end; margin-bottom: 2.5rem;
-}
-.pillars-note {
-  font-size: 0.86rem; color: var(--ink3); line-height: 1.72;
-  max-width: 320px; text-align: right;
-}
-.pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
-.pillar {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 16px; padding: 2rem 1.8rem;
-  position: relative; overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.26s, box-shadow 0.26s;
-}
-.pillar::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
-  border-radius: 16px 16px 0 0;
-}
-.pi-1::before { background: var(--teal); }
-.pi-2::before { background: var(--orange); }
-.pi-3::before { background: var(--yellow); }
-.pillar:hover { transform: translateY(-7px); box-shadow: var(--shadow-lg); }
-.pi-tag {
-  font-size: 0.67rem; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  margin-bottom: 0.65rem;
-}
-.pi-1 .pi-tag { color: var(--teal); }
-.pi-2 .pi-tag { color: var(--orange); }
-.pi-3 .pi-tag { color: #8A6200; }
-.pi-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.7rem; }
-.pi-body { font-size: 0.84rem; color: var(--ink3); line-height: 1.65; }
-.pi-list { margin-top: 1.3rem; list-style: none; display: flex; flex-direction: column; gap: 0.48rem; }
-.pi-list li { font-size: 0.79rem; color: var(--ink3); display: flex; align-items: flex-start; gap: 0.55rem; }
-.pi-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; margin-top: 0.38rem; flex-shrink: 0; }
-.pi-1 .pi-list li::before { background: var(--teal); }
-.pi-2 .pi-list li::before { background: var(--orange); }
-.pi-3 .pi-list li::before { background: var(--yellow); }
-
-/* ─── MARKET ──────────────────────────── */
-.market-wrap {
-  background: var(--off);
-  border-top: 1px solid var(--border);
-  padding: 6rem 4.5rem;
-}
-.market-inner {
-  max-width: 1060px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; align-items: start;
-}
-.mkt-nums { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 2rem; }
-.mkt-num {
-  background: var(--white); border: 1px solid var(--border);
-  border-left: 4px solid; border-radius: 10px;
-  padding: 1rem 1.3rem;
-  display: flex; align-items: center; gap: 1.2rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.18s, box-shadow 0.18s;
-}
-.mkt-num:hover { transform: translateX(5px); box-shadow: var(--shadow-md); }
-.mkt-t { border-left-color: var(--teal); }
-.mkt-o { border-left-color: var(--orange); }
-.mkt-y { border-left-color: var(--yellow); }
-.mn-v {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.25rem; font-weight: 800; min-width: 140px;
-}
-.mkt-t .mn-v { color: var(--teal); }
-.mkt-o .mn-v { color: var(--orange); }
-.mkt-y .mn-v { color: #8A6200; }
-.mn-l { font-size: 0.8rem; color: var(--ink3); line-height: 1.4; }
-.why-col { padding-top: 0.5rem; }
-.why-head { font-size: 0.88rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
-.why-items { display: flex; flex-direction: column; gap: 0.6rem; }
-.why-row {
-  display: flex; align-items: center; gap: 0.7rem;
-  padding: 0.78rem 1rem;
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 8px; font-size: 0.82rem; color: var(--ink3);
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.18s, transform 0.18s;
-}
-.why-row:hover { border-color: var(--teal-mid); transform: translateX(4px); }
-.why-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; flex-shrink: 0; }
-
-/* ─── MS CREDENTIAL ───────────────────── */
-.cred-strip {
-  padding: 2.8rem 4.5rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--white);
-  display: flex; align-items: center; justify-content: center;
-  gap: 3rem; flex-wrap: wrap;
-}
-.cred-item {
-  display: flex; align-items: center; gap: 0.85rem;
-}
-.cred-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--off); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.cred-text strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--ink); }
-.cred-text span { font-size: 0.75rem; color: var(--ink4); }
-.cred-sep { width: 1px; height: 36px; background: var(--border); }
-
-/* ─── CTA ─────────────────────────────── */
-.cta-wrap {
-  padding: 7rem 4.5rem;
-  background: linear-gradient(165deg, var(--teal-pale) 0%, var(--white) 55%);
-  border-top: 1px solid var(--teal-mid);
-  text-align: center;
-}
-.cta-inner { max-width: 580px; margin: 0 auto; }
-.cta-t {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  font-weight: 800; letter-spacing: -0.025em;
-  color: var(--ink); margin-bottom: 1rem;
-}
-.cta-t span { color: var(--teal); }
-.cta-b { color: var(--ink3); font-size: 0.94rem; line-height: 1.78; margin-bottom: 2.2rem; }
-.cta-btns { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
-.cta-contact {
-  margin-top: 2rem; font-size: 0.78rem;
-  color: var(--ink4); line-height: 1.9;
-}
-.cta-contact a { color: var(--teal); text-decoration: none; font-weight: 500; }
-.cta-contact a:hover { text-decoration: underline; }
-
-/* ─── FOOTER ──────────────────────────── */
-footer {
-  background: var(--ink);
-  padding: 2.2rem 4.5rem;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 2rem; flex-wrap: wrap;
-}
-.ft-logo {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.05rem; font-weight: 800;
-  color: var(--white); text-decoration: none;
-  letter-spacing: -0.01em;
-}
-.ft-logo span { color: var(--teal-h); }
-.ft-links { display: flex; gap: 1.8rem; list-style: none; }
-.ft-links a {
-  font-size: 0.77rem; color: rgba(255,255,255,0.4);
-  text-decoration: none; transition: color 0.15s;
-}
-.ft-links a:hover { color: var(--teal-h); }
-.ft-copy { font-size: 0.72rem; color: rgba(255,255,255,0.28); }
-
-/* ─── ANIMATIONS ──────────────────────── */
-@keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-.reveal { opacity:1; transform:translateY(0); transition:opacity 0.6s ease,transform 0.6s ease; }
-.reveal.in { opacity: 1; transform: translateY(0); }
-.rd1 { transition-delay: 0.08s; }
-.rd2 { transition-delay: 0.16s; }
-.rd3 { transition-delay: 0.24s; }
-
-/* ─── RESPONSIVE ──────────────────────── */
-@media (max-width: 960px) {
-  nav { padding: 0 1.5rem; } .nav-links { display: none; }
-  .hero-wrap { grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 1.5rem 3rem; min-height: auto; }
-  .stats { grid-template-columns: repeat(2,1fr); padding: 2.5rem 1.5rem; }
-  .problem-wrap { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
-  .how-wrap { padding: 4rem 1.5rem; }
-  .steps-row { grid-template-columns: 1fr 1fr; gap: 1.8rem; } .steps-line { display: none; }
-  .pillars-wrap { padding: 4rem 1.5rem; }
-  .pillars-hd { grid-template-columns: 1fr; gap: 1rem; }
-  .pillars-note { text-align: left; max-width: 100%; }
-  .pillars-grid { grid-template-columns: 1fr; }
-  .market-wrap { padding: 4rem 1.5rem; } .market-inner { grid-template-columns: 1fr; gap: 2.5rem; } .why-col { padding-top: 0; }
-  .cred-strip { padding: 2rem 1.5rem; gap: 1.5rem; }
-  .cta-wrap { padding: 4rem 1.5rem; }
-  footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
-}
-
-/* Mobile nav */
-.nav-mobile-btn {
-  display:none; flex-direction:column; gap:5px;
-  background:none; border:none; cursor:pointer; padding:4px;
-}
-.nav-mobile-btn span {
-  display:block; width:22px; height:2px;
-  background:var(--ink); border-radius:2px;
-  transition:all 0.2s;
-}
-.mobile-nav-open .nmb-1 { transform:rotate(45deg) translate(5px,5px); }
-.mobile-nav-open .nmb-2 { opacity:0; }
-.mobile-nav-open .nmb-3 { transform:rotate(-45deg) translate(5px,-5px); }
-.mobile-menu {
-  display:none; position:fixed; top:62px; left:0; right:0;
-  background:rgba(255,255,255,0.98); backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-  padding:1rem 1.5rem 1.5rem; z-index:199;
-  flex-direction:column; gap:0;
-}
-.mobile-menu.open { display:flex; }
-.mobile-menu a {
-  display:block; padding:0.75rem 0;
-  font-size:0.95rem; font-weight:500; color:var(--ink2);
-  text-decoration:none; border-bottom:1px solid var(--border);
-  transition:color 0.15s;
-}
-.mobile-menu a:last-child { border-bottom:none; }
-.mobile-menu a:hover { color:var(--teal); }
-.mobile-menu a.active { color:var(--teal); font-weight:600; }
-@media (max-width:960px) {
-  .nav-mobile-btn { display:flex; }
-}
-
-
-@media (max-width:480px) {
-  .hero-wrap, .about-hero { padding:3rem 1.2rem 2.5rem; }
-  .stats { grid-template-columns:1fr 1fr; padding:2rem 1.2rem; }
-  .stat-n { font-size:1.7rem; }
-  .pricing-grid, .how-grid, .diff-grid, .moat-cards,
-  .pillars-grid, .founders-grid, .values-grid,
-  .not-grid, .ct-grid { grid-template-columns:1fr !important; }
-  .field-row { grid-template-columns:1fr !important; }
-  .ph-title { font-size:1.9rem; }
-  .page-header { padding:2.5rem 1.2rem 2rem; }
-  .comp-table { min-width:600px; font-size:0.74rem; }
-  .comp-table th, .comp-table td { padding:0.65rem 0.6rem; }
-  .ps-inner, .pp-inner { grid-template-columns:1fr; gap:2rem; padding:3rem 1.2rem; }
-  footer { padding:1.8rem 1.2rem; }
-  nav { padding:0 1.2rem; }
-  .email-card { padding:1.8rem 1.2rem; }
-  .ec-email { font-size:1rem; }
-}
-
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <div class="logo-sq">
-      <svg viewBox="0 0 16 16" fill="none">
-        <rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white"/>
-        <rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/>
-        <rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/>
-        <rect x="9" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.35"/>
-      </svg>
-    </div>
+    <div class="logo-sq"><svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/><rect x="9" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.35"/></svg></div>
     Staash
   </a>
   <ul class="nav-links">
@@ -660,358 +218,191 @@ footer {
     <li><a href="technology.html">Technology</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="team.html">Team</a></li>
   </ul>
   <div class="nav-spacer"></div>
   <a href="about.html" class="nav-ghost">About Us</a>
   <a href="contact.html" class="nav-cta">Request Demo</a>
+  <button class="nav-mobile-btn" id="nav-mobile-btn" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" class="active">Home</a>
+  <a href="product.html">Product</a>
+  <a href="technology.html">Technology</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="team.html">Team</a>
+</div>
 
 <!-- HERO -->
-<div class="hero-wrap">
+<div class="hero">
   <div>
-    <div class="hero-eyebrow">
-      <span class="ey-dot"></span>
-      Seeking pilot stores &mdash; Jaipur, Rajasthan
-    </div>
-    <h1 class="hero-h1">
-      The retail OS that<br>
-      <span class="h1-teal">eliminates queues</span><br>
-      and <span class="h1-orange">stops losses.</span>
+    <div class="hero-tag"><span class="tag-dot"></span>Pilot stores open - Jaipur</div>
+    <h1>
+      The retail OS that
+      <em>eliminates queues</em>
+      and <span class="orange">stops losses.</span>
     </h1>
-    <p class="hero-body">
-      Staash gives Indian stores an intelligent operating layer &mdash; so customers walk in, pick their items, pay instantly, and walk out. And every item they leave with is accounted for.
-    </p>
+    <p class="hero-sub">Staash gives Indian stores an intelligent layer - customers scan and pay in seconds, staff see everything in real time, and AI watches for losses automatically.</p>
     <div class="hero-actions">
       <a href="contact.html" class="btn-fill">Request a Free Pilot &rarr;</a>
       <a href="product.html" class="btn-line">See the Product</a>
     </div>
-    <div class="hero-meta">
-      <div class="meta-item">
-        <svg width="16" height="16" viewBox="0 0 18 18">
-          <rect x="0" y="0" width="8" height="8" fill="#F25022"/>
-          <rect x="10" y="0" width="8" height="8" fill="#7FBA00"/>
-          <rect x="0" y="10" width="8" height="8" fill="#00A4EF"/>
-          <rect x="10" y="10" width="8" height="8" fill="#FFB900"/>
-        </svg>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 18 18"><rect x="0" y="0" width="8" height="8" fill="#F25022"/><rect x="10" y="0" width="8" height="8" fill="#7FBA00"/><rect x="0" y="10" width="8" height="8" fill="#00A4EF"/><rect x="10" y="10" width="8" height="8" fill="#FFB900"/></svg>
         <span>Microsoft for Startups</span>
       </div>
-      <div class="meta-sep"></div>
-      <div class="meta-item"><span>Incorporated Dec 2024</span></div>
-      <div class="meta-sep"></div>
-      <div class="meta-item"><span>Jaipur, Rajasthan</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><span>Jaipur, Rajasthan</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><span>Founded 2024</span></div>
     </div>
   </div>
 
-  <!-- PRODUCT WINDOW -->
-  <div class="hero-window">
-    <div class="win-bar">
-      <div class="win-dots">
-        <div class="wd wd-r"></div>
-        <div class="wd wd-y"></div>
-        <div class="wd wd-g"></div>
-      </div>
-      <span class="win-title">Store Dashboard &mdash; Staash</span>
-      <span class="win-live"><span class="live-dot"></span>Live</span>
+  <!-- Dashboard mockup -->
+  <div class="hero-visual">
+    <div class="hv-bar">
+      <div class="hv-dots"><div class="hv-dot hv-dot-r"></div><div class="hv-dot hv-dot-y"></div><div class="hv-dot hv-dot-g"></div></div>
+      <span class="hv-title">Staash Store Dashboard</span>
+      <span class="hv-live"><span class="hv-live-dot"></span>Live</span>
     </div>
-    <div class="win-body">
-      <div class="kpi-row">
-        <div class="kpi">
-          <div class="kpi-n" style="color:var(--teal)">12</div>
-          <div class="kpi-l">Active Carts</div>
-          <div class="kpi-tag tag-t">In store</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-n" style="color:var(--orange)">2</div>
-          <div class="kpi-l">Alerts</div>
-          <div class="kpi-tag tag-o">Needs attention</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-n" style="color:#8A6200">&#8377;18.4K</div>
-          <div class="kpi-l">Revenue today</div>
-          <div class="kpi-tag tag-y">+12% yesterday</div>
-        </div>
+    <div class="hv-body">
+      <div class="hv-kpis">
+        <div class="kpi"><div class="kpi-n" style="color:var(--teal)">12</div><div class="kpi-l">Active Carts</div><span class="kpi-t kt-t">In store</span></div>
+        <div class="kpi"><div class="kpi-n" style="color:var(--orange)">2</div><div class="kpi-l">Alerts</div><span class="kpi-t kt-o">Action needed</span></div>
+        <div class="kpi"><div class="kpi-n" style="color:#8A6200">&#8377;18.4K</div><div class="kpi-l">Today</div><span class="kpi-t kt-y">+12%</span></div>
       </div>
-      <div class="cart-table">
-        <div class="ct-head">
-          <span>Cart</span><span>Items</span><span>Value</span><span>Status</span>
-        </div>
-        <div class="ct-row">
-          <span class="ct-name">Cart #1042</span>
-          <span>7</span><span>&#8377;842</span>
-          <span class="ct-status cs-a">Scanning</span>
-        </div>
-        <div class="ct-row">
-          <span class="ct-name">Cart #1041</span>
-          <span>12</span><span>&#8377;1,240</span>
-          <span class="ct-status cs-w">Exit alert</span>
-        </div>
-        <div class="ct-row">
-          <span class="ct-name">Cart #1040</span>
-          <span>4</span><span>&#8377;385</span>
-          <span class="ct-status cs-d">Paid</span>
-        </div>
-        <div class="ct-row">
-          <span class="ct-name">Cart #1039</span>
-          <span>9</span><span>&#8377;970</span>
-          <span class="ct-status cs-d">Paid</span>
-        </div>
+      <div class="hv-table">
+        <div class="ht-head"><span>Cart</span><span>Items</span><span>Value</span><span>Status</span></div>
+        <div class="ht-row"><span class="ht-name">#1042</span><span>7</span><span>&#8377;842</span><span class="ht-st st-a">Scanning</span></div>
+        <div class="ht-row"><span class="ht-name">#1041</span><span>12</span><span>&#8377;1,240</span><span class="ht-st st-w">Alert</span></div>
+        <div class="ht-row"><span class="ht-name">#1040</span><span>4</span><span>&#8377;385</span><span class="ht-st st-d">Paid</span></div>
       </div>
-      <div class="win-alert">
-        <div class="alert-ic">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <path d="M7 1.5L12.5 12H1.5L7 1.5Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M7 5.5V8.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="7" cy="10.5" r="0.75" fill="white"/>
-          </svg>
-        </div>
-        <div class="alert-txt">
-          <strong>Exit alert on Cart #1041</strong> &mdash; Anomaly detected near exit. Staff has been notified in real time.
-        </div>
+      <div class="hv-alert">
+        <div class="ha-dot"></div>
+        <div class="ha-text"><strong>Cart #1041</strong> - Exit anomaly detected. Staff notified.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat-item">
-    <div class="stat-n"><span id="c1">0</span>%</div>
-    <div class="stat-l">Target Shrinkage Reduction</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-n"><span id="c2">0</span>x</div>
-    <div class="stat-l">Faster Checkout vs Queue</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-n">&#8377;<span id="c3">0</span>K Cr</div>
-    <div class="stat-l">Annual Retail Shrinkage in India</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-n"><span id="c4">0</span>M+</div>
-    <div class="stat-l">Retail Stores Across India</div>
-  </div>
+<!-- STATS BAR -->
+<div class="stats-bar" id="stats-bar">
+  <div class="sb-item"><div class="sb-val"><span id="s1">0</span>%</div><div class="sb-lbl">Target Shrinkage Reduction</div></div>
+  <div class="sb-item"><div class="sb-val"><span id="s2">0</span>x</div><div class="sb-lbl">Faster Than Queue Checkout</div></div>
+  <div class="sb-item"><div class="sb-val">&#8377;<span id="s3">0</span>K Cr</div><div class="sb-lbl">Annual Retail Shrinkage in India</div></div>
+  <div class="sb-item"><div class="sb-val"><span id="s4">0</span>M+</div><div class="sb-lbl">Retail Stores Across India</div></div>
 </div>
 
-<!-- PROBLEM -->
-<div class="problem-wrap">
-  <div class="reveal">
-    <div class="sec-lbl" style="color:var(--orange)">The Problem</div>
-    <div class="sec-title">Indian retail loses crores <em>every single day.</em></div>
-    <p class="sec-body">
-      Checkout queues push customers to abandon full carts and walk out. Shrinkage from theft and billing errors silently drains margins. The solutions that exist were built for Western supermarkets at Western budgets &mdash; they have never worked for India.
-    </p>
-    <p class="sec-body" style="margin-top:0.8rem">
-      No Indian store owner should have to choose between serving customers well and protecting their inventory. Staash solves both at once.
-    </p>
+<!-- THREE OUTCOMES -->
+<section class="outcomes">
+  <div class="sec-lbl">What Staash Delivers</div>
+  <div class="sec-title">Three outcomes. <em>One platform.</em></div>
+  <div class="outcomes-grid">
+    <div class="outcome oc-1">
+      <div class="oc-icon oi-t">
+        <svg viewBox="0 0 26 26" fill="none"><path d="M5 13h16M13 5l8 8-8 8" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="oc-title">No more queues</div>
+      <p class="oc-body">Customers scan items as they shop and pay at the door in under 30 seconds. No counter, no waiting, no abandoned carts.</p>
+      <a href="product.html" class="oc-link">See how it works &rarr;</a>
+    </div>
+    <div class="outcome oc-2">
+      <div class="oc-icon oi-o">
+        <svg viewBox="0 0 26 26" fill="none"><rect x="3" y="5" width="20" height="15" rx="3" stroke="var(--orange)" stroke-width="2"/><path d="M8 10h10M8 14h6" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <div class="oc-title">Full store visibility</div>
+      <p class="oc-body">Every active cart, every transaction, every alert - visible on one dashboard in real time. Your staff manages the store, not the checkout.</p>
+      <a href="product.html" class="oc-link">See the dashboard &rarr;</a>
+    </div>
+    <div class="outcome oc-3">
+      <div class="oc-icon oi-y">
+        <svg viewBox="0 0 26 26" fill="none"><path d="M13 3l2.5 6h6.5l-5.2 3.8 2 6.2L13 15.5 7.2 19l2-6.2L4 9h6.5L13 3z" stroke="var(--yellow)" stroke-width="2" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="oc-title">AI loss prevention</div>
+      <p class="oc-body">Intelligent monitoring on your existing cameras flags anomalies before losses happen. Real-time alerts reach staff in seconds.</p>
+      <a href="technology.html" class="oc-link">See the technology &rarr;</a>
+    </div>
   </div>
-  <div class="p-cards reveal rd1">
-    <div class="p-card">
-      <div class="p-num">15&ndash;20</div>
-      <div class="p-text">minutes wasted per customer visit waiting at the checkout counter</div>
-    </div>
-    <div class="p-card">
-      <div class="p-num">3.2%</div>
-      <div class="p-text">of annual revenue lost to shrinkage in India's organized retail sector</div>
-    </div>
-    <div class="p-card">
-      <div class="p-num">&#8377;48K Cr</div>
-      <div class="p-text">in total annual shrinkage losses across Indian retail</div>
-    </div>
-    <div class="p-card">
-      <div class="p-num">$10M+</div>
-      <div class="p-text">is what Amazon Go costs per store &mdash; built for a different world entirely</div>
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- HOW IT WORKS -->
-<div class="how-wrap" id="how">
+<div class="how">
   <div class="how-inner">
-    <div class="how-hd reveal">
+    <div class="how-hd">
       <div class="sec-lbl">The Experience</div>
-      <div class="sec-title">A store visit that actually respects your customer's time.</div>
+      <div class="sec-title">Five steps. Zero queues.</div>
     </div>
-    <div class="steps-row reveal rd1">
+    <div class="steps">
       <div class="steps-line"></div>
-      <div class="step">
-        <div class="step-c">01</div>
-        <div class="step-t">Enter</div>
-        <div class="step-d">Customer opens the Staash app and enters the store.</div>
-      </div>
-      <div class="step">
-        <div class="step-c">02</div>
-        <div class="step-t">Pick &amp; Scan</div>
-        <div class="step-d">Items are scanned as they go into the physical cart.</div>
-      </div>
-      <div class="step">
-        <div class="step-c">03</div>
-        <div class="step-t">Monitored</div>
-        <div class="step-d">Store intelligence watches the floor in real time.</div>
-      </div>
-      <div class="step">
-        <div class="step-c">04</div>
-        <div class="step-t">Validate</div>
-        <div class="step-d">Cart is confirmed at the checkout point in seconds.</div>
-      </div>
-      <div class="step">
-        <div class="step-c">05</div>
-        <div class="step-t">Pay &amp; Go</div>
-        <div class="step-d">UPI or card. Digital receipt. Walk out. No queue.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- THREE PILLARS -->
-<div class="pillars-wrap" id="product">
-  <div class="pillars-hd reveal">
-    <div>
-      <div class="sec-lbl">What We Deliver</div>
-      <div class="sec-title">Three outcomes. One platform.</div>
-    </div>
-    <p class="pillars-note">Every capability we build is oriented toward a measurable business result for the store owner. Want to understand the technology behind it? <a href="technology.html" style="color:var(--teal);text-decoration:none;font-weight:600">Visit our Technology page &rarr;</a></p>
-  </div>
-  <div class="pillars-grid">
-    <div class="pillar pi-1 reveal">
-      <div class="pi-tag">For Your Customers</div>
-      <div class="pi-title">Frictionless Shopping</div>
-      <div class="pi-body">Your customers experience a shopping journey that is faster, simpler, and more transparent than anything they have had before.</div>
-      <ul class="pi-list">
-        <li>No waiting in checkout queues</li>
-        <li>Cart tracked on their phone as they shop</li>
-        <li>Pay with UPI, card, or wallet on exit</li>
-        <li>Digital receipt sent instantly</li>
-        <li>Option to pre-order before arriving</li>
-      </ul>
-    </div>
-    <div class="pillar pi-2 reveal rd1">
-      <div class="pi-tag">For Your Operations</div>
-      <div class="pi-title">Full Store Visibility</div>
-      <div class="pi-body">Your staff moves from manual checkout to active store management &mdash; with live data on every cart, every customer, and every transaction.</div>
-      <ul class="pi-list">
-        <li>Live view of all active carts in store</li>
-        <li>Pre-order queue managed by staff</li>
-        <li>Inventory sync and reorder alerts</li>
-        <li>Daily and weekly performance reports</li>
-        <li>Works across multiple outlets</li>
-      </ul>
-    </div>
-    <div class="pillar pi-3 reveal rd2">
-      <div class="pi-tag">For Your Margins</div>
-      <div class="pi-title">Intelligent Loss Prevention</div>
-      <div class="pi-body">AI-powered monitoring that flags anomalies before losses occur &mdash; using the cameras you already have installed in your store.</div>
-      <ul class="pi-list">
-        <li>Exit monitoring on existing CCTV</li>
-        <li>Real-time alerts to staff phones</li>
-        <li>No new hardware or installation needed</li>
-        <li>Cart discrepancy detection</li>
-        <li>Incident history and reporting</li>
-      </ul>
+      <div class="step"><div class="step-c">01</div><div class="step-t">Enter</div><div class="step-d">Customer opens Staash and walks in.</div></div>
+      <div class="step"><div class="step-c">02</div><div class="step-t">Scan</div><div class="step-d">Items scanned as they go into the cart.</div></div>
+      <div class="step"><div class="step-c">03</div><div class="step-t">Monitored</div><div class="step-d">AI watches the floor quietly.</div></div>
+      <div class="step"><div class="step-c">04</div><div class="step-t">Validate</div><div class="step-d">QR at checkout - confirmed in seconds.</div></div>
+      <div class="step"><div class="step-c">05</div><div class="step-t">Pay &amp; Go</div><div class="step-d">UPI or card. Digital receipt. Done.</div></div>
     </div>
   </div>
 </div>
 
 <!-- MARKET -->
-<div class="market-wrap">
-  <div class="market-inner">
-    <div class="reveal">
-      <div class="sec-lbl">Market Opportunity</div>
-      <div class="sec-title">Built for the world's most underserved retail market.</div>
-      <p class="sec-body">Indian organized retail is growing rapidly &mdash; but the software serving it has not kept pace. UPI created the payment rails. Smartphones created the access layer. Staash builds the intelligence layer that connects them inside the store.</p>
-      <div class="mkt-nums">
-        <div class="mkt-num mkt-t">
-          <div class="mn-v">&#8377;138 Lakh Cr</div>
-          <div class="mn-l">Total Indian Retail Market</div>
-        </div>
-        <div class="mkt-num mkt-o">
-          <div class="mn-v">&#8377;15 Lakh Cr</div>
-          <div class="mn-l">Organized Retail &mdash; growing 12% CAGR</div>
-        </div>
-        <div class="mkt-num mkt-y">
-          <div class="mn-v">&#8377;1,200 Cr</div>
-          <div class="mn-l">3-year reachable target at 10,000 stores</div>
-        </div>
+<section class="market">
+  <div>
+    <div class="sec-lbl">Market Opportunity</div>
+    <div class="sec-title">India's retail moment <em>is now.</em></div>
+    <p style="margin-top:1rem;font-size:0.94rem;color:var(--ink3);line-height:1.78">The payment infrastructure exists. The smartphones are there. What is missing is the store intelligence layer. That is what Staash builds.</p>
+    <div class="mkt-bars" id="mkt-bars">
+      <div class="mkt-bar-row">
+        <div class="mkt-bar-top"><span class="mbt-label">Total Indian Retail (TAM)</span><span class="mbt-val mbt-t">&#8377;138 Lakh Cr</span></div>
+        <div class="mkt-track"><div class="mkt-fill mf-t" data-w="100"></div></div>
       </div>
-    </div>
-    <div class="why-col reveal rd1">
-      <div class="why-head">Why the timing is right</div>
-      <div class="why-items">
-        <div class="why-row"><span class="why-dot"></span>700 million smartphone users and growing</div>
-        <div class="why-row"><span class="why-dot"></span>UPI processing over 15 billion transactions monthly</div>
-        <div class="why-row"><span class="why-dot"></span>Most organized stores already have CCTV installed</div>
-        <div class="why-row"><span class="why-dot"></span>AI hardware costs have fallen dramatically since 2019</div>
-        <div class="why-row"><span class="why-dot"></span>Organized retail growing at 12% CAGR outside metros</div>
-        <div class="why-row"><span class="why-dot"></span>Shrinkage losses worsening year on year across India</div>
+      <div class="mkt-bar-row">
+        <div class="mkt-bar-top"><span class="mbt-label">Organised Retail - 12% CAGR (SAM)</span><span class="mbt-val mbt-o">&#8377;15 Lakh Cr</span></div>
+        <div class="mkt-track"><div class="mkt-fill mf-o" data-w="65"></div></div>
+      </div>
+      <div class="mkt-bar-row">
+        <div class="mkt-bar-top"><span class="mbt-label">3-Year Reachable at 10K stores (SOM)</span><span class="mbt-val mbt-y">&#8377;1,200 Cr</span></div>
+        <div class="mkt-track"><div class="mkt-fill mf-y" data-w="22"></div></div>
       </div>
     </div>
   </div>
-</div>
+  <div class="mkt-right">
+    <div class="mkt-fact"><span class="mf-dot"></span>700 million smartphone users in India</div>
+    <div class="mkt-fact"><span class="mf-dot"></span>UPI: 15 billion transactions per month</div>
+    <div class="mkt-fact"><span class="mf-dot"></span>90%+ of organised stores already have CCTV</div>
+    <div class="mkt-fact"><span class="mf-dot"></span>Organised retail growing 12% CAGR outside metros</div>
+    <div class="mkt-fact"><span class="mf-dot"></span>Shrinkage losses worsening year on year</div>
+  </div>
+</section>
 
-<!-- CREDENTIAL STRIP -->
-<div class="cred-strip reveal">
-  <div class="cred-item">
-    <div class="cred-icon">
-      <svg width="22" height="22" viewBox="0 0 18 18">
-        <rect x="0" y="0" width="8" height="8" fill="#F25022"/>
-        <rect x="10" y="0" width="8" height="8" fill="#7FBA00"/>
-        <rect x="0" y="10" width="8" height="8" fill="#00A4EF"/>
-        <rect x="10" y="10" width="8" height="8" fill="#FFB900"/>
-      </svg>
+<!-- MS STRIP -->
+<div class="ms-strip">
+  <div class="ms-inner">
+    <div class="ms-badge">
+      <svg width="28" height="28" viewBox="0 0 18 18"><rect x="0" y="0" width="8" height="8" fill="#F25022"/><rect x="10" y="0" width="8" height="8" fill="#7FBA00"/><rect x="0" y="10" width="8" height="8" fill="#00A4EF"/><rect x="10" y="10" width="8" height="8" fill="#FFB900"/></svg>
+      <div class="ms-text"><strong>Microsoft for Startups</strong><span>Founders Hub Member</span></div>
     </div>
-    <div class="cred-text">
-      <strong>Microsoft for Startups</strong>
-      <span>Founders Hub Member</span>
-    </div>
-  </div>
-  <div class="cred-sep"></div>
-  <div class="cred-item">
-    <div class="cred-icon">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <rect x="2" y="2" width="7" height="7" rx="1.5" fill="var(--teal)"/>
-        <rect x="11" y="2" width="7" height="7" rx="1.5" fill="var(--teal)" opacity="0.6"/>
-        <rect x="2" y="11" width="7" height="7" rx="1.5" fill="var(--teal)" opacity="0.6"/>
-        <rect x="11" y="11" width="7" height="7" rx="1.5" fill="var(--teal)" opacity="0.3"/>
-      </svg>
-    </div>
-    <div class="cred-text">
-      <strong>Staashkart Ariscates LLP</strong>
-      <span>Incorporated December 2024 &mdash; Jaipur, India</span>
-    </div>
-  </div>
-  <div class="cred-sep"></div>
-  <div class="cred-item">
-    <div class="cred-icon">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="10" r="7.5" stroke="var(--teal)" stroke-width="1.5"/>
-        <path d="M7 10.5L9 12.5L13 8.5" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <div class="cred-text">
-      <strong>Actively Seeking Pilot Partners</strong>
-      <span>Free 90-day pilot for qualifying stores</span>
-    </div>
+    <p class="ms-body">Staash is a <strong>Microsoft for Startups</strong> member - cloud infrastructure and support from day one.</p>
+    <a href="team.html" class="ms-btn">Join Staash &rarr;</a>
   </div>
 </div>
 
 <!-- CTA -->
-<div class="cta-wrap reveal" id="contact">
+<div class="cta">
   <div class="cta-inner">
     <div class="sec-lbl" style="text-align:center">Get Started</div>
-    <div class="cta-t">Ready to transform <span>your store?</span></div>
-    <p class="cta-b">We are onboarding pilot stores in Jaipur and the NCR region. The pilot is free, takes one week to set up, and requires no new hardware on your end.</p>
+    <div class="cta-title">Ready to transform <span>your store?</span></div>
+    <p class="cta-body">Free 90-day pilot. No hardware cost. No commitment. We handle full setup.</p>
     <div class="cta-btns">
       <a href="contact.html" class="btn-fill">Request a Free Pilot &rarr;</a>
-      <a href="about.html" class="btn-line">Meet the Team</a>
+      <a href="team.html" class="btn-line">Meet the Team</a>
     </div>
-    <p class="cta-contact">
-      <a href="mailto&#58;contact&#64;stashkart&#46;com">contact&#64;stashkart&#46;com</a>
-
-      &nbsp;&middot;&nbsp; Jaipur, Rajasthan
-    </p>
+    <p class="cta-note"><a href="mailto&#58;contact&#64;stashkart&#46;com">contact&#64;stashkart&#46;com</a> &nbsp;&middot;&nbsp; Jaipur, Rajasthan</p>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <a href="index.html" class="ft-logo">Staa<span>sh</span></a>
   <ul class="ft-links">
@@ -1019,32 +410,40 @@ footer {
     <li><a href="technology.html">Technology</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="team.html">Team</a></li>
   </ul>
   <span class="ft-copy">&copy; 2025 Staashkart Ariscates LLP &middot; Jaipur, India</span>
 </footer>
 
 <script>
-
-function toggleMobileNav() {
-  var menu = document.getElementById('mobile-menu');
-  var btn = document.getElementById('nav-mobile-btn');
-  var nav = document.querySelector('nav');
-  menu.classList.toggle('open');
-  nav.classList.toggle('mobile-nav-open');
+function toggleNav(){
+  document.getElementById('mobile-menu').classList.toggle('open');
 }
-document.addEventListener('click', function(e) {
-  var menu = document.getElementById('mobile-menu');
-  var btn = document.getElementById('nav-mobile-btn');
-  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-    menu.classList.remove('open');
-    document.querySelector('nav').classList.remove('mobile-nav-open');
-  }
+document.addEventListener('click',function(e){
+  var m=document.getElementById('mobile-menu'),b=document.getElementById('nav-mobile-btn');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target))m.classList.remove('open');
 });
 
-function count(id, to, dur) {
-  const el = document.getElementById(id); if (!el) return;
-  let s = 0, step = to / ((dur || 2000) / 16);
-  const t = setInterval(() => { s = Math.min(s + step, to); el.textContent = Math.floor(s); if (s >= to) clearInterval(t); }, 16);
+// Counters - fire immediately on load, no observer needed
+function countUp(id,to,dur){
+  var el=document.getElementById(id);if(!el)return;
+  var s=0,step=to/(dur/16);
+  var t=setInterval(function(){s=Math.min(s+step,to);el.textContent=Math.floor(s);if(s>=to)clearInterval(t);},16);
 }
-const so = new IntersectionObserver(entries => {
-  entries.
+window.addEventListener('load',function(){
+  setTimeout(function(){countUp('s1',40,2000);countUp('s2',4,1600);countUp('s3',48,2200);countUp('s4',15,2000);},300);
+});
+
+// Market bars - animate on scroll into view
+var mktObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.mkt-fill[data-w]').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+      mktObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+var mb=document.getElementById('mkt-bars');if(mb)mktObs.observe(mb);
+</script>
+</body>
+</html>

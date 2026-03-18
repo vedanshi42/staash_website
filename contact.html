@@ -3,256 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Staash</title>
-<meta name="description" content="Request a free pilot for your store, get in touch with the Staash team, or reach out as an investor or partner.">
+<title>Contact | Staash, Autonomous Retail Intelligence</title>
+<meta name="description" content="Request a free pilot for your store, reach out as an investor, or get in touch with the Staash team.">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --teal:#0A9488; --teal-h:#0BB5A7; --teal-pale:#EAF6F5; --teal-mid:#A8DDD9;
-  --orange:#E05C0A; --orange-h:#F06820; --orange-pale:#FEF1E8;
-  --yellow:#ECA817; --yellow-pale:#FEF8E7;
-  --white:#FFFFFF; --off:#F8F9FB; --off2:#F1F4F7;
-  --ink:#0E1B29; --ink2:#253547; --ink3:#576B80; --ink4:#90A3B4;
-  --border:#E0E8EF; --border2:#C4D2DE;
-  --shadow-sm:0 1px 3px rgba(14,27,41,0.06),0 1px 2px rgba(14,27,41,0.04);
-  --shadow-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
-  --shadow-lg:0 16px 48px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0A9488;--teal-h:#0BB5A7;--teal-pale:#EAF6F5;--teal-mid:#A8DDD9;
+  --orange:#E05C0A;--orange-pale:#FEF1E8;
+  --yellow:#ECA817;--yellow-pale:#FEF8E7;
+  --white:#FFFFFF;--off:#F8F9FB;
+  --ink:#0E1B29;--ink2:#253547;--ink3:#576B80;--ink4:#90A3B4;
+  --border:#E0E8EF;--border2:#C4D2DE;
+  --sh-sm:0 1px 3px rgba(14,27,41,0.06),0 1px 2px rgba(14,27,41,0.04);
+  --sh-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
+  --sh-lg:0 20px 60px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
 }
-html { scroll-behavior: smooth; }
-body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* NAV */
-nav { position:sticky; top:0; z-index:200; height:62px; background:rgba(255,255,255,0.97); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 4.5rem; gap:2rem; }
-.nav-logo { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.3rem; font-weight:800; color:var(--ink); text-decoration:none; letter-spacing:-0.02em; display:flex; align-items:center; gap:0.55rem; flex-shrink:0; }
-.logo-sq { width:30px; height:30px; border-radius:8px; background:var(--teal); display:flex; align-items:center; justify-content:center; }
-.logo-sq svg { width:16px; height:16px; }
-.nav-links { display:flex; list-style:none; margin-left:1rem; }
-.nav-links a { display:block; padding:0 1rem; font-size:0.83rem; font-weight:500; color:var(--ink3); text-decoration:none; line-height:62px; transition:color 0.15s; white-space:nowrap; }
-.nav-links a:hover { color:var(--teal); }
-.nav-links a.active { color:var(--teal); font-weight:600; }
-.nav-spacer { flex:1; }
-.nav-ghost { font-size:0.83rem; font-weight:500; color:var(--ink2); text-decoration:none; padding:0.42rem 0.9rem; border-radius:6px; transition:background 0.15s; white-space:nowrap; }
-.nav-ghost:hover { background:var(--off); }
-.nav-cta { background:var(--teal); color:var(--white); padding:0.46rem 1.15rem; font-size:0.83rem; font-weight:600; border:none; border-radius:7px; text-decoration:none; white-space:nowrap; transition:background 0.15s,box-shadow 0.15s,transform 0.15s; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; }
-.nav-cta:hover { background:var(--teal-h); box-shadow:0 4px 14px rgba(10,148,136,0.3); transform:translateY(-1px); }
+nav{position:sticky;top:0;z-index:200;height:62px;background:rgba(255,255,255,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 4.5rem;gap:2rem}
+.nav-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.55rem;flex-shrink:0}
+.logo-sq{width:30px;height:30px;border-radius:8px;background:var(--teal);display:flex;align-items:center;justify-content:center}
+.logo-sq svg{width:16px;height:16px}
+.nav-links{display:flex;list-style:none;margin-left:1rem}
+.nav-links a{display:block;padding:0 1rem;font-size:0.83rem;font-weight:500;color:var(--ink3);text-decoration:none;line-height:62px;transition:color 0.15s;white-space:nowrap}
+.nav-links a:hover{color:var(--teal)}
+.nav-links a.active{color:var(--teal);font-weight:600}
+.nav-spacer{flex:1}
+.nav-ghost{font-size:0.83rem;font-weight:500;color:var(--ink2);text-decoration:none;padding:0.42rem 0.9rem;border-radius:6px;transition:background 0.15s;white-space:nowrap}
+.nav-ghost:hover{background:var(--off)}
+.nav-cta{background:var(--teal);color:var(--white);padding:0.46rem 1.15rem;font-size:0.83rem;font-weight:600;border:none;border-radius:7px;text-decoration:none;white-space:nowrap;transition:background 0.15s,box-shadow 0.15s,transform 0.15s}
+.nav-cta:hover{background:var(--teal-h);box-shadow:0 4px 14px rgba(10,148,136,0.3);transform:translateY(-1px)}
+.nav-mobile-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-mobile-btn span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:1rem 1.5rem 1.5rem;z-index:199;flex-direction:column}
+.mobile-menu.open{display:flex}
+.mobile-menu a{display:block;padding:0.75rem 0;font-size:0.95rem;font-weight:500;color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--border);transition:color 0.15s}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--teal)}
 
 /* PAGE HEADER */
-.page-header { background:linear-gradient(165deg,var(--teal-pale) 0%,var(--white) 60%); border-bottom:1px solid var(--teal-mid); padding:5rem 4.5rem 4.5rem; text-align:center; }
-.ph-inner { max-width:580px; margin:0 auto; }
-.pg-lbl { display:inline-flex; align-items:center; gap:0.45rem; background:var(--white); border:1px solid var(--teal-mid); border-radius:100px; padding:0.28rem 0.85rem; font-size:0.7rem; font-weight:600; color:var(--teal); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:1.6rem; animation:up 0.5s ease both; }
-.pg-lbl-dot { width:5px; height:5px; border-radius:50%; background:var(--teal); animation:blink 2s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-.ph-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(2.2rem,4vw,3.2rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; color:var(--ink); animation:up 0.55s 0.05s ease both; }
-.ph-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; color:var(--teal); }
-.ph-sub { margin-top:1.2rem; font-size:1rem; color:var(--ink3); line-height:1.75; animation:up 0.55s 0.1s ease both; }
+.ph{background:linear-gradient(165deg,var(--teal-pale) 0%,var(--white) 60%);border-bottom:1px solid var(--teal-mid);padding:5rem 4.5rem 4.5rem;text-align:center}
+.ph-inner{max-width:560px;margin:0 auto}
+.ph-tag{display:inline-flex;align-items:center;gap:0.45rem;background:var(--white);border:1px solid var(--teal-mid);border-radius:100px;padding:0.28rem 0.85rem;font-size:0.7rem;font-weight:600;color:var(--teal);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.6rem}
+.ph-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.ph-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:var(--ink)}
+.ph-title em{font-family:'Fraunces',serif;font-style:italic;font-weight:300;color:var(--teal)}
+.ph-sub{margin-top:1.2rem;font-size:1rem;color:var(--ink3);line-height:1.75}
 
-/* CONTACT TYPES */
-.contact-wrap { padding:5rem 4.5rem; max-width:1160px; margin:0 auto; }
-.ct-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-bottom:5rem; }
-.ct-card {
-  border:1px solid var(--border); border-radius:16px;
-  padding:2rem 1.8rem; background:var(--white);
-  box-shadow:var(--shadow-sm); cursor:pointer;
-  transition:transform 0.22s,box-shadow 0.22s,border-color 0.22s;
-  position:relative; user-select:none;
-}
-.ct-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
-.ct-card.sel { border-color:var(--teal); box-shadow:0 0 0 1px var(--teal),var(--shadow-md); }
-.ct-card.sel .ct-tick { opacity:1; }
-.ct-tick {
-  position:absolute; top:1rem; right:1rem;
-  width:20px; height:20px; border-radius:50%;
-  background:var(--teal); display:flex; align-items:center; justify-content:center;
-  opacity:0; transition:opacity 0.18s;
-}
-.ct-tick svg { width:10px; height:10px; }
-.ct-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1.1rem; }
-.cti-t { background:var(--teal-pale); }
-.cti-o { background:var(--orange-pale); }
-.cti-y { background:var(--yellow-pale); }
-.ct-icon svg { width:19px; height:19px; }
-.ct-title { font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.45rem; }
-.ct-desc { font-size:0.82rem; color:var(--ink3); line-height:1.6; }
+/* TYPE SELECTOR */
+.contact-wrap{padding:5rem 4.5rem;max-width:1160px;margin:0 auto}
+.selector-label{font-size:0.78rem;font-weight:700;color:var(--ink2);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.5rem}
+.selector-sub{font-size:0.86rem;color:var(--ink3);margin-bottom:1.5rem}
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:4rem}
+.type-card{border:1.5px solid var(--border);border-radius:14px;padding:1.6rem 1.5rem;background:var(--white);cursor:pointer;transition:all 0.2s;position:relative;user-select:none;box-shadow:var(--sh-sm)}
+.type-card:hover{border-color:var(--teal-mid);transform:translateY(-3px);box-shadow:var(--sh-md)}
+.type-card.sel{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal),var(--sh-md)}
+.type-tick{position:absolute;top:1rem;right:1rem;width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.18s}
+.type-card.sel .type-tick{opacity:1}
+.type-tick svg{width:10px;height:10px}
+.type-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.ti-t{background:var(--teal-pale)}.ti-o{background:var(--orange-pale)}.ti-y{background:var(--yellow-pale)}
+.type-icon svg{width:19px;height:19px}
+.type-title{font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:0.35rem}
+.type-desc{font-size:0.8rem;color:var(--ink3);line-height:1.55}
 
 /* FORM + SIDE */
-.contact-body { display:grid; grid-template-columns:1fr 420px; gap:4rem; align-items:start; }
-.form-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.3rem; font-weight:800; color:var(--ink); margin-bottom:0.5rem; letter-spacing:-0.01em; }
-.form-sub { font-size:0.88rem; color:var(--ink3); margin-bottom:2rem; line-height:1.6; }
-.cf { display:flex; flex-direction:column; gap:1.2rem; }
-.field-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-.field { display:flex; flex-direction:column; gap:0.4rem; }
-.field label { font-size:0.78rem; font-weight:600; color:var(--ink2); letter-spacing:0.02em; }
-.field input,.field select,.field textarea {
-  background:var(--white); border:1.5px solid var(--border);
-  border-radius:9px; padding:0.72rem 0.95rem;
-  font-size:0.88rem; color:var(--ink); font-family:'Plus Jakarta Sans',sans-serif;
-  outline:none; transition:border-color 0.18s,box-shadow 0.18s; width:100%;
-}
-.field input:focus,.field select:focus,.field textarea:focus {
-  border-color:var(--teal); box-shadow:0 0 0 3px rgba(10,148,136,0.1);
-}
-.field input::placeholder,.field textarea::placeholder { color:var(--ink4); }
-.field select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%2390A3B4' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 0.9rem center; padding-right:2.2rem; cursor:pointer; }
-.field textarea { resize:vertical; min-height:110px; line-height:1.6; }
-.field-note { font-size:0.72rem; color:var(--ink4); margin-top:0.15rem; }
-.extra-fields { display:flex; flex-direction:column; gap:1.2rem; }
-.submit-btn {
-  background:var(--teal); color:var(--white);
-  padding:0.82rem 2.2rem; font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:0.9rem; font-weight:700; border:none; border-radius:9px;
-  cursor:pointer; width:100%; margin-top:0.5rem;
-  transition:all 0.18s; display:flex; align-items:center; justify-content:center; gap:0.5rem;
-}
-.submit-btn:hover { background:var(--teal-h); box-shadow:0 8px 24px rgba(10,148,136,0.3); transform:translateY(-1px); }
-.form-note { font-size:0.72rem; color:var(--ink4); text-align:center; margin-top:0.9rem; line-height:1.6; }
-.form-success {
-  display:none; text-align:center; padding:3rem 2rem;
-  background:var(--teal-pale); border:1px solid var(--teal-mid); border-radius:16px;
-}
-.fs-icon { width:52px; height:52px; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem; }
-.fs-icon svg { width:24px; height:24px; }
-.fs-title { font-size:1.2rem; font-weight:800; color:var(--ink); margin-bottom:0.6rem; }
-.fs-body { font-size:0.88rem; color:var(--ink3); line-height:1.7; }
-.fs-body a { color:var(--teal); font-weight:600; text-decoration:none; }
+.contact-body{display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:start}
+.form-head{margin-bottom:1.8rem}
+.form-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--ink);margin-bottom:0.4rem;letter-spacing:-0.01em}
+.form-sub{font-size:0.87rem;color:var(--ink3);line-height:1.6}
+form{display:flex;flex-direction:column;gap:1.1rem}
+.field{display:flex;flex-direction:column;gap:0.38rem}
+.field label{font-size:0.77rem;font-weight:600;color:var(--ink2);letter-spacing:0.02em}
+.field input,.field select,.field textarea{background:var(--white);border:1.5px solid var(--border);border-radius:9px;padding:0.7rem 0.9rem;font-size:0.87rem;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;outline:none;transition:border-color 0.18s,box-shadow 0.18s;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(10,148,136,0.1)}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink4)}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%2390A3B4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.9rem center;padding-right:2.2rem;cursor:pointer}
+.field textarea{resize:vertical;min-height:100px;line-height:1.6}
+.field-note{font-size:0.7rem;color:var(--ink4);margin-top:0.12rem}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.extra{display:flex;flex-direction:column;gap:1.1rem}
+.submit-btn{background:var(--teal);color:var(--white);padding:0.8rem 2rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;border:none;border-radius:9px;cursor:pointer;width:100%;margin-top:0.4rem;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+.submit-btn:hover{background:var(--teal-h);box-shadow:0 8px 24px rgba(10,148,136,0.3);transform:translateY(-1px)}
+.submit-btn:disabled{opacity:0.7;cursor:not-allowed;transform:none}
+.form-privacy{font-size:0.71rem;color:var(--ink4);text-align:center;margin-top:0.8rem;line-height:1.6}
+
+/* SUCCESS */
+.form-success{display:none;text-align:center;padding:3rem 2rem;background:var(--teal-pale);border:1px solid var(--teal-mid);border-radius:16px}
+.fs-icon{width:52px;height:52px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem}
+.fs-icon svg{width:24px;height:24px}
+.fs-title{font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:0.6rem}
+.fs-body{font-size:0.88rem;color:var(--ink3);line-height:1.7}
+.fs-body strong{color:var(--teal);font-weight:600}
+.fs-body a{color:var(--teal);text-decoration:none;font-weight:600}
 
 /* SIDE */
-.contact-side { display:flex; flex-direction:column; gap:1.2rem; position:sticky; top:82px; }
-.side-card { background:var(--off); border:1px solid var(--border); border-radius:14px; padding:1.6rem; }
-.sc-head { font-size:0.78rem; font-weight:700; color:var(--ink4); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:1.1rem; }
-.sc-row { display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:0.85rem; }
-.sc-row:last-child { margin-bottom:0; }
-.sc-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:0.28rem; }
-.sc-dot-t { background:var(--teal); }
-.sc-dot-o { background:var(--orange); }
-.sc-dot-y { background:var(--yellow); }
-.sc-body { font-size:0.82rem; color:var(--ink3); line-height:1.5; }
-.sc-body strong { color:var(--ink2); font-weight:600; display:block; margin-bottom:0.1rem; font-size:0.84rem; }
-.sc-body a { color:var(--teal); text-decoration:none; font-weight:500; }
-.sc-body a:hover { text-decoration:underline; }
-
-/* Dark contact card */
-.dark-card { background:var(--ink); border-radius:14px; padding:1.6rem; }
-.dc-head { font-size:0.76rem; font-weight:700; color:rgba(255,255,255,0.38); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:1rem; }
-.dc-row { display:flex; align-items:center; gap:0.75rem; padding:0.65rem 0; border-bottom:1px solid rgba(255,255,255,0.06); }
-.dc-row:last-child { border-bottom:none; }
-.dc-icon { width:30px; height:30px; border-radius:7px; background:rgba(255,255,255,0.07); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.dc-icon svg { width:14px; height:14px; }
-.dc-text { font-size:0.79rem; color:rgba(255,255,255,0.48); line-height:1.4; }
-.dc-text strong { color:rgba(255,255,255,0.75); font-weight:600; display:block; font-size:0.76rem; margin-bottom:0.1rem; }
-.dc-text a { color:var(--teal-h); text-decoration:none; font-weight:500; }
-.dc-text a:hover { text-decoration:underline; }
-
-/* MS badge */
-.ms-row { display:flex; align-items:center; gap:0.8rem; padding:1.1rem 1.3rem; background:var(--white); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow-sm); }
-.ms-row-text strong { display:block; font-size:0.8rem; font-weight:700; color:var(--ink); }
-.ms-row-text span { font-size:0.72rem; color:var(--ink4); }
+.contact-side{display:flex;flex-direction:column;gap:1.2rem;position:sticky;top:82px}
+.side-card{background:var(--off);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+.sc-head{font-size:0.75rem;font-weight:700;color:var(--ink4);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem}
+.sc-row{display:flex;align-items:flex-start;gap:0.7rem;margin-bottom:0.8rem}
+.sc-row:last-child{margin-bottom:0}
+.sc-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:0.28rem}
+.sd-t{background:var(--teal)}.sd-o{background:var(--orange)}.sd-y{background:var(--yellow)}
+.sc-body{font-size:0.81rem;color:var(--ink3);line-height:1.5}
+.sc-body strong{color:var(--ink2);font-weight:600;display:block;margin-bottom:0.1rem;font-size:0.83rem}
+.dark-card{background:var(--ink);border-radius:14px;padding:1.5rem}
+.dc-head{font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem}
+.dc-row{display:flex;align-items:center;gap:0.7rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.dc-row:last-child{border-bottom:none}
+.dc-icon{width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dc-icon svg{width:13px;height:13px}
+.dc-text{font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.4}
+.dc-text strong{color:rgba(255,255,255,0.72);font-weight:600;display:block;font-size:0.74rem;margin-bottom:0.08rem}
+.dc-text a{color:var(--teal-h);text-decoration:none;font-weight:500}
+.dc-text a:hover{text-decoration:underline}
+.ms-row{display:flex;align-items:center;gap:0.8rem;padding:1rem 1.2rem;background:var(--white);border:1px solid var(--border);border-radius:12px;box-shadow:var(--sh-sm)}
+.ms-row-text strong{display:block;font-size:0.8rem;font-weight:700;color:var(--ink)}
+.ms-row-text span{font-size:0.71rem;color:var(--ink4)}
 
 /* PILOT PROMISE */
-.pilot-section { background:linear-gradient(135deg,var(--teal) 0%,var(--teal-h) 100%); padding:4rem 4.5rem; }
-.ps-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-.ps-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.5rem,2.5vw,2rem); font-weight:800; color:var(--white); letter-spacing:-0.02em; margin-bottom:0.8rem; }
-.ps-body { font-size:0.94rem; color:rgba(255,255,255,0.7); line-height:1.75; }
-.ps-list { display:flex; flex-direction:column; gap:0.7rem; }
-.ps-item { display:flex; align-items:center; gap:0.85rem; padding:0.88rem 1.1rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.12); border-radius:10px; }
-.ps-check { width:26px; height:26px; border-radius:7px; background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.ps-check svg { width:13px; height:13px; }
-.ps-text { font-size:0.84rem; color:rgba(255,255,255,0.85); font-weight:500; }
+.pilot{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-h) 100%);padding:4rem 4.5rem}
+.pilot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.pt-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;color:var(--white);letter-spacing:-0.02em;margin-bottom:0.75rem}
+.pt-body{font-size:0.93rem;color:rgba(255,255,255,0.68);line-height:1.75}
+.pt-list{display:flex;flex-direction:column;gap:0.65rem}
+.pt-item{display:flex;align-items:center;gap:0.8rem;padding:0.85rem 1rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12);border-radius:10px}
+.pt-check{width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pt-check svg{width:12px;height:12px}
+.pt-text{font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:500}
 
 /* FOOTER */
-footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
-.ft-logo { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.05rem; font-weight:800; color:var(--white); text-decoration:none; }
-.ft-logo span { color:var(--teal-h); }
-.ft-links { display:flex; gap:1.8rem; list-style:none; }
-.ft-links a { font-size:0.77rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.15s; }
-.ft-links a:hover { color:var(--teal-h); }
-.ft-copy { font-size:0.72rem; color:rgba(255,255,255,0.28); }
+footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.ft-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:800;color:var(--white);text-decoration:none}
+.ft-logo span{color:var(--teal-h)}
+.ft-links{display:flex;gap:1.8rem;list-style:none}
+.ft-links a{font-size:0.77rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s}
+.ft-links a:hover{color:var(--teal-h)}
+.ft-copy{font-size:0.72rem;color:rgba(255,255,255,0.28)}
 
-@keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-.reveal { opacity:1; transform:translateY(0); transition:opacity 0.6s ease,transform 0.6s ease; } @supports (animation-timeline: scroll()) { .reveal { opacity:1; } }
-.reveal.in { opacity:1; transform:translateY(0); }
-.rd1 { transition-delay:0.08s; }
-
-@media (max-width:960px) {
-  nav { padding:0 1.5rem; } .nav-links { display:none; }
-  .page-header { padding:3.5rem 1.5rem 3rem; }
-  .contact-wrap { padding:3.5rem 1.5rem; }
-  .ct-grid { grid-template-columns:1fr; }
-  .contact-body { grid-template-columns:1fr; gap:2.5rem; }
-  .field-row { grid-template-columns:1fr; }
-  .contact-side { position:static; }
-  .pilot-section { padding:3rem 1.5rem; } .ps-inner { grid-template-columns:1fr; gap:2.5rem; }
-  footer { padding:2rem 1.5rem; flex-direction:column; align-items:flex-start; gap:1rem; }
+@media(max-width:960px){
+  nav{padding:0 1.5rem}.nav-links{display:none}.nav-mobile-btn{display:flex}
+  .ph{padding:3.5rem 1.5rem 3rem}
+  .contact-wrap{padding:3.5rem 1.5rem}
+  .type-grid{grid-template-columns:1fr}
+  .contact-body{grid-template-columns:1fr;gap:2.5rem}
+  .contact-side{position:static}
+  .field-row{grid-template-columns:1fr}
+  .pilot{padding:3rem 1.5rem}.pilot-inner{grid-template-columns:1fr;gap:2.5rem}
+  footer{padding:2rem 1.5rem;flex-direction:column;align-items:flex-start;gap:1rem}
 }
-
-/* Mobile nav */
-.nav-mobile-btn {
-  display:none; flex-direction:column; gap:5px;
-  background:none; border:none; cursor:pointer; padding:4px;
+@media(max-width:480px){
+  .ph-title{font-size:1.9rem}
+  footer{padding:1.8rem 1.2rem}
 }
-.nav-mobile-btn span {
-  display:block; width:22px; height:2px;
-  background:var(--ink); border-radius:2px;
-  transition:all 0.2s;
-}
-.mobile-nav-open .nmb-1 { transform:rotate(45deg) translate(5px,5px); }
-.mobile-nav-open .nmb-2 { opacity:0; }
-.mobile-nav-open .nmb-3 { transform:rotate(-45deg) translate(5px,-5px); }
-.mobile-menu {
-  display:none; position:fixed; top:62px; left:0; right:0;
-  background:rgba(255,255,255,0.98); backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-  padding:1rem 1.5rem 1.5rem; z-index:199;
-  flex-direction:column; gap:0;
-}
-.mobile-menu.open { display:flex; }
-.mobile-menu a {
-  display:block; padding:0.75rem 0;
-  font-size:0.95rem; font-weight:500; color:var(--ink2);
-  text-decoration:none; border-bottom:1px solid var(--border);
-  transition:color 0.15s;
-}
-.mobile-menu a:last-child { border-bottom:none; }
-.mobile-menu a:hover { color:var(--teal); }
-.mobile-menu a.active { color:var(--teal); font-weight:600; }
-@media (max-width:960px) {
-  .nav-mobile-btn { display:flex; }
-}
-
-
-@media (max-width:480px) {
-  .hero-wrap, .about-hero { padding:3rem 1.2rem 2.5rem; }
-  .stats { grid-template-columns:1fr 1fr; padding:2rem 1.2rem; }
-  .stat-n { font-size:1.7rem; }
-  .pricing-grid, .how-grid, .diff-grid, .moat-cards,
-  .pillars-grid, .founders-grid, .values-grid,
-  .not-grid, .ct-grid { grid-template-columns:1fr !important; }
-  .field-row { grid-template-columns:1fr !important; }
-  .ph-title { font-size:1.9rem; }
-  .page-header { padding:2.5rem 1.2rem 2rem; }
-  .comp-table { min-width:600px; font-size:0.74rem; }
-  .comp-table th, .comp-table td { padding:0.65rem 0.6rem; }
-  .ps-inner, .pp-inner { grid-template-columns:1fr; gap:2rem; padding:3rem 1.2rem; }
-  footer { padding:1.8rem 1.2rem; }
-  nav { padding:0 1.2rem; }
-  .email-card { padding:1.8rem 1.2rem; }
-  .ec-email { font-size:1rem; }
-}
-
 </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <div class="logo-sq">
-      <svg viewBox="0 0 16 16" fill="none">
-        <rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white"/>
-        <rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/>
-        <rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/>
-        <rect x="9" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.35"/>
-      </svg>
-    </div>
+    <div class="logo-sq"><svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/><rect x="9" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.35"/></svg></div>
     Staash
   </a>
   <ul class="nav-links">
@@ -261,70 +175,79 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
     <li><a href="technology.html">Technology</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="team.html">Team</a></li>
   </ul>
   <div class="nav-spacer"></div>
   <a href="about.html" class="nav-ghost">About Us</a>
   <a href="#form" class="nav-cta">Get in Touch</a>
+  <button class="nav-mobile-btn" id="nav-mobile-btn" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="product.html">Product</a>
+  <a href="technology.html">Technology</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="active">Contact</a>
+  <a href="team.html">Team</a>
+</div>
 
 <!-- HEADER -->
-<div class="page-header">
+<div class="ph">
   <div class="ph-inner">
-    <div class="pg-lbl"><span class="pg-lbl-dot"></span>Contact Staash</div>
-    <h1 class="ph-title">Let&rsquo;s start a <em>conversation.</em></h1>
-    <p class="ph-sub">Whether you want to pilot Staash in your store, explore a partnership, or discuss an investment &mdash; we respond to every message personally.</p>
+    <div class="ph-tag"><span class="ph-tag-dot"></span>Get in Touch</div>
+    <h1 class="ph-title">Let's start a <em>conversation.</em></h1>
+    <p class="ph-sub">We respond to every message personally. Tell us what you need and we will take it from there.</p>
   </div>
 </div>
 
-<!-- FORM SECTION -->
+<!-- MAIN -->
 <div class="contact-wrap">
+  <div class="selector-label">What brings you here?</div>
+  <p class="selector-sub">Select one to tailor the form to your needs.</p>
 
-  <!-- Type selector -->
-  <div class="ct-grid reveal">
-    <div class="ct-card sel" onclick="selectType(this,'store')">
-      <div class="ct-tick"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="ct-icon cti-t">
-        <svg viewBox="0 0 18 18" fill="none"><path d="M2 7l7-5 7 5v9H2V7z" stroke="var(--teal)" stroke-width="1.4" stroke-linejoin="round"/><rect x="6.5" y="11" width="5" height="5" rx="1" stroke="var(--teal)" stroke-width="1.2"/></svg>
-      </div>
-      <div class="ct-title">I own a store</div>
-      <p class="ct-desc">Request a free 90-day pilot. We handle full setup at no cost to you.</p>
+  <div class="type-grid">
+    <div class="type-card sel" id="card-store" onclick="selectType('store')">
+      <div class="type-tick"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="type-icon ti-t"><svg viewBox="0 0 18 18" fill="none"><path d="M2 7l7-5 7 5v9H2V7z" stroke="var(--teal)" stroke-width="1.4" stroke-linejoin="round"/><rect x="6.5" y="11" width="5" height="5" rx="1" stroke="var(--teal)" stroke-width="1.2"/></svg></div>
+      <div class="type-title">Store pilot request</div>
+      <p class="type-desc">Request a free 90-day pilot. We handle full setup at no cost.</p>
     </div>
-    <div class="ct-card" onclick="selectType(this,'investor')">
-      <div class="ct-tick"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="ct-icon cti-o">
-        <svg viewBox="0 0 18 18" fill="none"><path d="M3 12l4-4 3 3 5-6" stroke="var(--orange)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="1.5" fill="var(--orange)"/></svg>
-      </div>
-      <div class="ct-title">I am an investor</div>
-      <p class="ct-desc">Explore the Staash investment opportunity. We will share our deck.</p>
+    <div class="type-card" id="card-investor" onclick="selectType('investor')">
+      <div class="type-tick"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="type-icon ti-o"><svg viewBox="0 0 18 18" fill="none"><path d="M3 12l4-4 3 3 5-6" stroke="var(--orange)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="1.5" fill="var(--orange)"/></svg></div>
+      <div class="type-title">Investor enquiry</div>
+      <p class="type-desc">Explore the Staash investment opportunity.</p>
     </div>
-    <div class="ct-card" onclick="selectType(this,'other')">
-      <div class="ct-tick"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="ct-icon cti-y">
-        <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="var(--yellow)" stroke-width="1.4"/><path d="M9 8v4M9 5.5v1.2" stroke="var(--yellow)" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <div class="ct-title">Something else</div>
-      <p class="ct-desc">Partnership, press, or anything else &mdash; we read every message.</p>
+    <div class="type-card" id="card-other" onclick="selectType('other')">
+      <div class="type-tick"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="type-icon ti-y"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="var(--yellow)" stroke-width="1.4"/><path d="M9 8v4M9 5.5v1.2" stroke="var(--yellow)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="type-title">General enquiry</div>
+      <p class="type-desc">Partnership, press, or anything else we can help with.</p>
     </div>
   </div>
 
-  <!-- Body -->
-  <div class="contact-body reveal" id="form">
+  <div class="contact-body" id="form">
     <div>
-      <div class="form-title" id="form-title">Request a free pilot</div>
-      <p class="form-sub" id="form-sub">Tell us about your store and we will get back to you within one business day.</p>
+      <div class="form-head">
+        <div class="form-title" id="form-title">Request a free pilot</div>
+        <p class="form-sub" id="form-sub">Tell us about your store and we will get back to you within 2 to 4 working days.</p>
+      </div>
 
-      <form class="cf" id="cf" onsubmit="handleSubmit(event)">
-        <div class="field">
-          <label for="f-name">Your name</label>
-          <input id="f-name" type="text" placeholder="Full name" required>
-        </div>
-        <div class="field">
-          <label for="f-email">Email address</label>
-          <input id="f-email" type="email" placeholder="you@example.com" required>
+      <form id="contact-form" onsubmit="handleSubmit(event)">
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" type="text" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email address</label>
+            <input id="f-email" type="email" placeholder="you@example.com" required>
+          </div>
         </div>
 
-        <!-- Store fields -->
-        <div id="store-fields" class="extra-fields">
+        <div id="store-fields" class="extra">
           <div class="field">
             <label for="f-store">Store name</label>
             <input id="f-store" type="text" placeholder="Name of your store or chain">
@@ -332,15 +255,15 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
           <div class="field-row">
             <div class="field">
               <label for="f-loc">Location</label>
-              <input id="f-loc" type="text" placeholder="Area / City">
+              <input id="f-loc" type="text" placeholder="Area or city">
             </div>
             <div class="field">
               <label for="f-size">Store size</label>
               <select id="f-size">
                 <option value="" disabled selected>Select size</option>
                 <option>Under 100 sqm</option>
-                <option>100 &ndash; 200 sqm</option>
-                <option>200 &ndash; 500 sqm</option>
+                <option>100 to 200 sqm</option>
+                <option>200 to 500 sqm</option>
                 <option>Over 500 sqm</option>
                 <option>Multiple outlets</option>
               </select>
@@ -350,16 +273,15 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
             <label for="f-cctv">CCTV cameras installed?</label>
             <select id="f-cctv">
               <option value="" disabled selected>Select one</option>
-              <option>Yes &mdash; cameras already installed</option>
-              <option>No &mdash; but open to installing</option>
+              <option>Yes, cameras already installed</option>
+              <option>No, but open to installing</option>
               <option>Not sure</option>
             </select>
-            <div class="field-note">Staash works with your existing cameras. No new hardware needed in most cases.</div>
+            <div class="field-note">Staash works with your existing cameras in most cases.</div>
           </div>
         </div>
 
-        <!-- Investor fields -->
-        <div id="investor-fields" class="extra-fields" style="display:none">
+        <div id="investor-fields" class="extra" style="display:none">
           <div class="field">
             <label for="f-fund">Fund or firm name</label>
             <input id="f-fund" type="text" placeholder="Name of your fund (if applicable)">
@@ -368,10 +290,10 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
             <label for="f-ticket">Typical ticket size</label>
             <select id="f-ticket">
               <option value="" disabled selected>Select range</option>
-              <option>Under &#8377;25 lakhs</option>
-              <option>&#8377;25 &ndash; 75 lakhs</option>
-              <option>&#8377;75 lakhs &ndash; 2 crore</option>
-              <option>Above &#8377;2 crore</option>
+              <option>Under 25 lakhs</option>
+              <option>25 to 75 lakhs</option>
+              <option>75 lakhs to 2 crore</option>
+              <option>Above 2 crore</option>
               <option>Prefer not to say</option>
             </select>
           </div>
@@ -379,7 +301,7 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
 
         <div class="field">
           <label for="f-msg">Message <span style="color:var(--ink4);font-weight:400">(optional)</span></label>
-          <textarea id="f-msg" placeholder="Anything specific you would like us to know before our first conversation..."></textarea>
+          <textarea id="f-msg" placeholder="Anything specific you would like us to know..."></textarea>
         </div>
 
         <input type="hidden" id="f-type" value="store">
@@ -388,13 +310,13 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
           <span id="submit-label">Send Message</span>
           <svg id="submit-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <p class="form-note">We will never share your details with anyone. We respond personally, typically within one business day.</p>
+        <p class="form-privacy">We will never share your details. We respond personally within 2 to 4 working days.</p>
       </form>
 
       <div class="form-success" id="form-success">
         <div class="fs-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="fs-title">Message received.</div>
-        <p class="fs-body">Thank you for reaching out to Staash. We will get back to you within one business day.<br><br>In the meantime, explore <a href="product.html">the product</a> or read <a href="about.html">about us</a>.</p>
+        <div class="fs-title">Your request has been sent.</div>
+        <p class="fs-body">Thank you for reaching out to Staash. We will review your message and get back to you within <strong>2 to 4 working days.</strong><br><br>In the meantime, explore <a href="product.html">the product</a> or read <a href="about.html">our story</a>.</p>
       </div>
     </div>
 
@@ -402,69 +324,43 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
     <div class="contact-side">
       <div class="side-card">
         <div class="sc-head">What to expect</div>
-        <div class="sc-row">
-          <span class="sc-dot sc-dot-t"></span>
-          <div class="sc-body"><strong>Reply within one business day</strong>We read every message and respond personally. No automated replies.</div>
-        </div>
-        <div class="sc-row">
-          <span class="sc-dot sc-dot-t"></span>
-          <div class="sc-body"><strong>A direct conversation</strong>You speak with the founding team &mdash; not a sales pipeline.</div>
-        </div>
-        <div class="sc-row">
-          <span class="sc-dot sc-dot-o"></span>
-          <div class="sc-body"><strong>For store pilots</strong>We walk you through the setup, timeline, and what to expect across the 90-day free pilot.</div>
-        </div>
-        <div class="sc-row">
-          <span class="sc-dot sc-dot-y"></span>
-          <div class="sc-body"><strong>For investors</strong>We share our deck and financials under NDA after a brief introductory call.</div>
-        </div>
+        <div class="sc-row"><span class="sc-dot sd-t"></span><div class="sc-body"><strong>Reply within 2 to 4 working days</strong>We read every message and respond personally. No automated replies.</div></div>
+        <div class="sc-row"><span class="sc-dot sd-t"></span><div class="sc-body"><strong>A direct conversation</strong>You speak with the founding team, not a sales pipeline.</div></div>
+        <div class="sc-row"><span class="sc-dot sd-o"></span><div class="sc-body"><strong>For store pilots</strong>We walk you through setup, timeline, and what to expect across the 90-day free pilot.</div></div>
+        <div class="sc-row"><span class="sc-dot sd-y"></span><div class="sc-body"><strong>For investors</strong>We share our deck and financials under NDA after a brief introductory call.</div></div>
       </div>
-
       <div class="dark-card">
         <div class="dc-head">Reach us directly</div>
         <div class="dc-row">
-          <div class="dc-icon">
-            <svg viewBox="0 0 14 14" fill="none"><path d="M2 3h10v8a1 1 0 01-1 1H3a1 1 0 01-1-1V3z" stroke="rgba(255,255,255,0.45)" stroke-width="1.2"/><path d="M2 3l5 4.5L12 3" stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round"/></svg>
-          </div>
-          <div class="dc-text"><strong>General &amp; pilot enquiries</strong><a href="mailto&#58;contact&#64;stashkart&#46;com">contact&#64;stashkart&#46;com</a></div>
+          <div class="dc-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M2 3h10v8a1 1 0 01-1 1H3a1 1 0 01-1-1V3z" stroke="rgba(255,255,255,0.45)" stroke-width="1.2"/><path d="M2 3l5 4.5L12 3" stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div class="dc-text"><strong>General enquiries</strong><a href="mailto&#58;contact&#64;stashkart&#46;com">contact&#64;stashkart&#46;com</a></div>
         </div>
         <div class="dc-row">
-          <div class="dc-icon">
-            <svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4.24 1.5 2 3.74 2 6.5c0 1.7.84 3.2 2.12 4.12L7 12.5l2.88-1.88A5 5 0 0012 6.5C12 3.74 9.76 1.5 7 1.5z" stroke="rgba(255,255,255,0.45)" stroke-width="1.2"/><circle cx="7" cy="6.5" r="1.5" fill="rgba(255,255,255,0.45)"/></svg>
-          </div>
+          <div class="dc-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4.24 1.5 2 3.74 2 6.5c0 1.7.84 3.2 2.12 4.12L7 12.5l2.88-1.88A5 5 0 0012 6.5C12 3.74 9.76 1.5 7 1.5z" stroke="rgba(255,255,255,0.45)" stroke-width="1.2"/><circle cx="7" cy="6.5" r="1.5" fill="rgba(255,255,255,0.45)"/></svg></div>
           <div class="dc-text"><strong>Location</strong><span style="color:rgba(255,255,255,0.35)">Jaipur, Rajasthan, India</span></div>
         </div>
       </div>
-
       <div class="ms-row">
-        <svg width="26" height="26" viewBox="0 0 18 18">
-          <rect x="0" y="0" width="8" height="8" fill="#F25022"/>
-          <rect x="10" y="0" width="8" height="8" fill="#7FBA00"/>
-          <rect x="0" y="10" width="8" height="8" fill="#00A4EF"/>
-          <rect x="10" y="10" width="8" height="8" fill="#FFB900"/>
-        </svg>
-        <div class="ms-row-text">
-          <strong>Microsoft for Startups</strong>
-          <span>Founders Hub Member</span>
-        </div>
+        <svg width="26" height="26" viewBox="0 0 18 18"><rect x="0" y="0" width="8" height="8" fill="#F25022"/><rect x="10" y="0" width="8" height="8" fill="#7FBA00"/><rect x="0" y="10" width="8" height="8" fill="#00A4EF"/><rect x="10" y="10" width="8" height="8" fill="#FFB900"/></svg>
+        <div class="ms-row-text"><strong>Microsoft for Startups</strong><span>Founders Hub Member</span></div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- PILOT PROMISE -->
-<div class="pilot-section reveal">
-  <div class="ps-inner">
+<div class="pilot">
+  <div class="pilot-inner">
     <div>
-      <div class="ps-title">What the free pilot actually means.</div>
-      <p class="ps-body">No fine print. No hidden costs. No commitment until you have seen the results in your own store. Here is exactly what every Staash pilot partner receives.</p>
+      <div class="pt-title">What the free pilot actually means.</div>
+      <p class="pt-body">No fine print. No hidden costs. No commitment until you have seen results in your own store.</p>
     </div>
-    <div class="ps-list">
-      <div class="ps-item"><div class="ps-check"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="ps-text">90 days completely free &mdash; no subscription charge during the pilot</div></div>
-      <div class="ps-item"><div class="ps-check"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="ps-text">Full setup and onboarding handled by the Staash team</div></div>
-      <div class="ps-item"><div class="ps-check"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="ps-text">No new hardware required in most cases</div></div>
-      <div class="ps-item"><div class="ps-check"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="ps-text">Your store data stays yours &mdash; always</div></div>
-      <div class="ps-item"><div class="ps-check"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="ps-text">No obligation to continue after the pilot period ends</div></div>
+    <div class="pt-list">
+      <div class="pt-item"><div class="pt-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="pt-text">90 days completely free</div></div>
+      <div class="pt-item"><div class="pt-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="pt-text">Full setup handled by the Staash team</div></div>
+      <div class="pt-item"><div class="pt-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="pt-text">No new hardware required in most cases</div></div>
+      <div class="pt-item"><div class="pt-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="pt-text">Your store data stays yours, always</div></div>
+      <div class="pt-item"><div class="pt-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="pt-text">No obligation to continue after the pilot ends</div></div>
     </div>
   </div>
 </div>
@@ -476,74 +372,91 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
     <li><a href="technology.html">Technology</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="team.html">Team</a></li>
   </ul>
   <span class="ft-copy">&copy; 2025 Staashkart Ariscates LLP &middot; Jaipur, India</span>
 </footer>
 
 <script>
-
-function toggleMobileNav() {
-  var menu = document.getElementById('mobile-menu');
-  var btn = document.getElementById('nav-mobile-btn');
-  var nav = document.querySelector('nav');
-  menu.classList.toggle('open');
-  nav.classList.toggle('mobile-nav-open');
+// Nav toggle
+function toggleNav() {
+  document.getElementById('mobile-menu').classList.toggle('open');
 }
 document.addEventListener('click', function(e) {
-  var menu = document.getElementById('mobile-menu');
-  var btn = document.getElementById('nav-mobile-btn');
-  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-    menu.classList.remove('open');
-    document.querySelector('nav').classList.remove('mobile-nav-open');
+  var m = document.getElementById('mobile-menu');
+  var b = document.getElementById('nav-mobile-btn');
+  if (m && b && !m.contains(e.target) && !b.contains(e.target)) {
+    m.classList.remove('open');
   }
 });
 
-const labels = {
-  store:    { title:'Request a free pilot',  sub:'Tell us about your store and we will get back to you within one business day.' },
-  investor: { title:'Investor enquiry',      sub:'Share a few details and we will respond within one business day with our deck and an invitation to connect.' },
-  other:    { title:'Get in touch',          sub:'Tell us what is on your mind. We read every message personally.' },
+// Form type selector
+var currentType = 'store';
+var labels = {
+  store:    { title: 'Request a free pilot',  sub: 'Tell us about your store and we will get back to you within 2 to 4 working days.' },
+  investor: { title: 'Investor enquiry',      sub: 'Share a few details and we will respond within 2 to 4 working days.' },
+  other:    { title: 'Get in touch',          sub: 'Tell us what is on your mind. We read every message personally.' }
 };
 
-function selectType(card, type) {
-  document.querySelectorAll('.ct-card').forEach(c => c.classList.remove('sel'));
-  card.classList.add('sel');
-  document.getElementById('f-type').value = type;
+function selectType(type) {
+  currentType = type;
+  // Update card selection
+  document.getElementById('card-store').classList.remove('sel');
+  document.getElementById('card-investor').classList.remove('sel');
+  document.getElementById('card-other').classList.remove('sel');
+  document.getElementById('card-' + type).classList.add('sel');
+  // Update form title and sub
   document.getElementById('form-title').textContent = labels[type].title;
-  document.getElementById('form-sub').textContent   = labels[type].sub;
-  document.getElementById('store-fields').style.display    = type === 'store'    ? 'flex' : 'none';
+  document.getElementById('form-sub').textContent = labels[type].sub;
+  // Show/hide extra fields
+  document.getElementById('store-fields').style.display = type === 'store' ? 'flex' : 'none';
   document.getElementById('investor-fields').style.display = type === 'investor' ? 'flex' : 'none';
+  document.getElementById('f-type').value = type;
 }
 
+// Form submit
 function handleSubmit(e) {
   e.preventDefault();
-  const btn   = document.getElementById('submit-btn');
-  const label = document.getElementById('submit-label');
-  const icon  = document.getElementById('submit-icon');
-  btn.disabled = true; label.textContent = 'Sending...'; icon.style.display = 'none';
+  var btn = document.getElementById('submit-btn');
+  var lbl = document.getElementById('submit-label');
+  var ico = document.getElementById('submit-icon');
+  btn.disabled = true;
+  lbl.textContent = 'Sending...';
+  ico.style.display = 'none';
 
-  const type    = document.getElementById('f-type').value;
-  const name    = document.getElementById('f-name').value;
+  var type  = document.getElementById('f-type').value;
+  var name  = document.getElementById('f-name').value;
+  var email = document.getElementById('f-email').value;
+  var store = document.getElementById('f-store') ? document.getElementById('f-store').value : '';
+  var loc   = document.getElementById('f-loc')   ? document.getElementById('f-loc').value   : '';
+  var msg   = document.getElementById('f-msg').value;
 
-  const email   = document.getElementById('f-email').value;
-  const store   = document.getElementById('f-store') ? document.getElementById('f-store').value : '';
-  const loc     = document.getElementById('f-loc')   ? document.getElementById('f-loc').value   : '';
-  const msg     = document.getElementById('f-msg').value;
+  var subject = type === 'store'    ? 'Staash Pilot Request - ' + (store || name)
+              : type === 'investor' ? 'Investor Enquiry - ' + name
+              : 'Staash Contact - ' + name;
 
-  const subject = type === 'store'    ? `Staash Pilot Request — ${store || name}`
-                : type === 'investor' ? `Investor Enquiry — ${name}`
-                : `Staash Website Contact — ${name}`;
+  var lines = [
+    'Name: ' + name,
+    'Email: ' + email,
+    'Type: ' + type
+  ];
+  if (store) lines.push('Store: ' + store);
+  if (loc)   lines.push('Location: ' + loc);
+  lines.push('');
+  lines.push('Message:');
+  lines.push(msg || 'No additional message.');
 
-  const body = [
-    `Name: ${name}`,
+  var body = lines.join('\n');
+  var mailto = 'mailto:contact@stashkart.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-    `Email: ${email}`,
-    `Enquiry type: ${type}`,
-    store ? `Store: ${store}` : '',
-    loc   ? `Location: ${loc}` : '',
-    '',
-    `Message:`,
-    msg || 'No additional message.',
-  ].filter(Boolean).join('\n');
-
-  setTimeout(() => {
-    window.location.href = `mailto:contact@stashkart.co
+  setTimeout(function() {
+    window.location.href = mailto;
+    document.getElementById('contact-form').style.display = 'none';
+    var s = document.getElementById('form-success');
+    s.style.display = 'block';
+    s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 500);
+}
+</script>
+</body>
+</html>
