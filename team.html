@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Team — Staash</title>
-<meta name="description" content="Staash is built by a small founding team and we are looking for people who want to help transform Indian retail. Come build with us.">
+<title>Join Staash — Build the Future of Indian Retail</title>
+<meta name="description" content="Staash is building its team. If you want to work on a real problem in Indian retail, we want to hear from you.">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 :root {
   --teal:#0A9488; --teal-h:#0BB5A7; --teal-pale:#EAF6F5; --teal-mid:#A8DDD9;
   --orange:#E05C0A; --orange-pale:#FEF1E8;
@@ -19,7 +19,7 @@
   --shadow-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
   --shadow-lg:0 16px 48px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior:smooth; }
 body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
 
 /* NAV */
@@ -37,145 +37,217 @@ nav { position:sticky; top:0; z-index:200; height:62px; background:rgba(255,255,
 .nav-cta { background:var(--teal); color:var(--white); padding:0.46rem 1.15rem; font-size:0.83rem; font-weight:600; border:none; border-radius:7px; text-decoration:none; white-space:nowrap; transition:background 0.15s,box-shadow 0.15s,transform 0.15s; }
 .nav-cta:hover { background:var(--teal-h); box-shadow:0 4px 14px rgba(10,148,136,0.3); transform:translateY(-1px); }
 
-/* HERO */
+/* HERO — warm, human, different energy from about page */
 .hero {
-  padding:6.5rem 4.5rem 5.5rem;
-  background:linear-gradient(165deg,var(--ink) 0%,var(--ink2) 100%);
-  text-align:center;
+  padding:0;
+  display:grid; grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - 62px);
 }
-.hero-inner { max-width:680px; margin:0 auto; }
-.hero-tag {
+.hero-left {
+  background:var(--teal);
+  padding:5.5rem 4rem 4rem;
+  display:flex; flex-direction:column; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.hero-left::before {
+  content:''; position:absolute; bottom:-60px; right:-60px;
+  width:260px; height:260px; border-radius:50%;
+  background:rgba(255,255,255,0.06);
+}
+.hero-left::after {
+  content:''; position:absolute; top:-40px; left:-40px;
+  width:180px; height:180px; border-radius:50%;
+  background:rgba(255,255,255,0.04);
+}
+.hl-inner { position:relative; z-index:1; }
+.hl-tag {
   display:inline-flex; align-items:center; gap:0.45rem;
-  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25);
   border-radius:100px; padding:0.28rem 0.85rem;
-  font-size:0.7rem; font-weight:600; color:var(--teal-h);
+  font-size:0.7rem; font-weight:600; color:var(--white);
   letter-spacing:0.06em; text-transform:uppercase;
-  margin-bottom:1.8rem; animation:up 0.5s ease both;
+  margin-bottom:1.8rem;
 }
-.tag-dot { width:5px; height:5px; border-radius:50%; background:var(--teal-h); animation:blink 2s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-.hero-title {
+.hl-tag-dot { width:5px; height:5px; border-radius:50%; background:var(--white); animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.45} }
+.hl-title {
   font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:clamp(2.4rem,5vw,4rem);
-  font-weight:800; letter-spacing:-0.035em; line-height:1.05;
-  color:var(--white); animation:up 0.6s 0.05s ease both;
+  font-size:clamp(2.4rem,4vw,3.5rem);
+  font-weight:800; letter-spacing:-0.03em; line-height:1.06;
+  color:var(--white);
 }
-.hero-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; color:var(--teal-h); display:block; }
-.hero-body {
-  margin-top:1.8rem; font-size:1.05rem; font-weight:300;
-  color:rgba(255,255,255,0.6); line-height:1.78;
-  animation:up 0.6s 0.1s ease both;
-}
-.hero-cta {
+.hl-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; display:block; color:rgba(255,255,255,0.8); }
+.hl-body { margin-top:1.6rem; font-size:1rem; font-weight:300; color:rgba(255,255,255,0.75); line-height:1.78; max-width:400px; }
+.hl-cta {
   display:inline-flex; align-items:center; gap:0.5rem;
-  margin-top:2.5rem; background:var(--teal); color:var(--white);
-  padding:0.85rem 2rem; font-size:0.9rem; font-weight:700;
-  border-radius:9px; text-decoration:none;
-  transition:all 0.18s; animation:up 0.6s 0.15s ease both;
+  margin-top:2.2rem; background:var(--white); color:var(--teal);
+  padding:0.8rem 1.8rem; font-size:0.9rem; font-weight:700;
+  border-radius:9px; text-decoration:none; transition:all 0.18s;
+  width:fit-content;
 }
-.hero-cta:hover { background:var(--teal-h); transform:translateY(-2px); box-shadow:0 10px 28px rgba(10,148,136,0.35); }
+.hl-cta:hover { background:var(--teal-pale); transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,0.15); }
 
-/* FOUNDING TEAM CARD */
-.founding { padding:6rem 4.5rem; max-width:900px; margin:0 auto; }
-.founding-label { font-size:0.68rem; font-weight:700; color:var(--teal); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem; }
-.founding-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.6rem,2.8vw,2.3rem); font-weight:800; letter-spacing:-0.025em; line-height:1.15; color:var(--ink); margin-bottom:2.5rem; }
-.founding-card {
-  background:var(--off); border:1px solid var(--border);
-  border-radius:20px; padding:3rem;
-  display:grid; grid-template-columns:1fr 1fr; gap:3rem;
-  box-shadow:var(--shadow-md);
+.hero-right {
+  background:var(--off); padding:5.5rem 4rem 4rem;
+  display:flex; flex-direction:column; justify-content:center;
+  border-left:1px solid var(--border);
 }
-.fc-side { display:flex; flex-direction:column; gap:1.1rem; }
-.fc-role-badge {
-  display:inline-flex; align-items:center; gap:0.5rem;
-  background:var(--teal-pale); border:1px solid var(--teal-mid);
-  border-radius:100px; padding:0.3rem 0.85rem;
-  font-size:0.72rem; font-weight:600; color:var(--teal);
-  letter-spacing:0.04em; width:fit-content;
+.hr-label { font-size:0.68rem; font-weight:700; color:var(--teal); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1rem; }
+.hr-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.4rem,2.5vw,1.9rem); font-weight:800; letter-spacing:-0.02em; line-height:1.2; color:var(--ink); margin-bottom:2rem; }
+
+/* Three quick facts */
+.quick-facts { display:flex; flex-direction:column; gap:0.85rem; }
+.qf-item {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:12px; padding:1.1rem 1.3rem;
+  display:flex; align-items:flex-start; gap:0.9rem;
+  box-shadow:var(--shadow-sm); transition:transform 0.18s,border-color 0.18s;
 }
-.fc-role-title { font-size:1.1rem; font-weight:700; color:var(--ink); }
-.fc-desc { font-size:0.86rem; color:var(--ink3); line-height:1.7; }
-.fc-divider { height:1px; background:var(--border); margin:0.5rem 0; }
-.fc-side:last-child .fc-role-badge { background:var(--orange-pale); border-color:rgba(224,92,10,0.2); color:var(--orange); }
+.qf-item:hover { transform:translateX(4px); border-color:var(--teal-mid); }
+.qf-marker { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:0.32rem; }
+.qf-m-t { background:var(--teal); }
+.qf-m-o { background:var(--orange); }
+.qf-m-y { background:var(--yellow); }
+.qf-body { font-size:0.84rem; color:var(--ink3); line-height:1.6; }
+.qf-body strong { color:var(--ink2); font-weight:600; display:block; margin-bottom:0.12rem; }
 
 /* WHAT WE ARE BUILDING */
-.building-section {
-  background:var(--off); border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
+.building {
   padding:6rem 4.5rem;
+  max-width:1160px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;
 }
-.bs-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
-.bs-label { font-size:0.68rem; font-weight:700; color:var(--teal); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem; }
-.bs-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.6rem,2.8vw,2.3rem); font-weight:800; letter-spacing:-0.025em; line-height:1.15; color:var(--ink); }
-.bs-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; color:var(--teal); }
-.bs-body { margin-top:1.1rem; font-size:0.94rem; color:var(--ink3); line-height:1.78; }
+.sec-lbl { font-size:0.68rem; font-weight:700; color:var(--teal); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem; }
+.sec-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.6rem,2.8vw,2.3rem); font-weight:800; letter-spacing:-0.025em; line-height:1.15; color:var(--ink); }
+.sec-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; color:var(--teal); }
+.sec-body { margin-top:1.1rem; font-size:0.94rem; color:var(--ink3); line-height:1.78; }
 
-/* Open roles */
-.roles { display:flex; flex-direction:column; gap:1rem; }
-.role-card {
+/* Roles */
+.roles-stack { display:flex; flex-direction:column; gap:1rem; }
+.role {
   background:var(--white); border:1px solid var(--border);
-  border-radius:14px; padding:1.5rem 1.6rem;
+  border-radius:14px; padding:1.4rem 1.5rem;
   box-shadow:var(--shadow-sm);
   transition:transform 0.22s,box-shadow 0.22s,border-color 0.22s;
-  display:flex; align-items:flex-start; gap:1.1rem;
+  display:flex; gap:1.1rem; align-items:flex-start;
 }
-.role-card:hover { transform:translateX(5px); box-shadow:var(--shadow-md); border-color:var(--teal-mid); }
-.role-icon { width:38px; height:38px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
-.ri-t { background:var(--teal-pale); }
-.ri-o { background:var(--orange-pale); }
-.ri-y { background:var(--yellow-pale); }
-.role-icon svg { width:18px; height:18px; }
+.role:hover { transform:translateX(5px); box-shadow:var(--shadow-md); border-color:var(--teal-mid); }
+.role-dot-wrap { padding-top:0.18rem; }
+.role-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.rd-t { background:var(--teal); }
+.rd-o { background:var(--orange); }
+.rd-y { background:var(--yellow); }
+.rd-g { background:var(--ink4); }
+.role-content { flex:1; }
 .role-title { font-size:0.92rem; font-weight:700; color:var(--ink); margin-bottom:0.3rem; }
 .role-desc { font-size:0.81rem; color:var(--ink3); line-height:1.6; }
 .role-tag {
   display:inline-block; margin-top:0.5rem;
-  font-size:0.62rem; font-weight:700; padding:0.15rem 0.5rem;
+  font-size:0.61rem; font-weight:700; padding:0.14rem 0.5rem;
   border-radius:100px; letter-spacing:0.04em;
 }
-.rt-remote { background:var(--teal-pale); color:var(--teal); }
-.rt-jaipur { background:var(--orange-pale); color:var(--orange); }
-.rt-flexible { background:var(--yellow-pale); color:#8A6200; }
+.rt-t { background:var(--teal-pale); color:var(--teal); }
+.rt-o { background:var(--orange-pale); color:var(--orange); }
+.rt-y { background:var(--yellow-pale); color:#8A6200; }
+.rt-any { background:var(--off); color:var(--ink3); border:1px solid var(--border); }
 
 /* HOW WE WORK */
-.how-section { padding:6rem 4.5rem; max-width:1100px; margin:0 auto; }
-.how-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.6rem,2.8vw,2.3rem); font-weight:800; letter-spacing:-0.025em; line-height:1.15; color:var(--ink); margin-bottom:3rem; }
+.how-section {
+  background:var(--off); border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border); padding:6rem 4.5rem;
+}
+.how-inner { max-width:1100px; margin:0 auto; }
+.how-header { max-width:520px; margin-bottom:3.5rem; }
 .how-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
 .how-card {
   background:var(--white); border:1px solid var(--border);
-  border-radius:14px; padding:1.8rem; box-shadow:var(--shadow-sm);
-  transition:transform 0.22s,box-shadow 0.22s;
+  border-radius:16px; padding:2rem 1.8rem;
+  box-shadow:var(--shadow-sm); position:relative; overflow:hidden;
+  transition:transform 0.24s,box-shadow 0.24s;
 }
-.how-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
-.hc-marker { width:8px; height:8px; border-radius:50%; background:var(--teal); margin-bottom:0.9rem; }
-.hc-2 .hc-marker { background:var(--orange); }
-.hc-3 .hc-marker { background:var(--yellow); }
-.hc-title { font-size:0.96rem; font-weight:700; color:var(--ink); margin-bottom:0.55rem; }
-.hc-body { font-size:0.83rem; color:var(--ink3); line-height:1.66; }
+.how-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+.how-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; border-radius:16px 16px 0 0; }
+.hc-1::before { background:var(--teal); }
+.hc-2::before { background:var(--orange); }
+.hc-3::before { background:var(--yellow); }
+.hc-num { font-family:'Fraunces',serif; font-size:2.8rem; font-weight:700; line-height:1; margin-bottom:1rem; }
+.hc-1 .hc-num { color:var(--teal-mid); }
+.hc-2 .hc-num { color:rgba(224,92,10,0.2); }
+.hc-3 .hc-num { color:rgba(236,168,23,0.28); }
+.hc-title { font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.55rem; }
+.hc-body { font-size:0.83rem; color:var(--ink3); line-height:1.68; }
+
+/* NOT LOOKING FOR */
+.not-section { padding:6rem 4.5rem; max-width:1100px; margin:0 auto; }
+.not-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; margin-top:2.5rem; }
+.not-col { display:flex; flex-direction:column; gap:0.85rem; }
+.not-col-title {
+  font-size:0.78rem; font-weight:700; letter-spacing:0.08em;
+  text-transform:uppercase; margin-bottom:0.4rem;
+  padding-bottom:0.6rem; border-bottom:2px solid;
+}
+.nct-yes { color:var(--teal); border-color:var(--teal); }
+.nct-no  { color:var(--ink4); border-color:var(--border); }
+.not-item {
+  display:flex; align-items:flex-start; gap:0.7rem;
+  padding:0.85rem 1rem; border-radius:10px;
+  font-size:0.83rem; line-height:1.55;
+}
+.ni-yes { background:var(--teal-pale); color:var(--ink2); border:1px solid var(--teal-mid); }
+.ni-no  { background:var(--off); color:var(--ink3); border:1px solid var(--border); }
+.ni-icon { flex-shrink:0; font-size:0.9rem; margin-top:0.05rem; }
 
 /* HIRING CTA */
-.hiring-cta {
-  background:linear-gradient(165deg,var(--teal-pale) 0%,var(--white) 55%);
-  border-top:1px solid var(--teal-mid);
-  padding:6rem 4.5rem; text-align:center;
+.hiring-section {
+  background:var(--ink); padding:6rem 4.5rem; text-align:center;
 }
-.hc-inner { max-width:580px; margin:0 auto; }
-.hc-label { font-size:0.68rem; font-weight:700; color:var(--teal); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1rem; }
-.hc-title { font-family:'Fraunces',serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:300; font-style:italic; line-height:1.35; color:var(--ink); margin-bottom:1.2rem; }
-.hc-title strong { font-style:normal; font-weight:700; color:var(--teal); }
-.hc-body { font-size:0.94rem; color:var(--ink3); line-height:1.78; margin-bottom:2.2rem; }
-.hc-email-box {
-  display:inline-flex; align-items:center; gap:0.75rem;
-  background:var(--white); border:2px solid var(--teal-mid);
-  border-radius:12px; padding:1rem 1.5rem;
-  box-shadow:var(--shadow-md); margin-bottom:1rem;
+.hs-inner { max-width:640px; margin:0 auto; }
+.hs-tag {
+  display:inline-flex; align-items:center; gap:0.45rem;
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14);
+  border-radius:100px; padding:0.28rem 0.85rem;
+  font-size:0.7rem; font-weight:600; color:var(--teal-h);
+  letter-spacing:0.06em; text-transform:uppercase; margin-bottom:1.8rem;
 }
-.heb-label { font-size:0.72rem; font-weight:600; color:var(--ink4); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.2rem; }
-.heb-email { font-size:1.05rem; font-weight:700; color:var(--teal); letter-spacing:-0.01em; text-decoration:none; }
-.heb-email:hover { text-decoration:underline; }
-.hc-note { font-size:0.8rem; color:var(--ink4); line-height:1.6; }
+.hs-title {
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:300; font-style:italic; color:var(--white);
+  line-height:1.35; margin-bottom:1.4rem;
+}
+.hs-title strong { font-style:normal; font-weight:700; color:var(--teal-h); }
+.hs-body { font-size:0.96rem; color:rgba(255,255,255,0.55); line-height:1.78; margin-bottom:3rem; }
+
+/* Email card */
+.email-card {
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px; padding:2.5rem;
+  max-width:420px; margin:0 auto;
+}
+.ec-label { font-size:0.7rem; font-weight:700; color:rgba(255,255,255,0.38); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.6rem; }
+.ec-email {
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1.35rem; font-weight:700; color:var(--teal-h);
+  text-decoration:none; letter-spacing:-0.01em; display:block;
+  margin-bottom:1.2rem;
+  transition:color 0.18s;
+}
+.ec-email:hover { color:var(--white); }
+.ec-divider { height:1px; background:rgba(255,255,255,0.08); margin-bottom:1.2rem; }
+.ec-body { font-size:0.83rem; color:rgba(255,255,255,0.45); line-height:1.65; }
+.ec-btn {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  margin-top:1.5rem; background:var(--teal); color:var(--white);
+  padding:0.75rem 1.8rem; font-size:0.88rem; font-weight:700;
+  border-radius:9px; text-decoration:none; transition:all 0.18s;
+}
+.ec-btn:hover { background:var(--teal-h); box-shadow:0 8px 24px rgba(10,148,136,0.35); transform:translateY(-1px); }
+
+.hs-note { margin-top:1.5rem; font-size:0.78rem; color:rgba(255,255,255,0.28); line-height:1.6; }
 
 /* FOOTER */
-footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+footer { background:var(--ink); border-top:1px solid rgba(255,255,255,0.06); padding:2.2rem 4.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
 .ft-logo { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.05rem; font-weight:800; color:var(--white); text-decoration:none; }
 .ft-logo span { color:var(--teal-h); }
 .ft-links { display:flex; gap:1.8rem; list-style:none; }
@@ -183,20 +255,72 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
 .ft-links a:hover { color:var(--teal-h); }
 .ft-copy { font-size:0.72rem; color:rgba(255,255,255,0.28); }
 
-@keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-.reveal { opacity:0; transform:translateY(22px); transition:opacity 0.6s ease,transform 0.6s ease; }
-.reveal.in { opacity:1; transform:translateY(0); }
-.rd1 { transition-delay:0.08s; } .rd2 { transition-delay:0.16s; }
-
 @media (max-width:960px) {
   nav { padding:0 1.5rem; } .nav-links { display:none; }
-  .hero { padding:4.5rem 1.5rem 4rem; }
-  .founding { padding:4rem 1.5rem; } .founding-card { grid-template-columns:1fr; gap:2rem; padding:2rem; }
-  .building-section { padding:4rem 1.5rem; } .bs-inner { grid-template-columns:1fr; gap:2.5rem; }
+  .hero { grid-template-columns:1fr; min-height:auto; }
+  .hero-right { border-left:none; border-top:1px solid var(--border); padding:3.5rem 1.5rem; }
+  .hero-left { padding:4rem 1.5rem; }
+  .building { grid-template-columns:1fr; gap:2.5rem; padding:4rem 1.5rem; }
   .how-section { padding:4rem 1.5rem; } .how-grid { grid-template-columns:1fr; }
-  .hiring-cta { padding:4rem 1.5rem; }
+  .not-section { padding:4rem 1.5rem; } .not-grid { grid-template-columns:1fr; }
+  .hiring-section { padding:4rem 1.5rem; }
   footer { padding:2rem 1.5rem; flex-direction:column; align-items:flex-start; gap:1rem; }
 }
+
+/* Mobile nav */
+.nav-mobile-btn {
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; cursor:pointer; padding:4px;
+}
+.nav-mobile-btn span {
+  display:block; width:22px; height:2px;
+  background:var(--ink); border-radius:2px;
+  transition:all 0.2s;
+}
+.mobile-nav-open .nmb-1 { transform:rotate(45deg) translate(5px,5px); }
+.mobile-nav-open .nmb-2 { opacity:0; }
+.mobile-nav-open .nmb-3 { transform:rotate(-45deg) translate(5px,-5px); }
+.mobile-menu {
+  display:none; position:fixed; top:62px; left:0; right:0;
+  background:rgba(255,255,255,0.98); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:1rem 1.5rem 1.5rem; z-index:199;
+  flex-direction:column; gap:0;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  display:block; padding:0.75rem 0;
+  font-size:0.95rem; font-weight:500; color:var(--ink2);
+  text-decoration:none; border-bottom:1px solid var(--border);
+  transition:color 0.15s;
+}
+.mobile-menu a:last-child { border-bottom:none; }
+.mobile-menu a:hover { color:var(--teal); }
+.mobile-menu a.active { color:var(--teal); font-weight:600; }
+@media (max-width:960px) {
+  .nav-mobile-btn { display:flex; }
+}
+
+
+@media (max-width:480px) {
+  .hero-wrap, .about-hero { padding:3rem 1.2rem 2.5rem; }
+  .stats { grid-template-columns:1fr 1fr; padding:2rem 1.2rem; }
+  .stat-n { font-size:1.7rem; }
+  .pricing-grid, .how-grid, .diff-grid, .moat-cards,
+  .pillars-grid, .founders-grid, .values-grid,
+  .not-grid, .ct-grid { grid-template-columns:1fr !important; }
+  .field-row { grid-template-columns:1fr !important; }
+  .ph-title { font-size:1.9rem; }
+  .page-header { padding:2.5rem 1.2rem 2rem; }
+  .comp-table { min-width:600px; font-size:0.74rem; }
+  .comp-table th, .comp-table td { padding:0.65rem 0.6rem; }
+  .ps-inner, .pp-inner { grid-template-columns:1fr; gap:2rem; padding:3rem 1.2rem; }
+  footer { padding:1.8rem 1.2rem; }
+  nav { padding:0 1.2rem; }
+  .email-card { padding:1.8rem 1.2rem; }
+  .ec-email { font-size:1rem; }
+}
+
 </style>
 </head>
 <body>
@@ -219,98 +343,100 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
     <li><a href="technology.html">Technology</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="team.html" class="active">Team</a></li>
   </ul>
   <div class="nav-spacer"></div>
-  <a href="contact.html" class="nav-ghost">Get in Touch</a>
-  <a href="mailto:hiring@stashkart.com" class="nav-cta">Join Staash</a>
+  <a href="contact.html" class="nav-ghost">Contact Us</a>
+  <a href="mailto&#58;hiring&#64;stashkart&#46;com" class="nav-cta">Join Staash</a>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — split layout, warm and direct -->
 <div class="hero">
-  <div class="hero-inner">
-    <div class="hero-tag"><span class="tag-dot"></span>Careers at Staash</div>
-    <h1 class="hero-title">
-      We are building<br>
-      <em>the team next.</em>
-    </h1>
-    <p class="hero-body">
-      Staash is a small founding team with a large problem to solve. We are looking for people who want to build something genuinely new in Indian retail &mdash; not just work at a startup.
-    </p>
-    <a href="mailto:hiring@stashkart.com" class="hero-cta">
-      Write to us &rarr;
-    </a>
+  <div class="hero-left">
+    <div class="hl-inner">
+      <div class="hl-tag"><span class="hl-tag-dot"></span>We are hiring</div>
+      <h1 class="hl-title">
+        Good people.<br>
+        Real work.<br>
+        <em>Indian retail.</em>
+      </h1>
+      <p class="hl-body">
+        Staash is a small team building something that has never been built for this market before. We are not looking for people to fill seats. We are looking for people who want to own something.
+      </p>
+      <a href="mailto&#58;hiring&#64;stashkart&#46;com" class="hl-cta">
+        Write to us &rarr;
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hr-label">Before you write to us</div>
+    <div class="hr-title">A few things worth knowing about Staash.</div>
+    <div class="quick-facts">
+      <div class="qf-item">
+        <span class="qf-marker qf-m-t"></span>
+        <div class="qf-body"><strong>We are early</strong>Staash was founded in December 2024. You would be among the first people building this. That means real ownership over your domain and real impact on what we become.</div>
+      </div>
+      <div class="qf-item">
+        <span class="qf-marker qf-m-o"></span>
+        <div class="qf-body"><strong>We are based in Jaipur</strong>We build closest to the stores we serve. Some roles require being here. Others do not. We will tell you clearly which is which.</div>
+      </div>
+      <div class="qf-item">
+        <span class="qf-marker qf-m-y"></span>
+        <div class="qf-body"><strong>We do not have a hierarchy yet</strong>We are building our organisation around what people do, not what title they hold. If that way of working appeals to you, we would like to meet you.</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- FOUNDING TEAM -->
-<div class="founding reveal">
-  <div class="founding-label">Who built Staash</div>
-  <div class="founding-title">Started by two engineers from Jaipur.</div>
-  <div class="founding-card">
-    <div class="fc-side">
-      <div class="fc-role-badge">Co-Founder</div>
-      <div class="fc-role-title">Product &amp; Engineering</div>
-      <div class="fc-divider"></div>
-      <p class="fc-desc">A data engineer and AI systems thinker who leads everything we build &mdash; from product architecture to the AI layer that powers Staash&rsquo;s loss prevention. Background in mathematics, data infrastructure, and applied AI.</p>
-    </div>
-    <div class="fc-side">
-      <div class="fc-role-badge">Co-Founder</div>
-      <div class="fc-role-title">Operations &amp; Growth</div>
-      <div class="fc-divider"></div>
-      <p class="fc-desc">An enterprise systems engineer who leads how Staash reaches the market, how stores are onboarded, and how the business scales without losing what makes it work. Background in IBM i systems and enterprise operations.</p>
-    </div>
+<!-- WHAT WE ARE BUILDING -->
+<div class="building">
+  <div>
+    <div class="sec-lbl">What We Need Built</div>
+    <div class="sec-title">Specific gaps we are actively trying to fill.</div>
+    <p class="sec-body">We are not hiring broadly. We have specific things that need to be built and specific gaps we are trying to fill. If you read the list on the right and feel like one of those is yours, that is the right starting point for a conversation.</p>
+    <p class="sec-body" style="margin-top:0.9rem">We do not require formal CVs. We do want to understand what you have built, what problems you find interesting, and why Indian retail is something you would choose to work on.</p>
   </div>
-</div>
 
-<!-- BUILDING THE TEAM -->
-<div class="building-section">
-  <div class="bs-inner">
-    <div class="reveal">
-      <div class="bs-label">Open Positions</div>
-      <div class="bs-title">We are actively looking for <em>our first hires.</em></div>
-      <p class="bs-body">We are not hiring to fill org-chart boxes. We are hiring because there are specific things we need built and people we need on the ground. If you see yourself in any of these, write to us at <a href="mailto:hiring@stashkart.com" style="color:var(--teal);font-weight:600;text-decoration:none">hiring@stashkart.com</a>.</p>
-      <p class="bs-body" style="margin-top:0.9rem">We do not care about your years of experience. We care about what you have built, what you understand, and whether you are the kind of person who would lose sleep over a problem until it is solved.</p>
+  <div class="roles-stack">
+    <div class="role">
+      <div class="role-dot-wrap"><span class="role-dot rd-t"></span></div>
+      <div class="role-content">
+        <div class="role-title">Mobile Developer — Flutter</div>
+        <p class="role-desc">The Staash customer app and store dashboard are yours to own. Barcode scanning, real-time cart sync, QR checkout flows, and the staff-facing interface all live here.</p>
+        <span class="role-tag rt-t">Remote-friendly</span>
+      </div>
     </div>
-    <div class="roles reveal rd1">
-      <div class="role-card">
-        <div class="role-icon ri-t">
-          <svg viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="11" rx="2" stroke="var(--teal)" stroke-width="1.4"/><path d="M6 7h6M6 10h4" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <div class="role-title">Flutter Mobile Developer</div>
-          <p class="role-desc">Build the Staash customer app and store dashboard. You will own the mobile experience end-to-end &mdash; from barcode scanning flows to real-time cart sync.</p>
-          <span class="role-tag rt-remote">Remote-friendly</span>
-        </div>
+    <div class="role">
+      <div class="role-dot-wrap"><span class="role-dot rd-o"></span></div>
+      <div class="role-content">
+        <div class="role-title">AI &amp; Computer Vision</div>
+        <p class="role-desc">Our intelligence layer powers loss prevention in real Indian stores. You will work with real footage, real constraints, and systems that run at the edge — not in a research notebook.</p>
+        <span class="role-tag rt-o">Jaipur preferred</span>
       </div>
-      <div class="role-card">
-        <div class="role-icon ri-o">
-          <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="3" stroke="var(--orange)" stroke-width="1.4"/><path d="M9 2v2M9 14v2M2 9h2M14 9h2M4.2 4.2l1.4 1.4M12.4 12.4l1.4 1.4M4.2 13.8l1.4-1.4M12.4 5.6l1.4-1.4" stroke="var(--orange)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <div class="role-title">AI &amp; Computer Vision Engineer</div>
-          <p class="role-desc">Work on the intelligence layer that powers loss prevention. You will be working with real store footage, real constraints, and building systems that run at the edge.</p>
-          <span class="role-tag rt-jaipur">Jaipur preferred</span>
-        </div>
+    </div>
+    <div class="role">
+      <div class="role-dot-wrap"><span class="role-dot rd-t"></span></div>
+      <div class="role-content">
+        <div class="role-title">Backend &amp; Infrastructure</div>
+        <p class="role-desc">The systems connecting the customer app, store dashboard, payments, and AI layer. Real-time reliability and clean architecture matter more than moving fast and breaking things here.</p>
+        <span class="role-tag rt-t">Remote-friendly</span>
       </div>
-      <div class="role-card">
-        <div class="role-icon ri-t">
-          <svg viewBox="0 0 18 18" fill="none"><path d="M3 5h12M3 9h8M3 13h5" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <div class="role-title">Backend &amp; Infrastructure Engineer</div>
-          <p class="role-desc">Design and build the systems that connect the customer app, store dashboard, payments, and AI layer. Real-time sync, reliability, and scalability are what you will own.</p>
-          <span class="role-tag rt-remote">Remote-friendly</span>
-        </div>
+    </div>
+    <div class="role">
+      <div class="role-dot-wrap"><span class="role-dot rd-y"></span></div>
+      <div class="role-content">
+        <div class="role-title">Store Onboarding &amp; Operations</div>
+        <p class="role-desc">The person who walks into stores in Jaipur, helps owners get set up, listens to what is working and what is not, and brings that back to the team. Hindi fluency and local knowledge are essential.</p>
+        <span class="role-tag rt-o">Jaipur-based</span>
       </div>
-      <div class="role-card">
-        <div class="role-icon ri-y">
-          <svg viewBox="0 0 18 18" fill="none"><path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7z" stroke="var(--yellow)" stroke-width="1.4"/><path d="M6 9l2 2 4-4" stroke="var(--yellow)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div>
-          <div class="role-title">Store Operations Associate</div>
-          <p class="role-desc">Help us onboard pilot stores in Jaipur, support store owners through setup, gather feedback, and be the face of Staash on the ground. Hindi and local market knowledge essential.</p>
-          <span class="role-tag rt-jaipur">Jaipur-based</span>
-        </div>
+    </div>
+    <div class="role">
+      <div class="role-dot-wrap"><span class="role-dot rd-g"></span></div>
+      <div class="role-content">
+        <div class="role-title">Something We Have Not Listed</div>
+        <p class="role-desc">If you have a skill that is relevant to what Staash is building and you do not see it above, write to us anyway. The best hires are often people we did not know we needed until we met them.</p>
+        <span class="role-tag rt-any">Open</span>
       </div>
     </div>
   </div>
@@ -318,61 +444,69 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
 
 <!-- HOW WE WORK -->
 <div class="how-section">
-  <div class="how-title reveal">How we work at Staash.</div>
-  <div class="how-grid">
-    <div class="how-card hc-1 reveal">
-      <div class="hc-marker"></div>
-      <div class="hc-title">Roles over titles</div>
-      <p class="hc-body">We are building our organisation around what people actually do. When you join Staash, your role is defined by your domain and your contribution &mdash; not where you sit on a hierarchy chart.</p>
+  <div class="how-inner">
+    <div class="how-header">
+      <div class="sec-lbl">How We Work</div>
+      <div class="sec-title">What working at Staash actually looks like.</div>
     </div>
-    <div class="how-card hc-2 reveal rd1">
-      <div class="hc-marker"></div>
-      <div class="hc-title">Ownership over instruction</div>
-      <p class="hc-body">Every person who works on Staash owns their domain. We expect you to understand the problem, make decisions, and tell us when the approach needs to change &mdash; not wait to be told what to do.</p>
+    <div class="how-grid">
+      <div class="how-card hc-1">
+        <div class="hc-num">01</div>
+        <div class="hc-title">You own your domain</div>
+        <p class="hc-body">Every person who joins Staash owns something end-to-end. We do not divide work into small tickets and ask people to execute them. You understand the problem in your area, you make decisions, and you are accountable for outcomes.</p>
+      </div>
+      <div class="how-card hc-2">
+        <div class="hc-num">02</div>
+        <div class="hc-title">No title, no waiting room</div>
+        <p class="hc-body">We are building our organisation around what people do, not what a hierarchy chart says about them. There are no senior gatekeepers between you and the decision. If it is your domain, it is your call to make.</p>
+      </div>
+      <div class="how-card hc-3">
+        <div class="hc-num">03</div>
+        <div class="hc-title">Close to the problem</div>
+        <p class="hc-body">We work near the stores we serve. The best decisions come from the shortest distance to the actual problem. You will speak to store owners, see how the product performs in real conditions, and use that to make the next version better.</p>
+      </div>
     </div>
-    <div class="how-card hc-3 reveal rd2">
-      <div class="hc-marker"></div>
-      <div class="hc-title">Proximity to the problem</div>
-      <p class="hc-body">We work closest to the stores and store owners we serve. That proximity is not a phase of the company &mdash; it is a permanent principle. The best decisions come from the shortest distance to the actual problem.</p>
+  </div>
+</div>
+
+<!-- WHAT WE ARE AND ARE NOT LOOKING FOR -->
+<div class="not-section">
+  <div class="sec-lbl">What We Look For</div>
+  <div class="sec-title">Be honest with yourself before writing to us.</div>
+  <div class="not-grid">
+    <div class="not-col">
+      <div class="not-col-title nct-yes">What we are looking for</div>
+      <div class="not-item ni-yes"><span class="ni-icon">&#10003;</span>People who have built something and can talk about the decisions they made</div>
+      <div class="not-item ni-yes"><span class="ni-icon">&#10003;</span>Curiosity about the problem, not just the technology</div>
+      <div class="not-item ni-yes"><span class="ni-icon">&#10003;</span>Comfort with ambiguity and early-stage conditions</div>
+      <div class="not-item ni-yes"><span class="ni-icon">&#10003;</span>People who would shop at the stores we are building for</div>
+      <div class="not-item ni-yes"><span class="ni-icon">&#10003;</span>Directness &mdash; we would rather hear a hard opinion than polite agreement</div>
+    </div>
+    <div class="not-col">
+      <div class="not-col-title nct-no">What will not work here</div>
+      <div class="not-item ni-no"><span class="ni-icon">&mdash;</span>Waiting to be told what to do before starting</div>
+      <div class="not-item ni-no"><span class="ni-icon">&mdash;</span>Treating this like a resume line rather than a problem to solve</div>
+      <div class="not-item ni-no"><span class="ni-icon">&mdash;</span>Needing a large team and established process to do your best work</div>
+      <div class="not-item ni-no"><span class="ni-icon">&mdash;</span>Optimising for stability over impact at this stage</div>
     </div>
   </div>
 </div>
 
 <!-- HIRING CTA -->
-<div class="hiring-cta reveal">
-  <div class="hc-inner">
-    <div class="hc-label">Join Us</div>
-    <div class="hc-title">
-      If this sounds like the kind of work <strong>you want to do,</strong> we want to hear from you.
+<div class="hiring-section">
+  <div class="hs-inner">
+    <div class="hs-tag">Get in Touch</div>
+    <div class="hs-title">
+      Interested? <strong>Just write to us.</strong><br>No long forms. No process.
     </div>
-    <p class="hc-body">We do not have a lengthy application process. Write us a short email about who you are, what you have built, and why Indian retail is a problem you want to work on. That is it.</p>
-    <div class="hc-email-box">
-      <svg width="22" height="22" viewBox="0 0 18 18" fill="none"><path d="M2 4h14v10a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" stroke="var(--teal)" stroke-width="1.4"/><path d="M2 4l7 6 7-6" stroke="var(--teal)" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <div>
-        <div class="heb-label">Send your note to</div>
-        <a class="heb-email" href="mailto:hiring@stashkart.com">hiring@stashkart.com</a>
+    <p class="hs-body">Send a short email introducing yourself, tell us what you have built, and say why you want to work on Indian retail. That is all we need to start a conversation.</p>
+
+    <div class="email-card">
+      <div class="ec-label">Write to</div>
+      <a class="ec-email" href="mailto&#58;hiring&#64;stashkart&#46;com">hiring&#64;stashkart&#46;com</a>
+      <div class="ec-divider"></div>
+      <div class="ec-body">
+        Include a short note about who you are, what you have built, and what role or area you are interested in. Attach a CV or portfolio if you have one &mdash; but a well-written email is more useful to us than a formatted document with no personality.
       </div>
-    </div>
-    <p class="hc-note">We read every email. If there is a fit, we will arrange a conversation with the founding team directly.</p>
-  </div>
-</div>
-
-<footer>
-  <a href="index.html" class="ft-logo">Staa<span>sh</span></a>
-  <ul class="ft-links">
-    <li><a href="product.html">Product</a></li>
-    <li><a href="technology.html">Technology</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <span class="ft-copy">&copy; 2025 Staashkart Ariscates LLP &middot; Jaipur, India</span>
-</footer>
-
-<script>
-const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
-}, { threshold: 0.06 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-</script>
-</body>
-</html>
+      <a class="ec-btn" href="mailto&#58;hiring&#64;stashkart&#46;com?subject=I want to build Staash with you">
+        Open e

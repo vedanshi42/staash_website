@@ -559,7 +559,7 @@ footer {
 
 /* ─── ANIMATIONS ──────────────────────── */
 @keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal { opacity:1; transform:translateY(0); transition:opacity 0.6s ease,transform 0.6s ease; }
 .reveal.in { opacity: 1; transform: translateY(0); }
 .rd1 { transition-delay: 0.08s; }
 .rd2 { transition-delay: 0.16s; }
@@ -582,6 +582,61 @@ footer {
   .cta-wrap { padding: 4rem 1.5rem; }
   footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
+
+/* Mobile nav */
+.nav-mobile-btn {
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; cursor:pointer; padding:4px;
+}
+.nav-mobile-btn span {
+  display:block; width:22px; height:2px;
+  background:var(--ink); border-radius:2px;
+  transition:all 0.2s;
+}
+.mobile-nav-open .nmb-1 { transform:rotate(45deg) translate(5px,5px); }
+.mobile-nav-open .nmb-2 { opacity:0; }
+.mobile-nav-open .nmb-3 { transform:rotate(-45deg) translate(5px,-5px); }
+.mobile-menu {
+  display:none; position:fixed; top:62px; left:0; right:0;
+  background:rgba(255,255,255,0.98); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:1rem 1.5rem 1.5rem; z-index:199;
+  flex-direction:column; gap:0;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  display:block; padding:0.75rem 0;
+  font-size:0.95rem; font-weight:500; color:var(--ink2);
+  text-decoration:none; border-bottom:1px solid var(--border);
+  transition:color 0.15s;
+}
+.mobile-menu a:last-child { border-bottom:none; }
+.mobile-menu a:hover { color:var(--teal); }
+.mobile-menu a.active { color:var(--teal); font-weight:600; }
+@media (max-width:960px) {
+  .nav-mobile-btn { display:flex; }
+}
+
+
+@media (max-width:480px) {
+  .hero-wrap, .about-hero { padding:3rem 1.2rem 2.5rem; }
+  .stats { grid-template-columns:1fr 1fr; padding:2rem 1.2rem; }
+  .stat-n { font-size:1.7rem; }
+  .pricing-grid, .how-grid, .diff-grid, .moat-cards,
+  .pillars-grid, .founders-grid, .values-grid,
+  .not-grid, .ct-grid { grid-template-columns:1fr !important; }
+  .field-row { grid-template-columns:1fr !important; }
+  .ph-title { font-size:1.9rem; }
+  .page-header { padding:2.5rem 1.2rem 2rem; }
+  .comp-table { min-width:600px; font-size:0.74rem; }
+  .comp-table th, .comp-table td { padding:0.65rem 0.6rem; }
+  .ps-inner, .pp-inner { grid-template-columns:1fr; gap:2rem; padding:3rem 1.2rem; }
+  footer { padding:1.8rem 1.2rem; }
+  nav { padding:0 1.2rem; }
+  .email-card { padding:1.8rem 1.2rem; }
+  .ec-email { font-size:1rem; }
+}
+
 </style>
 </head>
 <body>
@@ -949,7 +1004,7 @@ footer {
       <a href="about.html" class="btn-line">Meet the Team</a>
     </div>
     <p class="cta-contact">
-      <a href="/cdn-cgi/l/email-protection#7a090e1b1b091254111b080e3a1d171b131654191517"><span class="__cf_email__" data-cfemail="f586819494869ddb9e948781b59298949c99db969a98">[email&#160;protected]</span></a>
+      <a href="mailto&#58;contact&#64;stashkart&#46;com">contact&#64;stashkart&#46;com</a>
 
       &nbsp;&middot;&nbsp; Jaipur, Rajasthan
     </p>
@@ -968,15 +1023,28 @@ footer {
   <span class="ft-copy">&copy; 2025 Staashkart Ariscates LLP &middot; Jaipur, India</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+
+function toggleMobileNav() {
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.getElementById('nav-mobile-btn');
+  var nav = document.querySelector('nav');
+  menu.classList.toggle('open');
+  nav.classList.toggle('mobile-nav-open');
+}
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.getElementById('nav-mobile-btn');
+  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.classList.remove('open');
+    document.querySelector('nav').classList.remove('mobile-nav-open');
+  }
+});
+
 function count(id, to, dur) {
   const el = document.getElementById(id); if (!el) return;
   let s = 0, step = to / ((dur || 2000) / 16);
   const t = setInterval(() => { s = Math.min(s + step, to); el.textContent = Math.floor(s); if (s >= to) clearInterval(t); }, 16);
 }
 const so = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { count('c1',40); count('c2',4); count('c3',48); count('c4',15); so.disconnect(); } });
-}, { threshold: 0.3 });
-const sb = document.querySelector('.stats'); if (sb) so.observe(sb);
-
-const ro = new IntersectionObs
+  entries.
