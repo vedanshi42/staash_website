@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — Staash</title>
+<meta name="description" content="See how Staash transforms the retail experience for store owners and shoppers alike — frictionless checkout, real-time operations, and intelligent loss prevention.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal:#0A9488; --teal-h:#0BB5A7; --teal-pale:#EAF6F5; --teal-mid:#A8DDD9;
+  --orange:#E05C0A; --orange-h:#F06820; --orange-pale:#FEF1E8;
+  --yellow:#ECA817; --yellow-pale:#FEF8E7;
+  --white:#FFFFFF; --off:#F8F9FB; --off2:#F1F4F7;
+  --ink:#0E1B29; --ink2:#253547; --ink3:#576B80; --ink4:#90A3B4;
+  --border:#E0E8EF; --border2:#C4D2DE;
+  --shadow-sm:0 1px 3px rgba(14,27,41,0.06),0 1px 2px rgba(14,27,41,0.04);
+  --shadow-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
+  --shadow-lg:0 16px 48px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
+}
+html { scroll-behavior: smooth; }
+body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+
+/* NAV */
+nav { position:sticky; top:0; z-index:200; height:62px; background:rgba(255,255,255,0.97); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 4.5rem; gap:2rem; }
+.nav-logo { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.3rem; font-weight:800; color:var(--ink); text-decoration:none; letter-spacing:-0.02em; display:flex; align-items:center; gap:0.55rem; flex-shrink:0; }
+.logo-sq { width:30px; height:30px; border-radius:8px; background:var(--teal); display:flex; align-items:center; justify-content:center; }
+.logo-sq svg { width:16px; height:16px; }
+.nav-links { display:flex; list-style:none; margin-left:1rem; }
+.nav-links a { display:block; padding:0 1rem; font-size:0.83rem; font-weight:500; color:var(--ink3); text-decoration:none; line-height:62px; transition:color 0.15s; white-space:nowrap; }
+.nav-links a:hover { color:var(--teal); }
+.nav-links a.active { color:var(--teal); font-weight:600; }
+.nav-spacer { flex:1; }
+.nav-ghost { font-size:0.83rem; font-weight:500; color:var(--ink2); text-decoration:none; padding:0.42rem 0.9rem; border-radius:6px; transition:background 0.15s; white-space:nowrap; }
+.nav-ghost:hover { background:var(--off); }
+.nav-cta { background:var(--teal); color:var(--white); padding:0.46rem 1.15rem; font-size:0.83rem; font-weight:600; border:none; border-radius:7px; text-decoration:none; white-space:nowrap; transition:background 0.15s,box-shadow 0.15s,transform 0.15s; }
+.nav-cta:hover { background:var(--teal-h); box-shadow:0 4px 14px rgba(10,148,136,0.3); transform:translateY(-1px); }
+
+/* PAGE HEADER */
+.page-header { background:linear-gradient(165deg,var(--teal-pale) 0%,var(--white) 60%); border-bottom:1px solid var(--teal-mid); padding:5rem 4.5rem 4.5rem; text-align:center; }
+.ph-inner { max-width:640px; margin:0 auto; }
+.pg-lbl { display:inline-flex; align-items:center; gap:0.45rem; background:var(--white); border:1px solid var(--teal-mid); border-radius:100px; padding:0.28rem 0.85rem; font-size:0.7rem; font-weight:600; color:var(--teal); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:1.6rem; animation:up 0.5s ease both; }
+.pg-lbl-dot { width:5px; height:5px; border-radius:50%; background:var(--teal); animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.ph-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(2.2rem,4vw,3.2rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; color:var(--ink); animation:up 0.55s 0.05s ease both; }
+.ph-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; color:var(--teal); }
+.ph-sub { margin-top:1.2rem; font-size:1rem; color:var(--ink3); line-height:1.75; margin-inline:auto; max-width:520px; animation:up 0.55s 0.1s ease both; }
+
+/* TABS */
+.tabs-nav { background:var(--white); border-bottom:1px solid var(--border); padding:0 4.5rem; display:flex; gap:0; position:sticky; top:62px; z-index:100; overflow-x:auto; }
+.tab-btn { padding:1rem 1.4rem; font-size:0.83rem; font-weight:500; color:var(--ink3); background:none; border:none; cursor:pointer; position:relative; transition:color 0.18s; white-space:nowrap; font-family:'Plus Jakarta Sans',sans-serif; }
+.tab-btn::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--teal); transform:scaleX(0); transition:transform 0.2s; }
+.tab-btn:hover { color:var(--teal); }
+.tab-btn.active { color:var(--teal); font-weight:600; }
+.tab-btn.active::after { transform:scaleX(1); }
+
+/* SECTION COMMONS */
+.sec-lbl { font-size:0.68rem; font-weight:700; color:var(--teal); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.8rem; }
+.sec-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.6rem,2.8vw,2.3rem); font-weight:800; letter-spacing:-0.025em; line-height:1.15; color:var(--ink); }
+.sec-title em { font-family:'Fraunces',serif; font-style:italic; font-weight:300; color:var(--teal); }
+.sec-body { margin-top:1.1rem; font-size:0.94rem; color:var(--ink3); line-height:1.78; }
+
+/* SECTION 1 — JOURNEY */
+.journey { padding:6rem 4.5rem; max-width:1160px; margin:0 auto; }
+.journey-header { max-width:580px; margin-bottom:4rem; }
+.journey-steps { display:flex; flex-direction:column; }
+.jstep { display:grid; grid-template-columns:72px 1fr 1fr; gap:2.5rem; align-items:center; padding:2.5rem 1.5rem; border-bottom:1px solid var(--border); border-radius:12px; transition:background 0.18s; }
+.jstep:last-child { border-bottom:none; }
+.jstep:hover { background:var(--off); }
+.jstep-num { font-family:'Fraunces',serif; font-size:2.8rem; font-weight:700; line-height:1; color:var(--teal-mid); }
+.js-o .jstep-num { color:rgba(224,92,10,0.22); }
+.jstep-title { font-size:1.05rem; font-weight:700; color:var(--ink); margin-bottom:0.45rem; }
+.jstep-body { font-size:0.87rem; color:var(--ink3); line-height:1.7; }
+.jstep-detail { background:var(--off); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; }
+.jd-label { font-size:0.68rem; font-weight:700; color:var(--ink4); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.55rem; }
+.jd-list { list-style:none; display:flex; flex-direction:column; gap:0.38rem; }
+.jd-list li { font-size:0.79rem; color:var(--ink3); display:flex; align-items:center; gap:0.5rem; }
+.jd-list li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+.js-o .jd-list li::before { background:var(--orange); }
+
+/* SECTION 2 — OPERATIONS */
+.ops-section { background:var(--off); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:6rem 4.5rem; }
+.ops-inner { max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.ops-features { margin-top:2rem; display:flex; flex-direction:column; gap:1rem; }
+.ops-feat { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:1.3rem 1.4rem; display:flex; align-items:flex-start; gap:1rem; box-shadow:var(--shadow-sm); transition:box-shadow 0.2s,transform 0.2s; }
+.ops-feat:hover { box-shadow:var(--shadow-md); transform:translateX(4px); }
+.ops-icon { width:36px; height:36px; border-radius:9px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.oi-t { background:var(--teal-pale); }
+.oi-o { background:var(--orange-pale); }
+.oi-y { background:var(--yellow-pale); }
+.ops-icon svg { width:17px; height:17px; }
+.of-title { font-size:0.9rem; font-weight:700; color:var(--ink); margin-bottom:0.28rem; }
+.of-body { font-size:0.81rem; color:var(--ink3); line-height:1.6; }
+
+/* Dashboard mockup */
+.dash-panel { background:var(--white); border:1px solid var(--border); border-radius:18px; box-shadow:var(--shadow-lg); overflow:hidden; }
+.dp-head { background:var(--off); border-bottom:1px solid var(--border); padding:0.85rem 1.2rem; display:flex; align-items:center; justify-content:space-between; }
+.dp-title { font-size:0.76rem; font-weight:600; color:var(--ink3); }
+.dp-live { display:flex; align-items:center; gap:0.38rem; font-size:0.67rem; font-weight:600; color:var(--teal); }
+.dp-dot { width:6px; height:6px; border-radius:50%; background:var(--teal); animation:blink 1.4s ease-in-out infinite; }
+.dp-body { padding:1.2rem; display:flex; flex-direction:column; gap:0.9rem; }
+.dp-kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:0.7rem; }
+.dp-kpi { background:var(--off); border:1px solid var(--border); border-radius:9px; padding:0.9rem; }
+.dpk-val { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.4rem; font-weight:800; line-height:1; }
+.dpk-lbl { font-size:0.63rem; color:var(--ink4); font-weight:500; margin-top:0.25rem; }
+.dpk-tag { display:inline-block; margin-top:0.4rem; font-size:0.59rem; font-weight:600; padding:0.12rem 0.4rem; border-radius:100px; }
+.dt-t { background:var(--teal-pale); color:var(--teal); }
+.dt-o { background:var(--orange-pale); color:var(--orange); }
+.dt-y { background:var(--yellow-pale); color:#8A6200; }
+
+/* Mini bar chart */
+.dp-chart { background:var(--off); border:1px solid var(--border); border-radius:9px; padding:0.9rem; }
+.dpc-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.7rem; }
+.dpc-title { font-size:0.7rem; font-weight:600; color:var(--ink3); }
+.dpc-val { font-size:0.88rem; font-weight:800; color:var(--teal); }
+.dpc-bars { display:flex; align-items:flex-end; gap:3px; height:44px; }
+.dpc-bar { flex:1; border-radius:3px 3px 0 0; background:var(--teal-mid); }
+.dpc-bar.hi { background:var(--teal); }
+.dpc-days { display:flex; gap:3px; margin-top:4px; }
+.dpc-day { flex:1; font-size:0.58rem; color:var(--ink4); text-align:center; }
+.dpc-day.hi { color:var(--teal); font-weight:700; }
+
+/* Alert feed */
+.dp-alerts { display:flex; flex-direction:column; gap:0.55rem; }
+.dp-alert { display:flex; align-items:center; gap:0.7rem; background:var(--off); border:1px solid var(--border); border-radius:8px; padding:0.65rem 0.9rem; }
+.dpa-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.dot-t { background:var(--teal); }
+.dot-o { background:var(--orange); }
+.dot-y { background:var(--yellow); }
+.dpa-text { flex:1; font-size:0.72rem; color:var(--ink2); line-height:1.4; }
+.dpa-time { font-size:0.63rem; color:var(--ink4); white-space:nowrap; }
+
+/* SECTION 3 — LOSS PREVENTION */
+.loss-section { padding:6rem 4.5rem; max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.lp-stats { margin-top:2rem; display:flex; flex-direction:column; gap:0.9rem; }
+.lp-stat { background:var(--off); border:1px solid var(--border); border-left:4px solid var(--orange); border-radius:10px; padding:1.1rem 1.3rem; display:flex; align-items:center; gap:1.1rem; transition:transform 0.18s; }
+.lp-stat:hover { transform:translateX(5px); }
+.lps-val { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.5rem; font-weight:800; color:var(--orange); min-width:72px; }
+.lps-lbl { font-size:0.81rem; color:var(--ink3); line-height:1.4; }
+.lp-outcomes { margin-top:2rem; }
+.lpo-title { font-size:0.88rem; font-weight:700; color:var(--ink); margin-bottom:0.9rem; }
+.lpo-list { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+.lpo-list li { display:flex; align-items:flex-start; gap:0.6rem; font-size:0.84rem; color:var(--ink3); line-height:1.55; }
+.lpo-list li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--teal); margin-top:0.4rem; flex-shrink:0; }
+
+/* Monitor visual */
+.monitor-panel { background:var(--off); border:1px solid var(--border); border-radius:18px; box-shadow:var(--shadow-lg); overflow:hidden; }
+.mp-head { background:var(--white); border-bottom:1px solid var(--border); padding:0.85rem 1.2rem; display:flex; align-items:center; justify-content:space-between; }
+.mp-title { font-size:0.76rem; font-weight:600; color:var(--ink3); }
+.mp-status { display:flex; align-items:center; gap:0.4rem; font-size:0.67rem; font-weight:600; color:var(--teal); }
+.mp-status-dot { width:6px; height:6px; border-radius:50%; background:var(--teal); animation:blink 1.4s ease-in-out infinite; }
+.mp-body { padding:1.2rem; display:flex; flex-direction:column; gap:1rem; }
+
+/* Camera view */
+.cam-view { background:var(--ink); border-radius:10px; aspect-ratio:16/9; position:relative; overflow:hidden; }
+.cam-grid-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(10,148,136,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(10,148,136,0.07) 1px,transparent 1px); background-size:28px 28px; }
+.cam-id { position:absolute; top:8px; left:10px; font-size:0.58rem; font-weight:600; color:rgba(255,255,255,0.45); letter-spacing:0.08em; }
+.cam-clock { position:absolute; top:8px; right:10px; font-size:0.58rem; color:rgba(255,255,255,0.38); }
+/* One clean alert indicator — no zone labels that reveal architecture */
+.cam-alert-box { position:absolute; right:10%; top:20%; width:30%; height:60%; border:1.5px solid rgba(224,92,10,0.85); border-radius:4px; background:rgba(224,92,10,0.07); animation:alertPulse 1.8s ease-in-out infinite; }
+@keyframes alertPulse { 0%,100%{border-color:rgba(224,92,10,0.85)} 50%{border-color:rgba(224,92,10,0.25)} }
+.cam-alert-label { position:absolute; bottom:5px; left:50%; transform:translateX(-50%); font-size:0.5rem; font-weight:700; color:rgba(224,92,10,0.95); white-space:nowrap; letter-spacing:0.06em; }
+/* Silhouettes */
+.person { position:absolute; width:9px; height:20px; background:rgba(255,255,255,0.3); border-radius:5px 5px 3px 3px; }
+.person::before { content:''; position:absolute; width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.45); top:-9px; left:0.5px; }
+.person-alert { background:rgba(224,92,10,0.55); }
+.person-alert::before { background:rgba(224,92,10,0.7); }
+
+/* Incident list */
+.mp-incidents { display:flex; flex-direction:column; gap:0.55rem; }
+.mp-inc { display:flex; align-items:center; gap:0.7rem; background:var(--white); border:1px solid var(--border); border-radius:8px; padding:0.7rem 0.9rem; }
+.inc-indicator { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.ii-active { background:var(--orange); animation:blink 1s ease-in-out infinite; }
+.ii-resolved { background:var(--teal); }
+.inc-text { flex:1; font-size:0.73rem; color:var(--ink2); line-height:1.4; }
+.inc-text strong { font-weight:600; }
+.inc-badge { font-size:0.61rem; font-weight:600; padding:0.14rem 0.44rem; border-radius:100px; white-space:nowrap; }
+.ib-active { background:var(--orange-pale); color:var(--orange); }
+.ib-resolved { background:var(--teal-pale); color:var(--teal); }
+
+/* SECTION 4 — PRICING */
+.pricing-section { background:var(--off); border-top:1px solid var(--border); padding:6rem 4.5rem; }
+.pricing-inner { max-width:1100px; margin:0 auto; }
+.pricing-hd { text-align:center; max-width:500px; margin:0 auto 3.5rem; }
+.pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.price-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:2rem 1.8rem; position:relative; box-shadow:var(--shadow-sm); transition:transform 0.26s,box-shadow 0.26s; }
+.price-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.price-card.featured { border-color:var(--teal); box-shadow:0 0 0 1px var(--teal),var(--shadow-md); }
+.feat-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--teal); color:var(--white); font-size:0.64rem; font-weight:700; padding:0.2rem 0.85rem; border-radius:100px; letter-spacing:0.04em; white-space:nowrap; }
+.pc-tier { font-size:0.68rem; font-weight:700; color:var(--ink4); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.45rem; }
+.pc-name { font-size:1.15rem; font-weight:700; color:var(--ink); margin-bottom:0.38rem; }
+.pc-price { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.95rem; font-weight:800; color:var(--ink); line-height:1; margin-bottom:0.28rem; }
+.pc-price span { font-size:0.85rem; font-weight:400; color:var(--ink4); }
+.pc-desc { font-size:0.78rem; color:var(--ink3); line-height:1.5; margin-bottom:1.4rem; }
+.pc-hr { height:1px; background:var(--border); margin-bottom:1.3rem; }
+.pc-list { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+.pc-list li { font-size:0.79rem; color:var(--ink3); display:flex; align-items:flex-start; gap:0.55rem; }
+.pc-check { width:15px; height:15px; border-radius:50%; background:var(--teal-pale); flex-shrink:0; display:flex; align-items:center; justify-content:center; margin-top:0.12rem; }
+.pc-check svg { width:8px; height:8px; }
+.pc-cta { display:block; width:100%; text-align:center; margin-top:1.7rem; padding:0.7rem; font-size:0.85rem; font-weight:600; border-radius:8px; text-decoration:none; transition:all 0.18s; font-family:'Plus Jakarta Sans',sans-serif; }
+.pc-fill { background:var(--teal); color:var(--white); }
+.pc-fill:hover { background:var(--teal-h); box-shadow:0 6px 18px rgba(10,148,136,0.28); }
+.pc-outline { border:1.5px solid var(--border2); color:var(--ink2); }
+.pc-outline:hover { border-color:var(--teal); color:var(--teal); }
+.pricing-note { text-align:center; margin-top:2rem; font-size:0.8rem; color:var(--ink4); }
+.pricing-note a { color:var(--teal); text-decoration:none; font-weight:500; }
+
+/* SECTION 5 — COMPARISON */
+.comp-section { padding:6rem 4.5rem; max-width:1100px; margin:0 auto; }
+.comp-hd { text-align:center; max-width:480px; margin:0 auto 3rem; }
+.comp-table { width:100%; border-collapse:collapse; }
+.comp-table th { padding:0.9rem 1.2rem; text-align:center; font-size:0.82rem; font-weight:700; color:var(--ink); border-bottom:2px solid var(--border); }
+.comp-table th:first-child { text-align:left; }
+.comp-table th.th-us { color:var(--teal); }
+.comp-table td { padding:0.82rem 1.2rem; text-align:center; font-size:0.82rem; color:var(--ink3); border-bottom:1px solid var(--border); }
+.comp-table td:first-child { text-align:left; font-weight:500; color:var(--ink2); }
+.comp-table tr:last-child td { border-bottom:none; }
+.comp-table tr:hover td { background:var(--off); }
+.comp-table td.td-us { background:var(--teal-pale); }
+.comp-table tr:hover td.td-us { background:#ddf1ef; }
+.ck-y { color:var(--teal); font-size:1rem; font-weight:700; }
+.ck-n { color:var(--ink4); }
+.ck-p { color:var(--orange); font-size:0.74rem; font-weight:500; }
+
+/* CTA */
+.cta-section { background:linear-gradient(165deg,var(--teal-pale) 0%,var(--white) 55%); border-top:1px solid var(--teal-mid); padding:6rem 4.5rem; text-align:center; }
+.cta-inner { max-width:540px; margin:0 auto; }
+.cta-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.8rem,3.2vw,2.5rem); font-weight:800; letter-spacing:-0.025em; color:var(--ink); margin-bottom:1rem; }
+.cta-title span { color:var(--teal); }
+.cta-body { color:var(--ink3); font-size:0.94rem; line-height:1.78; margin-bottom:2.2rem; }
+.cta-btns { display:flex; gap:0.7rem; justify-content:center; flex-wrap:wrap; }
+.btn-fill { background:var(--teal); color:var(--white); padding:0.72rem 1.7rem; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.87rem; font-weight:600; border:none; border-radius:8px; text-decoration:none; transition:all 0.18s; }
+.btn-fill:hover { background:var(--teal-h); transform:translateY(-2px); box-shadow:0 8px 22px rgba(10,148,136,0.3); }
+.btn-line { background:transparent; color:var(--ink2); padding:0.72rem 1.7rem; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.87rem; font-weight:500; border:1.5px solid var(--border2); border-radius:8px; text-decoration:none; transition:all 0.18s; }
+.btn-line:hover { border-color:var(--teal); color:var(--teal); transform:translateY(-2px); }
+.cta-note { margin-top:1.5rem; font-size:0.78rem; color:var(--ink4); }
+.cta-note a { color:var(--teal); text-decoration:none; font-weight:500; }
+
+/* FOOTER */
+footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+.ft-logo { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.05rem; font-weight:800; color:var(--white); text-decoration:none; }
+.ft-logo span { color:var(--teal-h); }
+.ft-links { display:flex; gap:1.8rem; list-style:none; }
+.ft-links a { font-size:0.77rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.15s; }
+.ft-links a:hover { color:var(--teal-h); }
+.ft-copy { font-size:0.72rem; color:rgba(255,255,255,0.28); }
+
+/* ANIMATIONS */
+@keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.reveal { opacity:0; transform:translateY(22px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+.rd1 { transition-delay:0.08s; } .rd2 { transition-delay:0.16s; }
+
+/* RESPONSIVE */
+@media (max-width:960px) {
+  nav { padding:0 1.5rem; } .nav-links { display:none; }
+  .page-header { padding:3.5rem 1.5rem 3rem; }
+  .tabs-nav { padding:0 1.5rem; }
+  .journey { padding:4rem 1.5rem; }
+  .jstep { grid-template-columns:1fr; gap:1rem; }
+  .jstep-num { font-size:2rem; }
+  .ops-section { padding:4rem 1.5rem; } .ops-inner { grid-template-columns:1fr; gap:2.5rem; }
+  .loss-section { grid-template-columns:1fr; gap:2.5rem; padding:4rem 1.5rem; }
+  .pricing-section { padding:4rem 1.5rem; } .pricing-grid { grid-template-columns:1fr; }
+  .comp-section { padding:4rem 1.5rem; overflow-x:auto; }
+  .cta-section { padding:4rem 1.5rem; }
+  footer { padding:2rem 1.5rem; flex-direction:column; align-items:flex-start; gap:1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-sq">
+      <svg viewBox="0 0 16 16" fill="none">
+        <rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white"/>
+        <rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/>
+        <rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.65"/>
+        <rect x="9" y="9" width="5.5" height="5.5" rx="1.5" fill="white" opacity="0.35"/>
+      </svg>
+    </div>
+    Staash
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="product.html" class="active">Product</a></li>
+    <li><a href="technology.html">Technology</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-spacer"></div>
+  <a href="about.html" class="nav-ghost">About Us</a>
+  <a href="contact.html" class="nav-cta">Request Demo</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="ph-inner">
+    <div class="pg-lbl"><span class="pg-lbl-dot"></span>Product</div>
+    <h1 class="ph-title">Built for the way <em>India shops.</em></h1>
+    <p class="ph-sub">One platform that transforms the experience for your customers, your staff, and your margins &mdash; simultaneously.</p>
+  </div>
+</div>
+
+<!-- STICKY TABS -->
+<div class="tabs-nav" id="tabs-nav">
+  <button class="tab-btn active" data-target="journey">The Experience</button>
+  <button class="tab-btn" data-target="ops-section">Store Operations</button>
+  <button class="tab-btn" data-target="loss-section">Loss Prevention</button>
+  <button class="tab-btn" data-target="pricing-section">Pricing</button>
+  <button class="tab-btn" data-target="comp-section">How We Compare</button>
+</div>
+
+<!-- SECTION 1: EXPERIENCE JOURNEY -->
+<div class="journey reveal" id="journey">
+  <div class="journey-header">
+    <div class="sec-lbl">The Customer Experience</div>
+    <div class="sec-title">Every step designed to respect your customer&rsquo;s time.</div>
+    <p class="sec-body">From the moment a customer opens Staash to the moment they walk out, every interaction is intentional, fast, and transparent.</p>
+  </div>
+
+  <div class="journey-steps">
+    <div class="jstep js-t reveal">
+      <div class="jstep-num">01</div>
+      <div>
+        <div class="jstep-title">Enter the store</div>
+        <p class="jstep-body">The customer opens the Staash app and enters the store. The store is identified automatically. If they pre-listed items, their cart is already waiting.</p>
+      </div>
+      <div class="jstep-detail">
+        <div class="jd-label">Customer experience</div>
+        <ul class="jd-list">
+          <li>Store confirmed instantly on app</li>
+          <li>Pre-listed cart loaded if set up</li>
+          <li>No registration queue or sign-in counter</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="jstep js-t reveal rd1">
+      <div class="jstep-num">02</div>
+      <div>
+        <div class="jstep-title">Pick items and scan</div>
+        <p class="jstep-body">As the customer picks items off the shelf, they scan them using their phone. Each item is added to their cart with price and running total visible at all times.</p>
+      </div>
+      <div class="jstep-detail">
+        <div class="jd-label">Customer experience</div>
+        <ul class="jd-list">
+          <li>Item name and price confirmed per scan</li>
+          <li>Running total visible throughout</li>
+          <li>Items can be removed or adjusted freely</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="jstep js-o reveal">
+      <div class="jstep-num">03</div>
+      <div>
+        <div class="jstep-title">Shop freely</div>
+        <p class="jstep-body">The customer browses at their own pace with no pressure to queue. The store&rsquo;s intelligence layer monitors the floor quietly, accounting for every cart without interrupting anyone.</p>
+      </div>
+      <div class="jstep-detail">
+        <div class="jd-label">Store benefit</div>
+        <ul class="jd-list js-o">
+          <li>All active carts visible to staff</li>
+          <li>Staff free to assist rather than cashier</li>
+          <li>Anomalies surfaced automatically</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="jstep js-t reveal rd1">
+      <div class="jstep-num">04</div>
+      <div>
+        <div class="jstep-title">Validate at checkout</div>
+        <p class="jstep-body">When ready to leave, the customer shows a QR code from the app at the checkout point. Cart is confirmed in seconds. No cashier needed, no paper, no waiting.</p>
+      </div>
+      <div class="jstep-detail">
+        <div class="jd-label">What happens</div>
+        <ul class="jd-list">
+          <li>Cart verified at checkout point</li>
+          <li>Total locked and payment triggered</li>
+          <li>Entire process takes under 30 seconds</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="jstep js-t reveal">
+      <div class="jstep-num">05</div>
+      <div>
+        <div class="jstep-title">Pay and walk out</div>
+        <p class="jstep-body">Payment via UPI, card, or wallet. Digital receipt sent immediately. The customer exits with no queue, no paper slip, and no friction of any kind.</p>
+      </div>
+      <div class="jstep-detail">
+        <div class="jd-label">Customer receives</div>
+        <ul class="jd-list">
+          <li>Instant digital receipt on app</li>
+          <li>Purchase history saved automatically</li>
+          <li>No printed bill, no separate counter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: STORE OPERATIONS -->
+<div class="ops-section" id="ops-section">
+  <div class="ops-inner">
+    <div class="reveal">
+      <div class="sec-lbl">Store Operations</div>
+      <div class="sec-title">Your staff does more. <em>Not less.</em></div>
+      <p class="sec-body">Staash does not replace your team &mdash; it gives them better tools. With checkout handled automatically, your staff focuses on customer service, inventory, and store management.</p>
+      <div class="ops-features">
+        <div class="ops-feat">
+          <div class="ops-icon oi-t">
+            <svg viewBox="0 0 18 18" fill="none">
+              <rect x="2" y="2" width="14" height="11" rx="2" stroke="var(--teal)" stroke-width="1.5"/>
+              <path d="M6 15h6M9 13v2" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M5 7h8M5 10h5" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="of-title">Live Store Dashboard</div>
+            <p class="of-body">Every active cart, transaction, and alert visible on one screen. Full picture of your store in real time, from any device.</p>
+          </div>
+        </div>
+        <div class="ops-feat">
+          <div class="ops-icon oi-o">
+            <svg viewBox="0 0 18 18" fill="none">
+              <rect x="2" y="4" width="14" height="10" rx="2" stroke="var(--orange)" stroke-width="1.5"/>
+              <path d="M6 8h6M6 11h3" stroke="var(--orange)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M13 2v3M5 2v3" stroke="var(--orange)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="of-title">Pre-Order Fulfilment</div>
+            <p class="of-body">Customers who plan ahead get their items prepared before arrival. Drives faster turnaround and higher customer satisfaction at peak hours.</p>
+          </div>
+        </div>
+        <div class="ops-feat">
+          <div class="ops-icon oi-y">
+            <svg viewBox="0 0 18 18" fill="none">
+              <path d="M3 5h12M3 9h8M3 13h5" stroke="var(--yellow)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="of-title">Inventory Sync</div>
+            <p class="of-body">Every completed sale updates your stock counts automatically. Low-stock alerts ensure shelves stay full without manual daily checking.</p>
+          </div>
+        </div>
+        <div class="ops-feat">
+          <div class="ops-icon oi-t">
+            <svg viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="7" stroke="var(--teal)" stroke-width="1.5"/>
+              <path d="M9 6v3l2 2" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="of-title">Analytics in Hindi and English</div>
+            <p class="of-body">Daily and weekly summaries in plain language &mdash; designed for store owners, not data analysts. Understand your store without a spreadsheet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-panel reveal rd1">
+      <div class="dp-head">
+        <span class="dp-title">Store Dashboard &mdash; Today</span>
+        <span class="dp-live"><span class="dp-dot"></span>Live</span>
+      </div>
+      <div class="dp-body">
+        <div class="dp-kpis">
+          <div class="dp-kpi">
+            <div class="dpk-val" style="color:var(--teal)">12</div>
+            <div class="dpk-lbl">Active Carts</div>
+            <span class="dpk-tag dt-t">In store</span>
+          </div>
+          <div class="dp-kpi">
+            <div class="dpk-val" style="color:var(--orange)">2</div>
+            <div class="dpk-lbl">Alerts</div>
+            <span class="dpk-tag dt-o">Needs attention</span>
+          </div>
+          <div class="dp-kpi">
+            <div class="dpk-val" style="color:#8A6200">&#8377;18.4K</div>
+            <div class="dpk-lbl">Revenue today</div>
+            <span class="dpk-tag dt-y">+12% yesterday</span>
+          </div>
+        </div>
+        <div class="dp-chart">
+          <div class="dpc-head">
+            <span class="dpc-title">Revenue this week</span>
+            <span class="dpc-val">&#8377;1.24L</span>
+          </div>
+          <div class="dpc-bars">
+            <div class="dpc-bar" style="height:40%"></div>
+            <div class="dpc-bar" style="height:62%"></div>
+            <div class="dpc-bar" style="height:48%"></div>
+            <div class="dpc-bar" style="height:72%"></div>
+            <div class="dpc-bar" style="height:55%"></div>
+            <div class="dpc-bar" style="height:82%"></div>
+            <div class="dpc-bar hi" style="height:92%"></div>
+          </div>
+          <div class="dpc-days">
+            <span class="dpc-day">M</span><span class="dpc-day">T</span><span class="dpc-day">W</span>
+            <span class="dpc-day">T</span><span class="dpc-day">F</span><span class="dpc-day">S</span>
+            <span class="dpc-day hi">S</span>
+          </div>
+        </div>
+        <div class="dp-alerts">
+          <div class="dp-alert"><div class="dpa-dot dot-t"></div><div class="dpa-text">Cart #1042 checked out &mdash; &#8377;1,240 collected</div><div class="dpa-time">2 min ago</div></div>
+          <div class="dp-alert"><div class="dpa-dot dot-o"></div><div class="dpa-text">Low stock: Parle-G 500g &mdash; 4 units remaining</div><div class="dpa-time">11 min ago</div></div>
+          <div class="dp-alert"><div class="dpa-dot dot-y"></div><div class="dpa-text">Pre-order #38 ready for pickup &mdash; prepared by staff</div><div class="dpa-time">18 min ago</div></div>
+          <div class="dp-alert"><div class="dpa-dot dot-t"></div><div class="dpa-text">Daily summary: &#8377;18,420 revenue &middot; 94% checkout rate</div><div class="dpa-time">8:00 AM</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: LOSS PREVENTION -->
+<div class="loss-section reveal" id="loss-section">
+  <div>
+    <div class="sec-lbl" style="color:var(--orange)">Loss Prevention</div>
+    <div class="sec-title">Protect your margins. Automatically.</div>
+    <p class="sec-body">Shrinkage is the silent drain on every Indian store&rsquo;s profitability. Staash monitors your store intelligently, alerting your staff the moment something needs attention &mdash; without confronting customers or disrupting the shopping experience.</p>
+    <div class="lp-stats">
+      <div class="lp-stat">
+        <div class="lps-val">3.2%</div>
+        <div class="lps-lbl">of annual revenue lost to shrinkage in organized Indian retail on average</div>
+      </div>
+      <div class="lp-stat">
+        <div class="lps-val">45%</div>
+        <div class="lps-lbl">of shrinkage attributed to shoplifting &mdash; the most preventable category</div>
+      </div>
+      <div class="lp-stat">
+        <div class="lps-val">10x</div>
+        <div class="lps-lbl">rise in retail theft incidents across Indian stores in the last five years</div>
+      </div>
+    </div>
+    <div class="lp-outcomes">
+      <div class="lpo-title">What store owners gain</div>
+      <ul class="lpo-list">
+        <li>Fewer unaccounted losses at end of day</li>
+        <li>Staff alerted to anomalies in real time without leaving their post</li>
+        <li>No new hardware installation &mdash; works with cameras already in place</li>
+        <li>Full incident history and resolution tracking</li>
+        <li>Confidence to run a larger, busier store with a smaller team</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="monitor-panel reveal rd1">
+    <div class="mp-head">
+      <span class="mp-title">Store Monitor &mdash; Live</span>
+      <span class="mp-status"><span class="mp-status-dot"></span>AI Active</span>
+    </div>
+    <div class="mp-body">
+      <div class="cam-view">
+        <div class="cam-grid-bg"></div>
+        <div class="cam-id">STORE CAM &mdash; EXIT</div>
+        <div class="cam-clock" id="cam-clock">--:--:--</div>
+        <div class="cam-alert-box">
+          <div class="cam-alert-label">ANOMALY DETECTED</div>
+        </div>
+        <div class="person" style="left:22%;top:52%"></div>
+        <div class="person" style="left:30%;top:48%"></div>
+        <div class="person person-alert" style="right:20%;top:46%"></div>
+      </div>
+      <div class="mp-incidents">
+        <div class="mp-inc">
+          <div class="inc-indicator ii-active"></div>
+          <div class="inc-text"><strong>Alert on Cart #1041</strong> &mdash; Movement at exit without completed checkout. Staff notified.</div>
+          <span class="inc-badge ib-active">Active</span>
+        </div>
+        <div class="mp-inc">
+          <div class="inc-indicator ii-resolved"></div>
+          <div class="inc-text"><strong>Discrepancy on Cart #1038</strong> &mdash; Resolved after staff check. 2 items added to cart.</div>
+          <span class="inc-badge ib-resolved">Resolved</span>
+        </div>
+        <div class="mp-inc">
+          <div class="inc-indicator ii-resolved"></div>
+          <div class="inc-text"><strong>Extended activity near high-value shelving</strong> &mdash; Staff assisted customer. No incident.</div>
+          <span class="inc-badge ib-resolved">Resolved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: PRICING -->
+<div class="pricing-section" id="pricing-section">
+  <div class="pricing-inner">
+    <div class="pricing-hd reveal">
+      <div class="sec-lbl">Pricing</div>
+      <div class="sec-title">Straightforward pricing for every store size.</div>
+      <p class="sec-body" style="margin-top:0.9rem">Every plan starts with a 90-day free pilot. No hardware cost. No commitment until you see the results.</p>
+    </div>
+    <div class="pricing-grid reveal rd1">
+      <div class="price-card">
+        <div class="pc-tier">Starter</div>
+        <div class="pc-name">Small Store</div>
+        <div class="pc-price">&#8377;5,000 <span>/ month</span></div>
+        <p class="pc-desc">For standalone stores with a single outlet up to 200 sqm.</p>
+        <div class="pc-hr"></div>
+        <ul class="pc-list">
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Customer scanning app</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Store operations dashboard</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>UPI and card checkout</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Basic loss monitoring</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Weekly analytics report</li>
+        </ul>
+        <a href="contact.html" class="pc-cta pc-outline">Start Free Pilot</a>
+      </div>
+      <div class="price-card featured">
+        <div class="feat-badge">Most Popular</div>
+        <div class="pc-tier">Professional</div>
+        <div class="pc-name">Mid Store</div>
+        <div class="pc-price">&#8377;10,000 <span>/ month</span></div>
+        <p class="pc-desc">For stores up to 500 sqm or up to 3 outlets.</p>
+        <div class="pc-hr"></div>
+        <ul class="pc-list">
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Everything in Starter</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Advanced loss prevention</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Pre-order fulfilment queue</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Inventory sync and alerts</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hindi analytics reports</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Staff mobile alerts</li>
+        </ul>
+        <a href="contact.html" class="pc-cta pc-fill">Start Free Pilot</a>
+      </div>
+      <div class="price-card">
+        <div class="pc-tier">Enterprise</div>
+        <div class="pc-name">Chain &amp; Multi-Outlet</div>
+        <div class="pc-price">&#8377;20,000+ <span>/ month</span></div>
+        <p class="pc-desc">For retail chains with 5 or more outlets needing unified intelligence.</p>
+        <div class="pc-hr"></div>
+        <ul class="pc-list">
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Everything in Professional</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Chain-level performance view</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Multi-location monitoring</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dedicated onboarding support</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Custom integrations</li>
+          <li><span class="pc-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Priority support SLA</li>
+        </ul>
+        <a href="contact.html" class="pc-cta pc-outline">Talk to Us</a>
+      </div>
+    </div>
+    <p class="pricing-note">All plans include a <strong>90-day free pilot</strong> with full setup support. Questions? <a href="contact.html">Talk to our team &rarr;</a></p>
+  </div>
+</div>
+
+<!-- SECTION 5: COMPARISON -->
+<div class="comp-section reveal" id="comp-section">
+  <div class="comp-hd">
+    <div class="sec-lbl">How We Compare</div>
+    <div class="sec-title">The only complete solution built for India.</div>
+  </div>
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th class="th-us">Staash</th>
+        <th>Amazon Go</th>
+        <th>Scan-and-Pay Apps</th>
+        <th>Indian POS Systems</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Frictionless checkout for customers</td>
+        <td class="td-us"><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-p">Partial</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+      </tr>
+      <tr>
+        <td>AI-powered loss prevention</td>
+        <td class="td-us"><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+      </tr>
+      <tr>
+        <td>Works on existing store cameras</td>
+        <td class="td-us"><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+      </tr>
+      <tr>
+        <td>Affordable for Indian retail</td>
+        <td class="td-us"><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-y">&#10003;</span></td>
+      </tr>
+      <tr>
+        <td>Real-time store operations dashboard</td>
+        <td class="td-us"><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-p">Basic</span></td>
+      </tr>
+      <tr>
+        <td>UPI-native payment</td>
+        <td class="td-us"><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-p">Some</span></td>
+        <td><span class="ck-y">&#10003;</span></td>
+      </tr>
+      <tr>
+        <td>No new hardware required</td>
+        <td class="td-us"><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-p">Partial</span></td>
+      </tr>
+      <tr>
+        <td>Pre-order and fulfilment queue</td>
+        <td class="td-us"><span class="ck-y">&#10003;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+        <td><span class="ck-n">&mdash;</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+  <div class="cta-inner">
+    <div class="sec-lbl" style="text-align:center">Get Started</div>
+    <div class="cta-title">Start your <span>free pilot</span> today.</div>
+    <p class="cta-body">90 days. No hardware cost. No commitment. We handle full setup and onboarding. You measure the impact on your store.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-fill">Request a Free Pilot &rarr;</a>
+      <a href="technology.html" class="btn-line">See the Technology</a>
+    </div>
+    <p class="cta-note">Questions? Write to <a href="mailto:staash.kart@gmail.com">staash.kart@gmail.com</a></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="ft-logo">Staa<span>sh</span></a>
+  <ul class="ft-links">
+    <li><a href="product.html">Product</a></li>
+    <li><a href="technology.html">Technology</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="ft-copy">&copy; 2025 Staashkart Ariscates LLP &middot; Jaipur, India</span>
+</footer>
+
+<script>
+// Live camera clock
+(function tick() {
+  const el = document.getElementById('cam-clock');
+  if (el) el.textContent = new Date().toLocaleTimeString('en-IN', { hour12: false });
+  setTimeout(tick, 1000);
+})();
+
+// Tab navigation — scroll to section
+const tabBtns = document.querySelectorAll('.tab-btn');
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetId = btn.getAttribute('data-target');
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    const navH = document.querySelector('nav').offsetHeight;
+    const tabsH = document.getElementById('tabs-nav').offsetHeight;
+    const top = target.getBoundingClientRect().top + window.scrollY - navH - tabsH - 16;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+
+// Highlight active tab on scroll
+const sectionIds = ['journey','ops-section','loss-section','pricing-section','comp-section'];
+const sections = sectionIds.map(id => document.getElementById(id));
+function updateActiveTab() {
+  const navH = document.querySelector('nav').offsetHeight;
+  const tabsH = document.getElementById('tabs-nav').offsetHeight;
+  const offset = navH + tabsH + 40;
+  let active = 0;
+  sections.forEach((sec, i) => {
+    if (sec && window.scrollY >= sec.offsetTop - offset) active = i;
+  });
+  tabBtns.forEach((b, i) => b.classList.toggle('active', i === active));
+}
+window.addEventListener('scroll', updateActiveTab, { passive: true });
+
+// Scroll reveal
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
