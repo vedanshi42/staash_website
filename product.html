@@ -19,7 +19,7 @@
   --shadow-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
   --shadow-lg:0 16px 48px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
 
 /* NAV */
@@ -807,57 +807,80 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <span class="ft-copy">&copy; 2025 Staashkart Ariscates LLP &middot; Jaipur, India</span>
+  <span class="ft-copy">&copy; 2025 Staashkart Ariscates LLP &middot; Jaipur, India &middot; DPIIT Recognised Startup</span>
 </footer>
 
 <script>
-
-function toggleMobileNav() {
-  var menu = document.getElementById('mobile-menu');
-  var btn = document.getElementById('nav-mobile-btn');
-  var nav = document.querySelector('nav');
-  menu.classList.toggle('open');
-  nav.classList.toggle('mobile-nav-open');
+// ── Mobile nav ──────────────────────────────────────────────────
+function toggleNav() {
+  document.getElementById('mobile-menu').classList.toggle('open');
 }
 document.addEventListener('click', function(e) {
-  var menu = document.getElementById('mobile-menu');
-  var btn = document.getElementById('nav-mobile-btn');
-  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-    menu.classList.remove('open');
-    document.querySelector('nav').classList.remove('mobile-nav-open');
+  var m = document.getElementById('mobile-menu');
+  var b = document.getElementById('nav-mobile-btn');
+  if (m && b && !m.contains(e.target) && !b.contains(e.target)) {
+    m.classList.remove('open');
   }
 });
 
-// Live camera clock
+// ── Camera clock ────────────────────────────────────────────────
 (function tick() {
-  const el = document.getElementById('cam-clock');
+  var el = document.getElementById('cam-clock');
   if (el) el.textContent = new Date().toLocaleTimeString('en-IN', { hour12: false });
   setTimeout(tick, 1000);
 })();
 
-// Tab navigation - scroll to section
-const tabBtns = document.querySelectorAll('.tab-btn');
-tabBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const targetId = btn.getAttribute('data-target');
-    const target = document.getElementById(targetId);
+// ── Tab scroll ──────────────────────────────────────────────────
+var tabBtns = document.querySelectorAll('.tab-btn');
+var sectionIds = ['journey','ops-section','loss-section','pricing-section','comp-section'];
+
+tabBtns.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var targetId = btn.getAttribute('data-target');
+    var target = document.getElementById(targetId);
     if (!target) return;
-    const offset = 130; // nav + tab bar height
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    var navEl = document.querySelector('nav');
+    var tabEl = document.getElementById('tabs-nav');
+    var navH = navEl ? navEl.offsetHeight : 62;
+    var tabH = tabEl ? tabEl.offsetHeight : 52;
+    var offset = navH + tabH + 8;
+    var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
     window.scrollTo({ top: top, behavior: 'smooth' });
+    // Update active immediately
+    tabBtns.forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
   });
 });
 
-// Highlight active tab on scroll
-const sectionIds = ['journey','ops-section','loss-section','pricing-section','comp-section'];
-const sections = sectionIds.map(id => document.getElementById(id));
+// ── Active tab on scroll ─────────────────────────────────────────
 function updateActiveTab() {
-  const navH = document.querySelector('nav').offsetHeight;
-  const tabsH = document.getElementById('tabs-nav').offsetHeight;
-  const offset = navH + tabsH + 40;
-  let active = 0;
-  sections.forEach((sec, i) => {
-    if (sec && window.
+  var navEl = document.querySelector('nav');
+  var tabEl = document.getElementById('tabs-nav');
+  var navH = navEl ? navEl.offsetHeight : 62;
+  var tabH = tabEl ? tabEl.offsetHeight : 52;
+  var offset = navH + tabH + 20;
+  var scrollY = window.pageYOffset;
+  var active = 0;
+  sectionIds.forEach(function(id, i) {
+    var sec = document.getElementById(id);
+    if (sec && scrollY >= sec.offsetTop - offset) {
+      active = i;
+    }
+  });
+  tabBtns.forEach(function(b, i) {
+    b.classList.toggle('active', i === active);
+  });
+}
+window.addEventListener('scroll', updateActiveTab, { passive: true });
+updateActiveTab();
+
+// ── Scroll reveal ────────────────────────────────────────────────
+var ro = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+  });
+}, { threshold: 0 });
+document.querySelectorAll('.reveal').forEach(function(el) { ro.observe(el); });
 </script>
 </body>
 </html>

@@ -19,7 +19,7 @@
   --shadow-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
   --shadow-lg:0 16px 48px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
 
 /* NAV */
@@ -494,7 +494,7 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
       </svg>
       <div class="ms-text">
         <strong>Microsoft for Startups</strong>
-        <span>Founders Hub Member</span>
+        <span>Founders Hub Member &middot; DPIIT Recognised</span>
       </div>
     </div>
     <p class="ms-body">As a <strong>Microsoft for Startups</strong> member, Staash is backed by enterprise-grade cloud infrastructure and technical support from day one - giving us the foundation to scale without rebuilding.</p>
@@ -503,11 +503,24 @@ footer { background:var(--ink); padding:2.2rem 4.5rem; display:flex; align-items
 </div>
 
 <!-- CTA -->
+
+<!-- NDA CTA — prominent -->
+<div style="background:var(--ink);padding:3.5rem 4.5rem;border-top:1px solid rgba(255,255,255,0.06)">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center">
+    <div>
+      <div style="font-size:0.68rem;font-weight:700;color:var(--teal-h);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.8rem">Technical Depth Available Under NDA</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:800;color:var(--white);letter-spacing:-0.02em;margin-bottom:0.7rem">This page shows what. Not how.</div>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.72;max-width:560px">Our full architecture, model approach, training pipeline, and inference design are available to qualified investors and partners in a structured technical conversation. If you are evaluating Staash seriously, this is the briefing that answers the real questions.</p>
+    </div>
+    <a href="contact.html" style="background:var(--teal);color:var(--white);padding:0.9rem 1.8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:700;border-radius:9px;text-decoration:none;white-space:nowrap;transition:all 0.18s;display:inline-block">Request Technical Briefing &rarr;</a>
+  </div>
+</div>
+
 <div class="cta-section reveal">
   <div class="cta-inner">
     <div class="sec-lbl" style="text-align:center">Go Deeper</div>
-    <div class="cta-title">Want to understand the <span>full picture?</span></div>
-    <p class="cta-body">We walk qualified investors, partners, and pilot store candidates through our technical approach in depth under NDA. If you are serious about understanding what we have built, reach out and we will set up a conversation.</p>
+    <div class="cta-title">The technical depth is <span>real.</span></div>
+    <p class="cta-body">Every design decision on this page describes what Staash does and why - not how. The full technical architecture, model approach, training pipeline, and system design are shared with qualified investors and partners under NDA. If you are evaluating Staash seriously, this is the conversation that matters. Reach out and we will arrange it.</p>
     <div class="cta-btns">
       <a href="contact.html" class="btn-fill">Request a Conversation &rarr;</a>
       <a href="team.html" class="btn-line">Meet the Team</a>

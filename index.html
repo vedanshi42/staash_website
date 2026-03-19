@@ -19,7 +19,7 @@
   --sh-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
   --sh-lg:0 20px 60px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* NAV */
@@ -239,7 +239,7 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
 <!-- HERO -->
 <div class="hero">
   <div>
-    <div class="hero-tag"><span class="tag-dot"></span>Pilot stores open - Jaipur</div>
+    <div class="hero-tag"><span class="tag-dot"></span>Proof of concept - Jaipur pilot underway</div>
     <h1>
       The retail OS that
       <em>eliminates queues</em>
@@ -256,9 +256,12 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
         <span>Microsoft for Startups</span>
       </div>
       <div class="trust-sep"></div>
-      <div class="trust-item"><span>Jaipur, Rajasthan</span></div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="var(--teal)" stroke-width="1"/><path d="M4.5 7l2 2 3-3" stroke="var(--teal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>DPIIT Recognised Startup</span>
+      </div>
       <div class="trust-sep"></div>
-      <div class="trust-item"><span>Founded 2024</span></div>
+      <div class="trust-item"><span>Founded Dec 2024</span></div>
     </div>
   </div>
 
@@ -291,8 +294,8 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
 
 <!-- STATS BAR -->
 <div class="stats-bar" id="stats-bar">
-  <div class="sb-item"><div class="sb-val"><span id="s1">0</span>%</div><div class="sb-lbl">Target Shrinkage Reduction</div></div>
-  <div class="sb-item"><div class="sb-val"><span id="s2">0</span>x</div><div class="sb-lbl">Faster Than Queue Checkout</div></div>
+  <div class="sb-item"><div class="sb-val"><span id="s1">0</span>%</div><div class="sb-lbl">Projected Shrinkage Reduction</div></div>
+  <div class="sb-item"><div class="sb-val"><span id="s2">0</span>x</div><div class="sb-lbl">Faster Checkout vs Traditional Queue</div></div>
   <div class="sb-item"><div class="sb-val">&#8377;<span id="s3">0</span>K Cr</div><div class="sb-lbl">Annual Retail Shrinkage in India</div></div>
   <div class="sb-item"><div class="sb-val"><span id="s4">0</span>M+</div><div class="sb-lbl">Retail Stores Across India</div></div>
 </div>
@@ -425,14 +428,46 @@ document.addEventListener('click',function(e){
 });
 
 // Counters - fire immediately on load, no observer needed
-function countUp(id,to,dur){
-  var el=document.getElementById(id);if(!el)return;
-  var s=0,step=to/(dur/16);
-  var t=setInterval(function(){s=Math.min(s+step,to);el.textContent=Math.floor(s);if(s>=to)clearInterval(t);},16);
+// Eased roll-up counter — uses easeOutExpo for natural deceleration
+function rollCount(id, to, dur) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var start = null;
+  function easeOutExpo(t) {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  }
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    var progress = Math.min((timestamp - start) / dur, 1);
+    var eased = easeOutExpo(progress);
+    el.textContent = Math.floor(eased * to);
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = to;
+    }
+  }
+  requestAnimationFrame(step);
 }
-window.addEventListener('load',function(){
-  setTimeout(function(){countUp('s1',40,2000);countUp('s2',4,1600);countUp('s3',48,2200);countUp('s4',15,2000);},300);
-});
+
+// Trigger when stats bar scrolls into view (not on load — may be below fold)
+var statsTriggered = false;
+var statsObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting && !statsTriggered) {
+      statsTriggered = true;
+      setTimeout(function() {
+        rollCount('s1', 40, 1800);
+        rollCount('s2', 4,  1400);
+        rollCount('s3', 48, 2000);
+        rollCount('s4', 15, 1800);
+      }, 150);
+      statsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+var statsBar = document.getElementById('stats-bar');
+if (statsBar) statsObs.observe(statsBar);
 
 // Market bars - animate on scroll into view
 var mktObs=new IntersectionObserver(function(entries){

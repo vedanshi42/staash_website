@@ -19,7 +19,7 @@
   --sh-md:0 4px 16px rgba(14,27,41,0.08),0 2px 6px rgba(14,27,41,0.04);
   --sh-lg:0 20px 60px rgba(14,27,41,0.1),0 4px 16px rgba(14,27,41,0.06);
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* NAV */
@@ -239,27 +239,27 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
         <div class="field-row">
           <div class="field">
             <label for="f-name">Your name</label>
-            <input id="f-name" type="text" placeholder="Full name" required>
+            <input id="f-name" name="name" type="text" placeholder="Full name" required>
           </div>
           <div class="field">
             <label for="f-email">Email address</label>
-            <input id="f-email" type="email" placeholder="you@example.com" required>
+            <input id="f-email" name="email" type="email" placeholder="you@example.com" required>
           </div>
         </div>
 
         <div id="store-fields" class="extra">
           <div class="field">
             <label for="f-store">Store name</label>
-            <input id="f-store" type="text" placeholder="Name of your store or chain">
+            <input id="f-store" name="store_name" type="text" placeholder="Name of your store or chain">
           </div>
           <div class="field-row">
             <div class="field">
               <label for="f-loc">Location</label>
-              <input id="f-loc" type="text" placeholder="Area or city">
+              <input id="f-loc" name="location" type="text" placeholder="Area or city">
             </div>
             <div class="field">
               <label for="f-size">Store size</label>
-              <select id="f-size">
+              <select id="f-size" name="store_size">
                 <option value="" disabled selected>Select size</option>
                 <option>Under 100 sqm</option>
                 <option>100 to 200 sqm</option>
@@ -271,7 +271,7 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
           </div>
           <div class="field">
             <label for="f-cctv">CCTV cameras installed?</label>
-            <select id="f-cctv">
+            <select id="f-cctv" name="cctv_status">
               <option value="" disabled selected>Select one</option>
               <option>Yes, cameras already installed</option>
               <option>No, but open to installing</option>
@@ -284,11 +284,11 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
         <div id="investor-fields" class="extra" style="display:none">
           <div class="field">
             <label for="f-fund">Fund or firm name</label>
-            <input id="f-fund" type="text" placeholder="Name of your fund (if applicable)">
+            <input id="f-fund" name="fund_name" type="text" placeholder="Name of your fund (if applicable)">
           </div>
           <div class="field">
             <label for="f-ticket">Typical ticket size</label>
-            <select id="f-ticket">
+            <select id="f-ticket" name="ticket_size">
               <option value="" disabled selected>Select range</option>
               <option>Under 25 lakhs</option>
               <option>25 to 75 lakhs</option>
@@ -301,10 +301,10 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
 
         <div class="field">
           <label for="f-msg">Message <span style="color:var(--ink4);font-weight:400">(optional)</span></label>
-          <textarea id="f-msg" placeholder="Anything specific you would like us to know..."></textarea>
+          <textarea id="f-msg" name="message" placeholder="Anything specific you would like us to know..."></textarea>
         </div>
 
-        <input type="hidden" id="f-type" value="store">
+        <input type="hidden" id="f-type" name="enquiry_type" value="store">
 
         <button type="submit" class="submit-btn" id="submit-btn">
           <span id="submit-label">Send Message</span>
@@ -333,7 +333,7 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
         <div class="dc-head">Reach us directly</div>
         <div class="dc-row">
           <div class="dc-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M2 3h10v8a1 1 0 01-1 1H3a1 1 0 01-1-1V3z" stroke="rgba(255,255,255,0.45)" stroke-width="1.2"/><path d="M2 3l5 4.5L12 3" stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div class="dc-text"><strong>General enquiries</strong><a href="mailto&#58;contact&#64;stashkart&#46;com">contact&#64;stashkart&#46;com</a></div>
+          <div class="dc-text"><strong>General enquiries</strong><a href="mailto:contact@stashkart.com?subject=Staash%20Enquiry&body=Hi%20Staash%20team%2C%0A%0AI%20am%20reaching%20out%20regarding...">contact@stashkart.com</a></div>
         </div>
         <div class="dc-row">
           <div class="dc-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4.24 1.5 2 3.74 2 6.5c0 1.7.84 3.2 2.12 4.12L7 12.5l2.88-1.88A5 5 0 0012 6.5C12 3.74 9.76 1.5 7 1.5z" stroke="rgba(255,255,255,0.45)" stroke-width="1.2"/><circle cx="7" cy="6.5" r="1.5" fill="rgba(255,255,255,0.45)"/></svg></div>
@@ -342,7 +342,7 @@ footer{background:var(--ink);padding:2.2rem 4.5rem;display:flex;align-items:cent
       </div>
       <div class="ms-row">
         <svg width="26" height="26" viewBox="0 0 18 18"><rect x="0" y="0" width="8" height="8" fill="#F25022"/><rect x="10" y="0" width="8" height="8" fill="#7FBA00"/><rect x="0" y="10" width="8" height="8" fill="#00A4EF"/><rect x="10" y="10" width="8" height="8" fill="#FFB900"/></svg>
-        <div class="ms-row-text"><strong>Microsoft for Startups</strong><span>Founders Hub Member</span></div>
+        <div class="ms-row-text"><strong>Microsoft for Startups</strong><span>Founders Hub Member &middot; DPIIT Recognised</span></div>
       </div>
     </div>
   </div>
@@ -421,41 +421,43 @@ function handleSubmit(e) {
   var lbl = document.getElementById('submit-label');
   var ico = document.getElementById('submit-icon');
   btn.disabled = true;
+  btn.style.opacity = '0.75';
   lbl.textContent = 'Sending...';
-  ico.style.display = 'none';
+  if (ico) ico.style.display = 'none';
 
-  var type  = document.getElementById('f-type').value;
-  var name  = document.getElementById('f-name').value;
-  var email = document.getElementById('f-email').value;
-  var store = document.getElementById('f-store') ? document.getElementById('f-store').value : '';
-  var loc   = document.getElementById('f-loc')   ? document.getElementById('f-loc').value   : '';
-  var msg   = document.getElementById('f-msg').value;
+  var formData = new FormData(document.getElementById('contact-form'));
+  // Add enquiry type label
+  var type = document.getElementById('f-type').value;
+  var typeLabel = type === 'store' ? 'Store Pilot Request' : type === 'investor' ? 'Investor Enquiry' : 'General Enquiry';
+  formData.append('_subject', 'Staash ' + typeLabel + ' from ' + (formData.get('f-name') || 'website'));
+  formData.append('enquiry_type', typeLabel);
 
-  var subject = type === 'store'    ? 'Staash Pilot Request - ' + (store || name)
-              : type === 'investor' ? 'Investor Enquiry - ' + name
-              : 'Staash Contact - ' + name;
-
-  var lines = [
-    'Name: ' + name,
-    'Email: ' + email,
-    'Type: ' + type
-  ];
-  if (store) lines.push('Store: ' + store);
-  if (loc)   lines.push('Location: ' + loc);
-  lines.push('');
-  lines.push('Message:');
-  lines.push(msg || 'No additional message.');
-
-  var body = lines.join('\n');
-  var mailto = 'mailto:contact@stashkart.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-
-  setTimeout(function() {
-    window.location.href = mailto;
-    document.getElementById('contact-form').style.display = 'none';
-    var s = document.getElementById('form-success');
-    s.style.display = 'block';
-    s.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 500);
+  fetch('https://formspree.io/f/mwvragwl', {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(function(response) {
+    if (response.ok) {
+      document.getElementById('contact-form').style.display = 'none';
+      var s = document.getElementById('form-success');
+      s.style.display = 'block';
+      s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      lbl.textContent = 'Send Message';
+      if (ico) ico.style.display = '';
+      alert('Something went wrong. Please email us directly at contact@stashkart.com');
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    lbl.textContent = 'Send Message';
+    if (ico) ico.style.display = '';
+    alert('Could not send message. Please email us at contact@stashkart.com');
+  });
 }
 </script>
 </body>
