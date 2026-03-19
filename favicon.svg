@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Dark rounded background -->
+  <rect width="32" height="32" rx="7" fill="#0D1B2A"/>
+  <!-- Top-left: full opacity teal -->
+  <rect x="4"  y="4"  width="10" height="10" rx="2.5" fill="#0A9488"/>
+  <!-- Top-right: 70% -->
+  <rect x="18" y="4"  width="10" height="10" rx="2.5" fill="#0A9488" opacity="0.70"/>
+  <!-- Bottom-left: 70% -->
+  <rect x="4"  y="18" width="10" height="10" rx="2.5" fill="#0A9488" opacity="0.70"/>
+  <!-- Bottom-right: 32% -->
+  <rect x="18" y="18" width="10" height="10" rx="2.5" fill="#0A9488" opacity="0.32"/>
+</svg>
